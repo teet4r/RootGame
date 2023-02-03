@@ -10,8 +10,6 @@ public class Option : MonoBehaviour
     [SerializeField] GameObject optionWindow;
     [SerializeField] Slider sfxSlider;
     [SerializeField] Slider bgmSlider;
-    [SerializeField] VolumeSliderHandle sfxHandle;
-    [SerializeField] VolumeSliderHandle bgmHandle;
 
     private void Start()
     {

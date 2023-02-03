@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/KDH/Scenes/MainMenu.unity
+    guid: df736d2eede27bc4da78bae5c39ba0ef
+  - enabled: 1
+    path: Assets/KHJ/Scenes/DefenseScene.unity
+    guid: 07a2b83e24d6b2a4aa4261fefed1adc0
+  - enabled: 1
+    path: Assets/KJH/coldnoodle.unity
+    guid: f42f85a3449aa11408333dfbbeafac7a
+  - enabled: 1
+    path: Assets/KDH/Scenes/CardReverseGame.unity
+    guid: 0645087932d72df4689b50b8427e9b83
+  - enabled: 1
+    path: Assets/CommonResources/LodingScene.unity
+    guid: ec0fae85a3f1d19438ee8da5057a0416
   m_configObjects: {}
