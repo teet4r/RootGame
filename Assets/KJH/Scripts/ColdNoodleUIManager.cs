@@ -27,7 +27,7 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
         // Min 0s, Max 60s
         //timeImage.value = ColdNoodleGameManager.Instance.timeCurrent;
         timeImage.fillAmount = ColdNoodleGameManager.Instance.timeCurrent / 60f;
-        scoreText.text = "Score : " + ColdNoodleGameManager.Instance.score.ToString();
+        scoreText.text = ColdNoodleGameManager.Instance.score.ToString();
         comboText.text = ColdNoodleGameManager.Instance.combo.ToString() + " Combo!";
     }
 
