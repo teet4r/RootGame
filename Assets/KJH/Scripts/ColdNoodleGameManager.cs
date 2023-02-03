@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManager>
 {
-    [SerializeField]
     public Queue<GameObject> queue;
-    private GameObject curChicken;
+    public Transform[] moveTransform; // 0:left, 1:right, 2,3,4,5,6,7 
+    public GameObject curChicken;
     public GameObject friedPrefab;
     public GameObject saucePrefab;
     public int score;
@@ -31,48 +31,65 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     // Update is called once per frame
     void Update()
     {
-        if (TimeCheck() < 0)
-        {
-            GameOver();
-        }
-
-        
+        TimeCheck();
     }
 
     void MakeRandomNoodle()
     {
-        // 큐 50개 만듬 
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 6; i++)
         {
             if (Random.Range(0,2) == 0)
             {
-                queue.Enqueue(friedPrefab);
+                queue.Enqueue(Instantiate(friedPrefab,moveTransform[i + 2]));
             }
             else
             {
-                queue.Enqueue(saucePrefab);
+                queue.Enqueue(Instantiate(saucePrefab,moveTransform[i + 2]));
             }
         }
     }
-
-    public GameObject DequeueChicken()
+    public void EnqueueRandomChicken()
+    {
+        // 6번째자리에 치킨추가
+        if (Random.Range(0,2) == 0)
+        {
+            queue.Enqueue(Instantiate(friedPrefab,moveTransform[7]));
+        }
+        else
+        {
+            queue.Enqueue(Instantiate(saucePrefab,moveTransform[7]));
+        }
+    }
+    void InstantiateChicken()
+    {
+        
+    }
+    public void DequeueChicken()
     {
         curChicken = queue.Dequeue();
-        queue.Enqueue(curChicken);
-        return curChicken;
     }
     public void PlusCombo()
     {
         combo += 1;
         score += 100 * scoremultiflyvalue;
-
+        timePlus += 1;
         if (combo % 10 == 0)
         {
             scoremultiflyvalue += 1;
-            timemultiflyvalue += 0.1f;
+            timemultiflyvalue += 0.3f;
         }
         // combo 증가, 점수 증가, 남은 시간 1.5초 증가, 
         // 10 combo마다 1초당 감소 시간을 늘림 
+    }
+    public void FailCombo()
+    {
+        Debug.Log("FailCombo");
+        combo = 0;
+        timePlus -= 20;
+        if (TimeCheck() < 0)
+        {
+            GameOver();
+        }
     }
 
     private float TimeCheck()
@@ -84,6 +101,7 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     }
     private void GameOver()
     {
+        Debug.Log("GameOver");
         // 게임 종료, UI 표시(다시하기, Main 이동) 
     }
     
