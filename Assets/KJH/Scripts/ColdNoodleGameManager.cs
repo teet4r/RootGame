@@ -96,12 +96,14 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     {
         timeCurrent = timeMax - Time.time * timemultiflyvalue + timePlus;
         if (timeCurrent >= timeMax) timeCurrent = timeMax;
+        if (timeCurrent <= 0) GameOver();
         return timeCurrent;
         // 제한시간 체크
     }
     private void GameOver()
     {
         Debug.Log("GameOver");
+        ColdNoodleUIManager.Instance.SetActiveGameOverUI();
         // 게임 종료, UI 표시(다시하기, Main 이동) 
     }
     

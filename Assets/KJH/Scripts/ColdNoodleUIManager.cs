@@ -10,6 +10,7 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
     public Button leftBtn;
     public Button rightBtn;
     public GameObject pauseUI;
+    public GameObject gameOverUI;
     public Image timeImage;
     public Text scoreText;
     public Text comboText;
@@ -27,12 +28,18 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
         //timeImage.value = ColdNoodleGameManager.Instance.timeCurrent;
         timeImage.fillAmount = ColdNoodleGameManager.Instance.timeCurrent / 60f;
         scoreText.text = "Score : " + ColdNoodleGameManager.Instance.score.ToString();
-        comboText.text = ColdNoodleGameManager.Instance.combo.ToString();
+        comboText.text = ColdNoodleGameManager.Instance.combo.ToString() + " Combo!";
     }
 
     public void Pause()
     {
         pauseUI.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void SetActiveGameOverUI()
+    {
+        gameOverUI.SetActive(true);
         Time.timeScale = 0;
     }
 

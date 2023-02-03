@@ -125,7 +125,7 @@ TextureImporter:
         width: 235
         height: 237
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -146,7 +146,7 @@ TextureImporter:
         width: 234
         height: 237
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -159,7 +159,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chickens_2
+      name: Center_Yellow
       rect:
         serializedVersion: 2
         x: 622
@@ -167,7 +167,7 @@ TextureImporter:
         width: 271
         height: 154
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -180,7 +180,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chickens_3
+      name: Under_Yellow
       rect:
         serializedVersion: 2
         x: 38
@@ -188,7 +188,7 @@ TextureImporter:
         width: 202
         height: 264
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -201,7 +201,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chickens_4
+      name: Under_Red
       rect:
         serializedVersion: 2
         x: 304
@@ -209,7 +209,7 @@ TextureImporter:
         width: 202
         height: 264
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -222,7 +222,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chickens_5
+      name: Center_Red
       rect:
         serializedVersion: 2
         x: 628
@@ -230,7 +230,7 @@ TextureImporter:
         width: 272
         height: 154
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,11 +254,11 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Chickens_0: 1375422845
-      Chickens_5: 1490898249
+      Center_Yellow: -326770394
+      Center_Red: 1490898249
       Chickens_1: 380659291
-      Chickens_4: -880820397
-      Chickens_3: -1408335520
-      Chickens_2: -326770394
+      Under_Yellow: -1408335520
+      Under_Red: -880820397
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
