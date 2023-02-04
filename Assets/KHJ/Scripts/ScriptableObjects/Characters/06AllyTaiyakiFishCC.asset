@@ -10,8 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb0abbcf2c4cc846a38e29b79b24012, type: 3}
-  m_Name: TaiyakiFish
+  m_Name: 06AllyTaiyakiFishCC
   m_EditorClassIdentifier: 
+  _sprite: {fileID: -850548657, guid: e7878fcfe467e274a9268a12d8dd4d5c, type: 3}
+  _rotation: {x: 0, y: 0, z: -90}
+  _fishType: 1
+  _color: {r: 1, g: 1, b: 1, a: 1}
   _maxHp: 200
   _damage: 10
   _range: 1
