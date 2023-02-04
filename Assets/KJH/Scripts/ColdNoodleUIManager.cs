@@ -89,4 +89,11 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
     {
         SceneManager.LoadScene(0);
     }
+
+    public void LoadWaitScene()
+    {
+        SceneManager.LoadScene(5);
+        //ColdNoodleGameManager.Instance.DestrotyChicken();
+        //ColdNoodleGameManager.Instance.MakeRandomNoodle();
+    }
 }

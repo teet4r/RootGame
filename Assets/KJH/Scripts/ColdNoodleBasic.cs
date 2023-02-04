@@ -15,6 +15,7 @@ public class ColdNoodleBasic : MonoBehaviour
 
     public void MoveNext(int index)
     {
+        Debug.Log($"{isRight} : {index} move");
         this.transform.DOMove(ColdNoodleGameManager.Instance.moveTransform[index].position, 0.1f)
             .SetEase(Ease.OutFlash);         
         
@@ -24,14 +25,17 @@ public class ColdNoodleBasic : MonoBehaviour
 
     public void MoveLeftRight(bool inputIsRight)
     {
+        Debug.Log($"{isRight} : move LR");
         if (inputIsRight)
         {
+            Debug.Log(ColdNoodleGameManager.Instance.moveTransform[1].position);
             this.transform.DOMove(ColdNoodleGameManager.Instance.moveTransform[1].position, 0.5f)
                 .SetEase(Ease.OutFlash);
             spriteRenderer.DOFade(0, 1);
 
         }else 
         {
+            Debug.Log(ColdNoodleGameManager.Instance.moveTransform[0].position);
             this.transform.DOMove(ColdNoodleGameManager.Instance.moveTransform[0].position, 0.5f)
             .SetEase(Ease.OutFlash);
             spriteRenderer.DOFade(0, 1);

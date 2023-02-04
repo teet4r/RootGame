@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
@@ -22,6 +23,15 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     // Start is called before the first frame update
     void Start()
     {
+        curChicken = null;
+        if (queue != null)
+        {
+            for (int i = 0; i < queue.Count(); i++)
+            {
+                Destroy(queue.Dequeue());
+            }
+            queue.Clear();
+        }
         queue = new Queue<GameObject>();
         if (queue.Count == 0)
         {
@@ -35,7 +45,7 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
         TimeCheck();
     }
 
-    void MakeRandomNoodle()
+    public void MakeRandomNoodle()
     {
         for (int i = 0; i < 6; i++)
         {
@@ -61,9 +71,12 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
             queue.Enqueue(Instantiate(saucePrefab,moveTransform[7]));
         }
     }
-    void InstantiateChicken()
+    public void DestrotyChicken()
     {
-        
+        for (int i = 0; i < queue.Count(); i++)
+        {
+            Destroy(queue.Dequeue());
+        }
     }
     public void DequeueChicken()
     {
