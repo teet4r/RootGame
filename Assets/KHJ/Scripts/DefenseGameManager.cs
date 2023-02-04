@@ -1,4 +1,3 @@
-using System.Data;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -66,30 +65,33 @@ public class DefenseGameManager : MonoBehaviour
     public void MakeAllyFish(int buttonIndex, Vector3 position)
     {
         var dataManager = DataManager.instance;
-
         var data = dataManager.allyDatas[(int)ButtonsManager.instance.redBeans[buttonIndex]];
         var remainCost = dataManager.costText.curCost - data.Cost;
         if (remainCost < 0)
             return;
-
         dataManager.costText.UpdateCost(remainCost);
+        
         var clone = Instantiate(allyController);
+        clone.data = data;
         clone.Transform.position = position;
         clone.Transform.eulerAngles = data.Rotation;
         clone.CapsuleCollider.size = data.ColliderSize;
         clone.SpriteRenderer.sprite = data.Sprite;
         clone.SpriteRenderer.color = data.Color;
+        clone.mainTarget = enemyHomeTr;
     }
     public void MakeEnemyFish(int buttonIndex, Vector3 position)
     {
         var dataManager = DataManager.instance;
-
         var data = dataManager.enemyDatas[(int)ButtonsManager.instance.redBeans[buttonIndex]];
+        
         var clone = Instantiate(enemyController);
+        clone.data = data;
         clone.Transform.position = position;
         clone.Transform.eulerAngles = data.Rotation;
         clone.CapsuleCollider.size = data.ColliderSize;
         clone.SpriteRenderer.sprite = data.Sprite;
         clone.SpriteRenderer.color = data.Color;
+        clone.mainTarget = allyHomeTr;
     }
 }
