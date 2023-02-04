@@ -9,7 +9,11 @@ public class Card : MonoBehaviour
     [SerializeField] float rotateSpeed;
     [SerializeField] float waitTime;
     [SerializeField] float destroyTime;
+    [SerializeField] bool playing;
+    [SerializeField] GameObject circleEffect;
+    [SerializeField] int effectNum;
     public int Num { get { return num; } }
+    public bool Playing { get { return playing; } }
     [SerializeField] Image image;
     [SerializeField] RectTransform rectTransform;
 
@@ -30,6 +34,7 @@ public class Card : MonoBehaviour
 
     IEnumerator RollingCard1(bool _destroy)
     {
+        playing = true;
         while (true)
         {
             if (rectTransform.localRotation.eulerAngles.y + rotateSpeed * Time.deltaTime >= 90f)
@@ -74,6 +79,12 @@ public class Card : MonoBehaviour
             if (image.color.a <= 0f)
             {
                 image.color = Color.clear;
+                playing = false;
+                Vector3 pos = CardManager.instance.EffectCanvas.transform.position + transform.localPosition;
+                for (int i = 0; i < effectNum; i++)
+                {
+                    Instantiate(circleEffect, pos, Quaternion.identity, CardManager.instance.EffectCanvas.transform);
+                }
                 yield break;
             }
             image.color = new Color(1f, 1f, 1f, image.color.a - Time.deltaTime / destroyTime);
@@ -106,6 +117,7 @@ public class Card : MonoBehaviour
             if (rectTransform.localRotation.eulerAngles.y - rotateSpeed * Time.deltaTime <= 0f)
             {
                 rectTransform.rotation = Quaternion.Euler(Vector3.zero);
+                playing = false;
                 yield break;
             }
             rectTransform.Rotate(new Vector3(0f, rectTransform.rotation.y - rotateSpeed * Time.deltaTime, 0f));

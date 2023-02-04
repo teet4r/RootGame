@@ -14,9 +14,12 @@ public class CardManager : MonoBehaviour
     [SerializeField] Sprite cardBackSprite;
     [SerializeField] int score;
     [SerializeField] GameObject clearWindow;
+    [SerializeField] GameObject effectCanvas;
+    [SerializeField] GameObject cardCanvas;
     public Sprite[] CardSprites { get { return cardSprites; } }
     public Sprite CardBackSprite { get { return cardBackSprite; } }
-
+    public GameObject EffectCanvas { get { return effectCanvas; } }
+    public GameObject CardCanvas { get { return cardCanvas; } }
     private void Awake()
     {
         instance = this;

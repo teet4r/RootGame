@@ -19,6 +19,11 @@ public class RayChecker : MonoBehaviour
             EventSystem.current.RaycastAll(pointer, raycastResults);
             if (raycastResults.Count > 0 && raycastResults[0].gameObject.GetComponent<Card>())
             {
+                if (raycastResults[0].gameObject.GetComponent<Card>().Playing)
+                {
+                    raycastResults.Clear();
+                    return;
+                }
                 if (isCardSelected)
                 {
                     if (firstSelectedCard == raycastResults[0].gameObject.GetComponent<Card>())
