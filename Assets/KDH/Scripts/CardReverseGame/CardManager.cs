@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class CardManager : MonoBehaviour
@@ -11,9 +12,14 @@ public class CardManager : MonoBehaviour
     [SerializeField] GameObject cardGroup;
     [SerializeField] Sprite[] cardSprites;
     [SerializeField] Sprite cardBackSprite;
+    [SerializeField] int score;
+    [SerializeField] GameObject clearWindow;
+    [SerializeField] GameObject effectCanvas;
+    [SerializeField] GameObject cardCanvas;
     public Sprite[] CardSprites { get { return cardSprites; } }
     public Sprite CardBackSprite { get { return cardBackSprite; } }
-
+    public GameObject EffectCanvas { get { return effectCanvas; } }
+    public GameObject CardCanvas { get { return cardCanvas; } }
     private void Awake()
     {
         instance = this;
@@ -22,18 +28,34 @@ public class CardManager : MonoBehaviour
     {
         stage = 1;
         SetStage();
+        StartCoroutine(StageClearCheck());
     }
-
-    bool CheckCardNum()
+    IEnumerator StageClearCheck()
     {
-        for (int i = 0; i < cardGroup.transform.childCount; i++)
+        bool goNext = false;
+        while (true)
         {
-            if (cardGroup.transform.GetChild(i).GetComponent<Image>().color.a > 0f)
+            if (goNext)
             {
-                return true;
+                if (stage > 3)
+                {
+                    score = (int)(TimeBar.instance.NowTime * 100);
+                    ClearGame();
+                    yield break;
+                }
+                TimeBar.instance.FillTimeBar();
+                SetStage();
             }
+            goNext = true;
+            for (int i = 1; i < cardGroup.GetComponentsInChildren<RectTransform>().Length; i++)
+            {
+                if (cardGroup.GetComponentsInChildren<RectTransform>()[i].localScale.x > 0f)
+                {
+                    goNext = false;
+                }
+            }
+            yield return new WaitForSeconds(0.1f);
         }
-        return false;
     }
 
     void SetStage()
@@ -50,5 +72,10 @@ public class CardManager : MonoBehaviour
             cardGroup.transform.GetChild(i).transform.SetSiblingIndex(Random.Range(0, (stage + 1) * 4));
         }
         stage++;
+    }
+
+    public void ClearGame()
+    {
+        clearWindow.SetActive(true);
     }
 }

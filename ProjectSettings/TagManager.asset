@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ally
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -11,16 +13,16 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - "5\uC5B5\uB144\uBC84\uD2BC0"
+  - "5\uC5B5\uB144\uBC84\uD2BC1"
+  - "5\uC5B5\uB144\uBC84\uD2BC2"
+  - "5\uC5B5\uB144\uBC84\uD2BC3"
+  - "5\uC5B5\uB144\uBC84\uD2BC4"
+  - Deploy
+  - Ally
+  - Enemy
+  - AllyBullet
+  - EnemyBullet
   - 
   - 
   - 
@@ -40,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 31938617
+    locked: 0
+  - name: Middleground
+    uniqueID: 510822765
+    locked: 0
+  - name: Foreground
+    uniqueID: 1789274179
     locked: 0

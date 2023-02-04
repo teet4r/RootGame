@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 3294691852322453252}
   - component: {fileID: -6686923394030213254}
   - component: {fileID: 7272209600297764771}
-  - component: {fileID: -2415811110665770202}
   - component: {fileID: 2423442719340883290}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: EnemyFishContainer
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1789274179
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -124,20 +123,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
---- !u!114 &-2415811110665770202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 552336105616776662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 223e33ba8edc1c341a3e4a0411dd8cda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveSpeed: 5
+  m_Constraints: 7
 --- !u!114 &2423442719340883290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,10 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4fee9f27c6f314f9b02c11f60ac20c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
-  _returnTime: 10
+  data: {fileID: 0}
+  mainTarget: {fileID: 0}
   _transform: {fileID: 9058532847611064658}
   _spriteRenderer: {fileID: 3294691852322453252}
-  _collider: {fileID: -6686923394030213254}
+  _capsuleCollider: {fileID: -6686923394030213254}
   _rigidbody: {fileID: 7272209600297764771}
-  _data: {fileID: 0}
