@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sprite: {fileID: 1972206800, guid: e7878fcfe467e274a9268a12d8dd4d5c, type: 3}
   _rotation: {x: 0, y: 0, z: -90}
+  _colliderSize: {x: 0.352, y: 0.273}
   _fishType: 0
   _color: {r: 1, g: 0.7529412, b: 0.7529412, a: 1}
   _maxHp: 40
   _damage: 110
+  _speed: 2
   _range: 1.5
   _cost: 70
