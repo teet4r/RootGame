@@ -71,10 +71,8 @@ public class DefenseGameManager : MonoBehaviour
             return;
         dataManager.costText.UpdateCost(remainCost);
         
-        var clone = Instantiate(allyController);
+        var clone = Instantiate(allyController, position, Quaternion.Euler(data.Rotation));
         clone.data = data;
-        clone.Transform.position = position;
-        clone.Transform.eulerAngles = data.Rotation;
         clone.CapsuleCollider.size = data.ColliderSize;
         clone.SpriteRenderer.sprite = data.Sprite;
         clone.SpriteRenderer.color = data.Color;
@@ -85,10 +83,8 @@ public class DefenseGameManager : MonoBehaviour
         var dataManager = DataManager.instance;
         var data = dataManager.enemyDatas[(int)ButtonsManager.instance.redBeans[buttonIndex]];
         
-        var clone = Instantiate(enemyController);
+        var clone = Instantiate(enemyController, position, Quaternion.Euler(data.Rotation));
         clone.data = data;
-        clone.Transform.position = position;
-        clone.Transform.eulerAngles = data.Rotation;
         clone.CapsuleCollider.size = data.ColliderSize;
         clone.SpriteRenderer.sprite = data.Sprite;
         clone.SpriteRenderer.color = data.Color;

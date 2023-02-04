@@ -20,6 +20,6 @@ MonoBehaviour:
   _bullet: {fileID: 6939951058189808208, guid: 2235028f1e0935a4eab54506d2b789e2, type: 3}
   _maxHp: 100
   _damage: 5
-  _speed: 2
+  _speed: 1
   _range: 1
   _cost: 10
