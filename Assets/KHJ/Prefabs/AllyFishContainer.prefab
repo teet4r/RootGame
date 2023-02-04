@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3294691852322453252}
   - component: {fileID: -6686923394030213254}
   - component: {fileID: 7272209600297764771}
-  - component: {fileID: -2415811110665770202}
+  - component: {fileID: -2719143996463440171}
   - component: {fileID: 7328217932343129922}
   m_Layer: 0
   m_Name: AllyFishContainer
@@ -125,19 +125,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &-2415811110665770202
-MonoBehaviour:
+--- !u!58 &-2719143996463440171
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552336105616776662}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 223e33ba8edc1c341a3e4a0411dd8cda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveSpeed: 5
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!114 &7328217932343129922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,10 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7304b7e1c52b854bab3f632675ece01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
-  _returnTime: 10
   _transform: {fileID: 9058532847611064658}
   _spriteRenderer: {fileID: 3294691852322453252}
-  _collider: {fileID: -6686923394030213254}
+  _capsuleCollider: {fileID: -6686923394030213254}
   _rigidbody: {fileID: 7272209600297764771}
   _data: {fileID: 0}

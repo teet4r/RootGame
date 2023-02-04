@@ -1,6 +1,7 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(CapsuleCollider2D))]
+[RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class AllyController : MonoBehaviour
@@ -13,9 +14,13 @@ public class AllyController : MonoBehaviour
     {
         get { return _spriteRenderer; }
     }
-    public Collider2D Collider2D
+    public CapsuleCollider2D CapsuleCollider
     {
-        get { return _collider; }
+        get { return _capsuleCollider; }
+    }
+    public CircleCollider2D CircleCollider
+    {
+        get { return _circleCollider; }
     }
     public Rigidbody2D Rigidbody2D
     {
@@ -28,13 +33,18 @@ public class AllyController : MonoBehaviour
 
     [SerializeField] Transform _transform = null;
     [SerializeField] SpriteRenderer _spriteRenderer = null;
-    [SerializeField] Collider2D _collider = null;
+    [SerializeField] CapsuleCollider2D _capsuleCollider = null;
+    [SerializeField] CircleCollider2D _circleCollider = null;
     [SerializeField] Rigidbody2D _rigidbody = null;
     [SerializeField] CharacterData _data = null;
 
     void OnEnable()
     {
         Invoke("_Destroy", 10f);
+    }
+    void Update()
+    {
+        
     }
 
     void _Destroy()

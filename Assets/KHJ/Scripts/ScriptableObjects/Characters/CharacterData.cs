@@ -11,6 +11,10 @@ public class CharacterData : ScriptableObject
     {
         get { return _rotation; }
     }
+    public Vector2 ColliderSize
+    {
+        get { return _colliderSize; }
+    }
     public FishType FishType
     {
         get { return _fishType; }
@@ -27,6 +31,10 @@ public class CharacterData : ScriptableObject
     {
         get { return _damage; }
     }
+    public float Speed
+    {
+        get { return _speed; }
+    }
     public float Range
     {
         get { return _range; }
@@ -38,10 +46,12 @@ public class CharacterData : ScriptableObject
 
     [SerializeField] Sprite _sprite;
     [SerializeField] Vector3 _rotation;
+    [SerializeField] Vector2 _colliderSize;
     [SerializeField] FishType _fishType;
     [SerializeField] Color _color;
     [Min(1)][SerializeField] int _maxHp;
     [Min(0)][SerializeField] int _damage;
+    [Min(1)][SerializeField] float _speed;
     [Min(0f)][SerializeField] float _range;
     [Min(0)][SerializeField] int _cost;
 }
