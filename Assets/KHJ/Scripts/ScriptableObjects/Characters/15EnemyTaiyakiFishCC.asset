@@ -22,4 +22,4 @@ MonoBehaviour:
   _damage: 0
   _speed: 2
   _range: 0.5
-  _cost: 45
+  _cost: 35
