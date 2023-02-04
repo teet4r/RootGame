@@ -18,6 +18,7 @@ public class MainMenuButtons : MonoBehaviour
 
     public void SelectGameStartButton()
     {
+        SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
         StartCoroutine(RefreshTabButtonAlpha());
         StartCoroutine(MoveUpTitleImage());
     }
@@ -55,6 +56,7 @@ public class MainMenuButtons : MonoBehaviour
 
     public void SelectGameStartButton(int _num)
     {
+        SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
         LoadingSceneManager.instance.LoadScene(_num);
     }
 }

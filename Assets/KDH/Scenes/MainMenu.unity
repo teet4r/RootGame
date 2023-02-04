@@ -270,7 +270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3034204659207310874, guid: 0c9648e5960434743821a06ede632a50, type: 3}
       propertyPath: _clips.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3034204659207310874, guid: 0c9648e5960434743821a06ede632a50, type: 3}
       propertyPath: _clips.Array.data[0]
@@ -284,6 +284,10 @@ PrefabInstance:
       propertyPath: _clips.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 9f2afc4fce80c24428f3f6bbf1a8a5b6, type: 3}
+    - target: {fileID: 3034204659207310874, guid: 0c9648e5960434743821a06ede632a50, type: 3}
+      propertyPath: _clips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: cb224d24f25d8124d8900304113a1d5f, type: 3}
     - target: {fileID: 3963744072540152545, guid: 0c9648e5960434743821a06ede632a50, type: 3}
       propertyPath: m_Name
       value: SoundManager
@@ -785,6 +789,7 @@ GameObject:
   - component: {fileID: 451515342}
   - component: {fileID: 451515344}
   - component: {fileID: 451515343}
+  - component: {fileID: 451515345}
   m_Layer: 5
   m_Name: TitleImage
   m_TagString: Untagged
@@ -850,6 +855,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451515341}
   m_CullTransparentMesh: 1
+--- !u!114 &451515345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451515341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd84d33e04ee59d478b646b93f49a41a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSize: 1.25
+  biggerScaleTime: 0.5
+  smallerScaleTime: 0.25
+  titleButton: {fileID: 1742813004}
 --- !u!1 &508283447
 GameObject:
   m_ObjectHideFlags: 0
@@ -3290,7 +3311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1742813005
 RectTransform:
   m_ObjectHideFlags: 0

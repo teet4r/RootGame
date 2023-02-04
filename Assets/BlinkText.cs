@@ -14,7 +14,6 @@ public class BlinkText : MonoBehaviour
         text = GetComponent<Text>();
         text.text = "Tap to Start";
         color = text.color;
-        Debug.Log("HI");
         StartCoroutine(BlinkAlphaDownText());
     }
 

@@ -30,5 +30,5 @@ public enum Bgm
 
 public enum Sfx
 {
-   CardSelect, CardSuccess, CardFail
+   CardSelect, CardSuccess, CardFail, ButtonClick
 }
