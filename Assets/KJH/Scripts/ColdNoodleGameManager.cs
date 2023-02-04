@@ -19,7 +19,7 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     public int scoremultiflyvalue = 1;
     public int combo;
 
-    public float timeCurrent;
+    public float timeCurrent=60f;
     public float timemultiflyvalue = 1;
     public float timeMax = 60;
     private float timePlus;
