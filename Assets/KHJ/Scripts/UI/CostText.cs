@@ -5,20 +5,17 @@ using UnityEngine.UI;
 
 public class CostText : MonoBehaviour
 {
-    Text _costText = null;
-    [SerializeField] int _costPerSecond = 10;
-    [SerializeField] int _maxCost = 500;
-    int _cost = 0;
-    WaitForSeconds _wfs = new WaitForSeconds(1f);
-    bool _isGettingCost = false;
+    public Text costText = null;
+    public int costPerSecond = 10;
+    public int maxCost = 500;
+    public int curCost = 0;
 
-    void Awake()
-    {
-        _costText = GetComponent<Text>();
-    }
+    bool _isGettingCost = false;
+    WaitForSeconds _wfs = new WaitForSeconds(1f);
+
     void Start()
     {
-        StartGetCost(_costPerSecond);
+        StartGetCost(costPerSecond);
     }
 
     public void StartGetCost(int costPerSecond)
@@ -27,21 +24,25 @@ public class CostText : MonoBehaviour
             return;
 
         _isGettingCost = true;
-        _costPerSecond = costPerSecond;
+        this.costPerSecond = costPerSecond;
         StartCoroutine(_GetCost());
     }
     public void StopGetCost()
     {
         _isGettingCost = false;
     }
+    public void UpdateCost(int newCost)
+    {
+        curCost = Mathf.Clamp(newCost, 0, maxCost);
+        costText.text = $"{curCost} / {maxCost}";
+    }
 
     IEnumerator _GetCost()
     {
         while (_isGettingCost)
         {
-            _cost = Mathf.Min(_cost + _costPerSecond, _maxCost);
-            _costText.text = $"{_cost} / {_maxCost}";
             yield return _wfs;
+            UpdateCost(curCost + costPerSecond);
         }
     }
 }
