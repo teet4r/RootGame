@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using DG.Tweening;
 public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
 {
     public Button stopBtn;
@@ -11,6 +11,7 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
     public Button rightBtn;
     public GameObject pauseUI;
     public GameObject gameOverUI;
+    public GameObject comboEffect;
     public Image timeImage;
     public Text scoreText;
     public Text comboText;
@@ -31,6 +32,16 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
         comboText.text = ColdNoodleGameManager.Instance.combo.ToString() + " Combo!";
     }
 
+    [ContextMenu("shake")]
+    public void ShakeCombo()
+    {
+        comboEffect.transform.DOShakeScale(0.5f, 0.5f, 10).SetEase(Ease.InOutSine);
+    }
+    [ContextMenu("shake2")]
+    public void ShakeCombo2()
+    {
+        comboEffect.transform.DOShakeScale(0.5f, 5, 25).SetEase(Ease.InOutSine);
+    }
     public void Pause()
     {
         pauseUI.SetActive(true);
