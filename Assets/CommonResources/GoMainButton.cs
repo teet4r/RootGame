@@ -7,6 +7,7 @@ public class GoMainButton : MonoBehaviour
 {
     public void SelectMainMenuButton()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 }

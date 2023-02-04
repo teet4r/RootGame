@@ -20,12 +20,14 @@ public class Option : MonoBehaviour
     public void CloseOptionWindow()
     {
         optionWindow.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void OpenOptionWindow()
     {
         CheckScene();
         optionWindow.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     void CheckScene()

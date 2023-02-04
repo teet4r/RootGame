@@ -25,15 +25,10 @@ public enum FishType
 
 public enum Bgm
 {
-    MainBGM
+    MainBGM, DefenseGame, ChickenGame, CardGame, GameClear, GameOver
 }
 
 public enum Sfx
 {
-    EnemyKilled0, EnemyKilled1, EnemyKilled2,
-    BulletHit,
-    Flash,
-    Gun,
-    LightOff,
-    LightOn,
+    MouseClick
 }
