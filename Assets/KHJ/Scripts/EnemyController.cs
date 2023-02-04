@@ -82,7 +82,10 @@ public class EnemyController : MonoBehaviour
 
         _curHp = Mathf.Max(_curHp - damage, 0);
         if (_curHp <= 0)
+        {
+            DataManager.instance.costText.AddCost(3);
             Destroy(gameObject);
+        }
     }
 
     void _MakeBullet()
@@ -95,10 +98,6 @@ public class EnemyController : MonoBehaviour
         var enemyBullet = bullet.GetComponent<EnemyBullet>();
         enemyBullet.damage = data.Damage;
         enemyBullet.speed = data.Speed;
-    }
-    void _Destroy()
-    {
-        Destroy(gameObject);
     }
     void _LookAt(Vector2 targetPosition)
     {

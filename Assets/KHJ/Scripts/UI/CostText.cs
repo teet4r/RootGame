@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CostText : MonoBehaviour
 {
     public Text costText = null;
-    public int maxCost = 500;
+    public int maxCost = 600;
     public int curCost = 0;
 
     int costPerSecond;
@@ -41,5 +41,9 @@ public class CostText : MonoBehaviour
     {
         curCost = Mathf.Clamp(newCost, 0, maxCost);
         costText.text = $"{curCost} / {maxCost}";
+    }
+    public void AddCost(int additionalCost)
+    {
+        UpdateCost(curCost + additionalCost);
     }
 }

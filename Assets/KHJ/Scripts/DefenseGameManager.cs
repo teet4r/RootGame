@@ -42,49 +42,136 @@ public class DefenseGameManager : MonoBehaviour
             1, 1, new EnemyFish[] {
                 EnemyFish.BurntFish_CC,
                 EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC
+                EnemyFish.BurntFish_CC,
             }),
         new Wave(
             2, 4, new EnemyFish[] {
-                EnemyFish.MiniFish_CC
+                EnemyFish.MiniFish_CC,
             }),
         new Wave(
             3, 7, new EnemyFish[] {
                 EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC
+                EnemyFish.BurntFish_CC,
             }),
         new Wave(
             4, 10, new EnemyFish[] {
-                EnemyFish.TaiyakiFish_CC
+                EnemyFish.TaiyakiFish_CC,
             }),
         new Wave(
             5, 13, new EnemyFish[] {
                 EnemyFish.BurntFish_CC,
                 EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC
             }),
         new Wave(
             6, 16, new EnemyFish[] {
-                EnemyFish.MiniFish_CC
+                EnemyFish.MiniFish_CC,
+                EnemyFish.BurntFish_CC,
             }),
         new Wave(
             7, 19, new EnemyFish[] {
                 EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC
+                EnemyFish.BurntFish_CC,
             }),
         new Wave(
             8, 22, new EnemyFish[] {
-                EnemyFish.TaiyakiFish_CC
+                EnemyFish.TaiyakiFish_CC,
             }),
         new Wave(
             9, 25, new EnemyFish[] {
-                EnemyFish.TaiyakiFish_CC
+                EnemyFish.TaiyakiFish_CC,
             }),
         new Wave(
             10, 28, new EnemyFish[] {
                 EnemyFish.BurntFish_CC,
                 EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC
+                EnemyFish.BurntFish_CC,
+            }),
+        new Wave(
+            11, 31, new EnemyFish[] {
+                EnemyFish.BurntFish_CC,
+                EnemyFish.TaiyakiFish_CC,
+            }),
+        new Wave(
+            12, 34, new EnemyFish[] {
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+            }),
+        new Wave(
+            13, 37, new EnemyFish[] {
+                EnemyFish.TaiyakiFish_CC,
+                EnemyFish.TaiyakiFish_CC,
+            }),
+        new Wave(
+            14, 40, new EnemyFish[] {
+                EnemyFish.GoldFish,
+                EnemyFish.BurntFish_CC,
+            }),
+        new Wave(
+            15, 43, new EnemyFish[] {
+                EnemyFish.TaiyakiFish_CC,
+            }),
+        new Wave(
+            16, 46, new EnemyFish[] {
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+            }),
+        new Wave(
+            17, 49, new EnemyFish[] {
+                EnemyFish.AgariFish_CC,
+                EnemyFish.BurntFish_CC,
+            }),
+        new Wave(
+            18, 52, new EnemyFish[] {
+                EnemyFish.MiniFish_CC,
+                EnemyFish.MiniFish_CC,
+                EnemyFish.BurntFish_CC,
+            }),
+        new Wave(
+            19, 55, new EnemyFish[] {
+                EnemyFish.TaiyakiFish_CC,
+                EnemyFish.TaiyakiFish_CC,
+            }),
+        new Wave(
+            20, 58, new EnemyFish[] {
+                EnemyFish.TaiyakiFish_CC,
+                EnemyFish.BurntFish_CC,
+            }),
+        new Wave(
+            21, 61, new EnemyFish[] {
+                EnemyFish.TaiyakiFish_CC,
+                EnemyFish.GoldFish,
+            }),
+        new Wave(
+            22, 64, new EnemyFish[] {
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+            }),
+        new Wave(
+            23, 67, new EnemyFish[] {
+                EnemyFish.AgariFish_CC,
+                EnemyFish.AgariFish_CC,
+            }),
+        new Wave(
+            24, 70, new EnemyFish[] {
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+            }),
+        new Wave(
+            25, 73, new EnemyFish[] {
+                EnemyFish.AgariFish_CC,
+                EnemyFish.AgariFish_CC,
+                EnemyFish.AgariFish_CC,
+                EnemyFish.AgariFish_CC,
+                EnemyFish.AgariFish_CC,
             }),
     };
 
