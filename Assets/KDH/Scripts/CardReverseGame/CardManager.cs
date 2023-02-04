@@ -36,6 +36,7 @@ public class CardManager : MonoBehaviour
                 if (stage > 3)
                 {
                     score = TimeBar.instance.NowTime;
+                    yield break;
                 }
                 TimeBar.instance.FillTimeBar();
                 SetStage();
@@ -66,5 +67,9 @@ public class CardManager : MonoBehaviour
             cardGroup.transform.GetChild(i).transform.SetSiblingIndex(Random.Range(0, (stage + 1) * 4));
         }
         stage++;
+    }
+
+    public void ClearGame()
+    {
     }
 }
