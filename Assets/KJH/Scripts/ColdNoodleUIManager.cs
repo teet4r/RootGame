@@ -21,6 +21,9 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
     // Start is called before the first frame update
     void Start()
     {
+        leftBtn.interactable = true;
+        rightBtn.interactable = true;
+        timeImage.fillAmount = ColdNoodleGameManager.Instance.timeCurrent / 60f;
         comboFail = GetComponent<AudioSource>();
         _rectTransform = GetComponent<RectTransform>();
     }
@@ -70,6 +73,8 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
 
     public void SetActiveGameOverUI()
     {
+        leftBtn.interactable = false;
+        rightBtn.interactable = false;
         gameOverUI.SetActive(true);
         Time.timeScale = 0;
     }
@@ -98,5 +103,10 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
         SceneManager.LoadScene(5);
         //ColdNoodleGameManager.Instance.DestrotyChicken();
         //ColdNoodleGameManager.Instance.MakeRandomNoodle();
+    }
+    public void LoadChick()
+    {
+        SceneManager.LoadScene(2);
+        Time.timeScale = 1;
     }
 }

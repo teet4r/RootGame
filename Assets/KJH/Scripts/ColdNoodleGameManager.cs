@@ -1,13 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManager>
 {
     public Queue<GameObject> queue;
     public Transform[] moveTransform; // 0:left, 1:right, 2,3,4,5,6,7 
+    public Sprite[] heart;
+    public Transform[] p;
     public GameObject curChicken;
     public GameObject friedPrefab;
     public GameObject saucePrefab;
@@ -15,7 +19,7 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     public int scoremultiflyvalue = 1;
     public int combo;
 
-    public float timeCurrent;
+    public float timeCurrent=60f;
     public float timemultiflyvalue = 1;
     public float timeMax = 60;
     private float timePlus;
@@ -23,6 +27,7 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     // Start is called before the first frame update
     void Start()
     {
+        timeCurrent = timeMax;
         curChicken = null;
         if (queue != null)
         {
@@ -39,8 +44,7 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
     }
 
@@ -87,6 +91,7 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
         combo += 1;
         if (combo % 20 == 0)
         {
+            Instantiate(heart[Random.Range(0, 5)], p[Random.Range(0, 2)]);
             ColdNoodleUIManager.Instance.ShakeCombo2();
         }else ColdNoodleUIManager.Instance.ShakeCombo();
         score += 100 * scoremultiflyvalue;
@@ -118,6 +123,8 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     }
     private void GameOver()
     {
+        // 최종 점수 저장
+        
         Debug.Log("GameOver");
         ColdNoodleUIManager.Instance.SetActiveGameOverUI();
         ColdNoodleUIManager.Instance.MoY();
@@ -128,4 +135,5 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
         Time.timeScale = 0;
         // 게임 종료, UI 표시(다시하기, Main 이동) 
     }
+    
 }
