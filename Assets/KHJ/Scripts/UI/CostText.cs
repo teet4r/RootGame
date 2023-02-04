@@ -6,43 +6,40 @@ using UnityEngine.UI;
 public class CostText : MonoBehaviour
 {
     public Text costText = null;
-    public int costPerSecond = 10;
     public int maxCost = 500;
     public int curCost = 0;
 
-    bool _isGettingCost = false;
-    WaitForSeconds _wfs = new WaitForSeconds(1f);
+    int costPerSecond;
+    float _time;
+    float _totalTime;
 
     void Start()
     {
-        StartGetCost(costPerSecond);
+        _time = Time.time;
+        _totalTime = Time.time;
+    }
+    void Update()
+    {
+        if (DefenseGameManager.instance.isGameOver) return;
+
+        _totalTime += Time.deltaTime;
+        _time += Time.deltaTime;
+        if (_time > 1f)
+        {
+            if (_totalTime > 60f)
+                costPerSecond = 20;
+            else if (_totalTime > 30f)
+                costPerSecond = 15;
+            else
+                costPerSecond = 10;
+            UpdateCost(curCost + costPerSecond);
+            _time = 0f;
+        }
     }
 
-    public void StartGetCost(int costPerSecond)
-    {
-        if (_isGettingCost)
-            return;
-
-        _isGettingCost = true;
-        this.costPerSecond = costPerSecond;
-        StartCoroutine(_GetCost());
-    }
-    public void StopGetCost()
-    {
-        _isGettingCost = false;
-    }
     public void UpdateCost(int newCost)
     {
         curCost = Mathf.Clamp(newCost, 0, maxCost);
         costText.text = $"{curCost} / {maxCost}";
-    }
-
-    IEnumerator _GetCost()
-    {
-        while (_isGettingCost)
-        {
-            yield return _wfs;
-            UpdateCost(curCost + costPerSecond);
-        }
     }
 }

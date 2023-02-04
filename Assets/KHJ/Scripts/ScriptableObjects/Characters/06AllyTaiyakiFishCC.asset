@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb0abbcf2c4cc846a38e29b79b24012, type: 3}
   m_Name: 06AllyTaiyakiFishCC
   m_EditorClassIdentifier: 
-  _sprite: {fileID: -850548657, guid: e7878fcfe467e274a9268a12d8dd4d5c, type: 3}
+  _sprite: {fileID: 1707557449, guid: cc25343b280f6a3449937b4acb4a0b67, type: 3}
   _rotation: {x: 0, y: 0, z: -90}
   _colliderSize: {x: 0.359, y: 0.285}
   _fishType: 1
   _color: {r: 1, g: 1, b: 1, a: 1}
   _bullet: {fileID: 6939951058189808208, guid: 2235028f1e0935a4eab54506d2b789e2, type: 3}
-  _maxHp: 200
-  _damage: 10
+  _maxHp: 150
+  _damage: 0
   _speed: 2
-  _range: 1
-  _cost: 35
+  _range: 0.5
+  _cost: 45
