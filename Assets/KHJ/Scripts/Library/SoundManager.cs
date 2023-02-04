@@ -2,6 +2,8 @@
 
 public class SoundManager : PrefabricatedSingleton<SoundManager>
 {
+    public static SoundManager instance = null;
+
     public BgmAudio BgmAudio { get { return _bgmAudio; } }
     public SfxAudio SfxAudio { get { return _sfxAudio; } }
 
