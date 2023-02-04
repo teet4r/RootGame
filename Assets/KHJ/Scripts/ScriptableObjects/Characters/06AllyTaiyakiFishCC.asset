@@ -18,8 +18,8 @@ MonoBehaviour:
   _fishType: 1
   _color: {r: 1, g: 1, b: 1, a: 1}
   _bullet: {fileID: 6939951058189808208, guid: 2235028f1e0935a4eab54506d2b789e2, type: 3}
-  _maxHp: 200
-  _damage: 10
+  _maxHp: 150
+  _damage: 0
   _speed: 2
-  _range: 1
-  _cost: 35
+  _range: 0.5
+  _cost: 45

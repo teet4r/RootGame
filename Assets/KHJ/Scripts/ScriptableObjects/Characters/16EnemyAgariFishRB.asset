@@ -19,7 +19,7 @@ MonoBehaviour:
   _color: {r: 1, g: 0.7529412, b: 0.7529412, a: 1}
   _bullet: {fileID: 3151629852947152569, guid: ada4619a9d81e0d409a2ac3ef5fdcf57, type: 3}
   _maxHp: 150
-  _damage: 50
-  _speed: 2
-  _range: 1.25
-  _cost: 120
+  _damage: 30
+  _speed: 1
+  _range: 2
+  _cost: 80
