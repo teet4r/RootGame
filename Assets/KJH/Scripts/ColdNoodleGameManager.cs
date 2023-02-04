@@ -71,6 +71,10 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     public void PlusCombo()
     {
         combo += 1;
+        if (combo == 100 || combo == 200)
+        {
+            ColdNoodleUIManager.Instance.ShakeCombo2();
+        }else ColdNoodleUIManager.Instance.ShakeCombo();
         score += 100 * scoremultiflyvalue;
         timePlus += 1;
         if (combo % 10 == 0)
@@ -104,6 +108,12 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     {
         Debug.Log("GameOver");
         ColdNoodleUIManager.Instance.SetActiveGameOverUI();
+        ColdNoodleUIManager.Instance.comboEffect.SetActive(false);
+        for (int i = 0; i < moveTransform.Length; i++)
+        {
+            moveTransform[i].gameObject.SetActive(false);    
+        }
+        
         // 게임 종료, UI 표시(다시하기, Main 이동) 
     }
     
