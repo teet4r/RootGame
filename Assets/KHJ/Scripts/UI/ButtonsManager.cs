@@ -11,19 +11,11 @@ public class ButtonsManager : MonoBehaviour
     // 팥 순서, 슈크림 순서가 정해져 있음
     public readonly AllyFish[] redBeans =
     {
+        AllyFish.BurntFish_RB,
         AllyFish.MiniFish_RB,
         AllyFish.GoldFish,
-        AllyFish.BurntFish_RB,
         AllyFish.TaiyakiFish_RB,
         AllyFish.AgariFish_RB
-    };
-    public readonly AllyFish[] custardCreams =
-    {
-        AllyFish.MiniFish_CC,
-        AllyFish.GoldFish,
-        AllyFish.BurntFish_CC,
-        AllyFish.TaiyakiFish_CC,
-        AllyFish.AgariFish_CC
     };
     
     void Awake()
@@ -33,7 +25,6 @@ public class ButtonsManager : MonoBehaviour
     }
     void Start()
     {
-        // 임시로 설정
         SetButtons(redBeans);
     }
 
