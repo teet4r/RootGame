@@ -42,7 +42,6 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     // Update is called once per frame
     void Update()
     {
-        TimeCheck();
     }
 
     public void MakeRandomNoodle()
@@ -51,24 +50,25 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
         {
             if (Random.Range(0,2) == 0)
             {
-                queue.Enqueue(Instantiate(friedPrefab,moveTransform[i + 2]));
+                queue.Enqueue(Instantiate(friedPrefab, moveTransform[i + 2].position,Quaternion.identity));
             }
             else
             {
-                queue.Enqueue(Instantiate(saucePrefab,moveTransform[i + 2]));
+                queue.Enqueue(Instantiate(saucePrefab,moveTransform[i + 2].position,Quaternion.identity));
             }
         }
+        
     }
     public void EnqueueRandomChicken()
     {
         // 6번째자리에 치킨추가
         if (Random.Range(0,2) == 0)
         {
-            queue.Enqueue(Instantiate(friedPrefab,moveTransform[7]));
+            queue.Enqueue(Instantiate(friedPrefab,moveTransform[7].position,Quaternion.identity));
         }
         else
         {
-            queue.Enqueue(Instantiate(saucePrefab,moveTransform[7]));
+            queue.Enqueue(Instantiate(saucePrefab,moveTransform[7].position,Quaternion.identity));
         }
     }
     public void DestrotyChicken()
@@ -78,9 +78,9 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
             Destroy(queue.Dequeue());
         }
     }
-    public void DequeueChicken()
+    public GameObject DequeueChicken()
     {
-        curChicken = queue.Dequeue();
+        return queue.Dequeue();
     }
     public void PlusCombo()
     {
@@ -108,7 +108,7 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     }
     
 
-    private float TimeCheck()
+    public float TimeCheck()
     {
         timeCurrent = timeMax - Time.time * timemultiflyvalue + timePlus;
         if (timeCurrent >= timeMax) timeCurrent = timeMax;
@@ -128,5 +128,4 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
         Time.timeScale = 0;
         // 게임 종료, UI 표시(다시하기, Main 이동) 
     }
-    
 }

@@ -12,6 +12,7 @@
     <setting file="file://$PROJECT_DIR$/../CakeGame/CakeGame/Assets/Scripts/Game/Gimmick/ForkFactory.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../CakeGame/CakeGame/Assets/Scripts/Game/Object/Fork.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../CakeGame/CakeGame/Assets/Scripts/Manager/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KJH/ddd.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -85,7 +86,7 @@
       <updated>1675430775199</updated>
       <workItem from="1675430782959" duration="9634000" />
       <workItem from="1675445297497" duration="15296000" />
-      <workItem from="1675497659013" duration="853000" />
+      <workItem from="1675497659013" duration="16329000" />
     </task>
     <servers />
   </component>

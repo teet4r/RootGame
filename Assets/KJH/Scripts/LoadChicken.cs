@@ -8,6 +8,7 @@ public class LoadChicken : MonoBehaviour
     public void LoadChick()
     {
         SceneManager.LoadScene(2);
+        Time.timeScale = 1;
     }
     
 }
