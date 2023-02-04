@@ -55,16 +55,16 @@ public class MainMenuButtons : MonoBehaviour
 
     public void SelectStartGame0Button()
     {
-
+        SceneManager.LoadScene(1);
     }
 
     public void SelectStartGame1Button()
     {
-
+        SceneManager.LoadScene(2);
     }
 
     public void SelectStartGame2Button()
     {
-
+        SceneManager.LoadScene (3);
     }
 }
