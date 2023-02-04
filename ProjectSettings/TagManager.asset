@@ -19,10 +19,10 @@ TagManager:
   - "5\uC5B5\uB144\uBC84\uD2BC3"
   - "5\uC5B5\uB144\uBC84\uD2BC4"
   - Deploy
-  - 
-  - 
-  - 
-  - 
+  - Ally
+  - Enemy
+  - AllyBullet
+  - EnemyBullet
   - 
   - 
   - 
