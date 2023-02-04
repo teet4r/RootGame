@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(CapsuleCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]

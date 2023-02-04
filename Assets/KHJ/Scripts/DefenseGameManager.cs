@@ -100,8 +100,6 @@ public class DefenseGameManager : MonoBehaviour
     void Start()
     {
         _totalTime = 0f;
-
-        StartCoroutine(_DeployEnemy());
     }
     void Update()
     {
@@ -156,17 +154,6 @@ public class DefenseGameManager : MonoBehaviour
         clone.mainTarget = allyHome.transform;
     }
 
-    IEnumerator _DeployEnemy()
-    {
-        WaitForSeconds wfs = new WaitForSeconds(2f);
-        Vector2 spawnPoint = new Vector2(0f, 3.9f);
-
-        while (!isGameOver)
-        {
-            yield return wfs;
-            MakeEnemyFish(spawnPoint);
-        }
-    }
     void _ButtonEventListener()
     {
         var curObj = EventSystem.current.currentSelectedGameObject;
