@@ -47,8 +47,8 @@ public class AllyController : MonoBehaviour
         {
             if (mainTarget != null)
             {
-                _transform.LookAt(new Vector3(mainTarget.position.x, mainTarget.position.y, 0f));
-                _rigidbody.MovePosition(mainTarget.position * Time.deltaTime);
+                _transform.LookAt(new Vector3(mainTarget.position.x, 0f, mainTarget.position.y));
+                _transform.position = Vector3.MoveTowards(_transform.position, mainTarget.position, data.Speed * Time.deltaTime);
                 if (Vector3.Distance(mainTarget.position, _transform.position) <= data.Range)
                     _MakeBullet();
 
@@ -64,11 +64,11 @@ public class AllyController : MonoBehaviour
         {
             if (_semiTarget != null)
             {
-                _transform.LookAt(_semiTarget);
+                _transform.LookAt(new Vector3(_semiTarget.position.x, 0f, _semiTarget.position.y));
                 if (Vector3.Distance(_semiTarget.position, _transform.position) <= data.Range) // 범위 안에 들어오면 공격
                     _MakeBullet();
                 else
-                    _rigidbody.MovePosition(_semiTarget.position * Time.deltaTime);
+                    _transform.position = Vector3.MoveTowards(_transform.position, _semiTarget.position, data.Speed * Time.deltaTime);
             }
             else
                 _enemyDetected = false;
