@@ -12,15 +12,26 @@ public class EnemyBullet : MonoBehaviour
 
     void Start()
     {
-        rb2D.velocity = tr.forward * speed;
+        rb2D.velocity = tr.up * speed;
     }
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 12)
         {
             if (collision.gameObject.TryGetComponent(out AllyController allyController))
                 allyController.GetDamage(damage);
             else if (collision.gameObject.TryGetComponent(out HomeController homeController))
+                homeController.GetDamage(damage);
+            Destroy(gameObject);
+        }
+    }
+    void OnCollisionEnter2D(Collision2D collision2D)
+    {
+        if (collision2D.gameObject.layer == 12)
+        {
+            if (collision2D.gameObject.TryGetComponent(out AllyController allyController))
+                allyController.GetDamage(damage);
+            else if (collision2D.gameObject.TryGetComponent(out HomeController homeController))
                 homeController.GetDamage(damage);
             Destroy(gameObject);
         }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -6686923394030213254}
   - component: {fileID: 7272209600297764771}
   - component: {fileID: 2423442719340883290}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: EnemyFishContainer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1789274179
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -123,7 +123,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!114 &2423442719340883290
 MonoBehaviour:
   m_ObjectHideFlags: 0

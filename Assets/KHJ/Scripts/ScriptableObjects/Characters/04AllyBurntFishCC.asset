@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb0abbcf2c4cc846a38e29b79b24012, type: 3}
   m_Name: 04AllyBurntFishCC
   m_EditorClassIdentifier: 
-  _sprite: {fileID: -1472336946, guid: e7878fcfe467e274a9268a12d8dd4d5c, type: 3}
+  _sprite: {fileID: -1696180753, guid: cc25343b280f6a3449937b4acb4a0b67, type: 3}
   _rotation: {x: 0, y: 0, z: -90}
   _colliderSize: {x: 0.352, y: 0.273}
   _fishType: 1

@@ -12,9 +12,20 @@ public class AllyBullet : MonoBehaviour
 
     void Start()
     {
-        rb2D.velocity = tr.forward * speed;
+        rb2D.velocity = tr.up * speed;
     }
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.layer == 13)
+        {
+            if (collider.gameObject.TryGetComponent(out EnemyController enemyController))
+                enemyController.GetDamage(damage);
+            else if (collider.gameObject.TryGetComponent(out HomeController homeController))
+                homeController.GetDamage(damage);
+            Destroy(gameObject);
+        }
+    }
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 13)
         {
