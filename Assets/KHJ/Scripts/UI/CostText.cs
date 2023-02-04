@@ -20,6 +20,8 @@ public class CostText : MonoBehaviour
     }
     void Update()
     {
+        if (DefenseGameManager.instance.isGameOver) return;
+
         _totalTime += Time.deltaTime;
         _time += Time.deltaTime;
         if (_time > 1f)

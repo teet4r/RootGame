@@ -695,7 +695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tr: {fileID: 576324892}
-  maxHp: 1000
+  maxHp: 2000
   curHp: 0
 --- !u!50 &576324895
 Rigidbody2D:
@@ -2271,7 +2271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tr: {fileID: 1853902409}
-  maxHp: 1000
+  maxHp: 2000
   curHp: 0
 --- !u!50 &1853902412
 Rigidbody2D:
@@ -2338,6 +2338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714f6ba9f71d6ea4689d2a0c4eeb9a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraHalfHeight: 0
+  cameraHalfWidth: 0
   allyController: {fileID: 7328217932343129922, guid: 08bb8ea6f552b5e478f08223152d301f, type: 3}
   enemyController: {fileID: 2423442719340883290, guid: e4aced09952ea704e843f3a11bd25582, type: 3}
   allyHome: {fileID: 1853902411}
@@ -2345,7 +2347,6 @@ MonoBehaviour:
   isGameOver: 0
   isWin: 0
   _camera: {fileID: 790057702}
-  _deployButtonController: {fileID: 0}
 --- !u!1 &1935853405
 GameObject:
   m_ObjectHideFlags: 0
