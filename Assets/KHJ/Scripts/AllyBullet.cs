@@ -10,10 +10,13 @@ public class AllyBullet : MonoBehaviour
     public int damage;
     
     [SerializeField] float speed;
+    [SerializeField] float _destroyTime = 7f;
 
     void Start()
     {
         rb2D.velocity = tr.up * speed;
+
+        Invoke("_Destroy", _destroyTime);
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -36,5 +39,10 @@ public class AllyBullet : MonoBehaviour
                 homeController.GetDamage(damage);
             Destroy(gameObject);
         }
+    }
+
+    void _Destroy()
+    {
+        Destroy(gameObject);
     }
 }

@@ -37,4 +37,9 @@ public class ButtonsManager : MonoBehaviour
             _fishCostTexts[i].text = $"{data.Cost}";
         }
     }
+
+    public void OnButtonClick()
+    {
+        SoundManager.Instance.SfxAudio.Play(Sfx.MouseClick);
+    }
 }
