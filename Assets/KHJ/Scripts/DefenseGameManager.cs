@@ -209,7 +209,7 @@ public class DefenseGameManager : MonoBehaviour
             {
                 float randomX = Random.Range(-cameraHalfWidth, cameraHalfWidth);
                 float randomY = Random.Range(cameraHalfHeight * 0.8f, cameraHalfHeight);
-                MakeEnemyFish(new Vector3(randomX, randomY, 0f));
+                MakeEnemyFish((int)_waves[_waveIndex].enemies[i], new Vector3(randomX, randomY, 0f));
             }
             _waveIndex++;
         }
