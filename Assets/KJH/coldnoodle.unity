@@ -1458,7 +1458,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -240}
-  m_SizeDelta: {x: 1000, y: 40}
+  m_SizeDelta: {x: 800, y: 25}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1115501405
 MonoBehaviour:
@@ -2019,7 +2019,6 @@ MonoBehaviour:
   rightBtn: {fileID: 0}
   pauseUI: {fileID: 1101681307}
   gameOverUI: {fileID: 1199202326}
-  comboEffect: {fileID: 184311725}
   timeImage: {fileID: 1565357754}
   scoreText: {fileID: 1852801022}
   comboText: {fileID: 264528937}

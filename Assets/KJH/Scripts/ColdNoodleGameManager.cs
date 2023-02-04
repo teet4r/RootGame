@@ -71,10 +71,6 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     public void PlusCombo()
     {
         combo += 1;
-        if (combo == 100 || combo == 200)
-        {
-            ColdNoodleUIManager.Instance.ShakeCombo2();
-        }else ColdNoodleUIManager.Instance.ShakeCombo();
         score += 100 * scoremultiflyvalue;
         timePlus += 1;
         if (combo % 10 == 0)
