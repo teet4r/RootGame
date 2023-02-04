@@ -52,5 +52,5 @@ MonoBehaviour:
   touchEffect: {fileID: 2757016579968865647, guid: 072b29cb94fc9dc479ac41b5569d63c2, type: 3}
   effectNum: 3
   effectTotalNum: 9
-  effectTime: 0.07
+  effectTime: 0.05
   destroyTime: 1

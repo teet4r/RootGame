@@ -44,6 +44,7 @@ public class Option : MonoBehaviour
 
     public void MoveToMainMenu()
     {
+        CloseOptionWindow();
         SceneManager.LoadScene(0);
     }
 

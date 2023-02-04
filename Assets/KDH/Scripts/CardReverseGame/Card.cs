@@ -10,7 +10,6 @@ public class Card : MonoBehaviour
     [SerializeField] float waitTime;
     [SerializeField] float destroyTime;
     [SerializeField] bool playing;
-    [SerializeField] GameObject circleEffect;
     [SerializeField] int effectNum;
     public int Num { get { return num; } }
     public bool Playing { get { return playing; } }
@@ -81,10 +80,6 @@ public class Card : MonoBehaviour
                 image.color = Color.clear;
                 playing = false;
                 Vector3 pos = CardManager.instance.EffectCanvas.transform.position + transform.localPosition;
-                for (int i = 0; i < effectNum; i++)
-                {
-                    Instantiate(circleEffect, pos, Quaternion.identity, CardManager.instance.EffectCanvas.transform);
-                }
                 yield break;
             }
             image.color = new Color(1f, 1f, 1f, image.color.a - Time.deltaTime / destroyTime);

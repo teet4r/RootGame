@@ -4,7 +4,21 @@ using UnityEngine;
 
 public class TouchCheck : MonoBehaviour
 {
+    public static TouchCheck instance;
     [SerializeField] GameObject touchEffectGroup;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     private void Update()
     {
