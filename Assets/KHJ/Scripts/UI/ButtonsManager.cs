@@ -1,21 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ButtonsManager : MonoBehaviour
 {
-    public Button[] FishButtons
+    public static ButtonsManager instance = null;
+
+    public Button[] fishButtons = null;
+    public Image[] fishImages = null;
+
+    [Header("----- 5°³ ¹öÆ°ÀÇ ÆÏ/½´Å©¸² ¼ø¼­ -----")]
+    public AllyFish[] redBeanButtonArray = null;
+    public AllyFish[] custardCreamButtonArray = null;
+
+    void Awake()
     {
-        get { return _fishButtons; }
+        if (instance == null)
+            instance = this;
     }
-    public Image[] FishImages
-    {
-        get { return _fishImages; }
-    }
-
-    [SerializeField] Button[] _fishButtons = null;
-    [SerializeField] Image[] _fishImages = null;
-
-
 }

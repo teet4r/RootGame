@@ -10,9 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb0abbcf2c4cc846a38e29b79b24012, type: 3}
-  m_Name: MiniFish
+  m_Name: 08AllyAgariFishCC
   m_EditorClassIdentifier: 
-  _maxHp: 100
-  _damage: 5
-  _range: 1
-  _cost: 10
+  _sprite: {fileID: 1991844825, guid: e7878fcfe467e274a9268a12d8dd4d5c, type: 3}
+  _rotation: {x: 0, y: 0, z: 0}
+  _fishType: 1
+  _color: {r: 1, g: 1, b: 1, a: 1}
+  _maxHp: 150
+  _damage: 50
+  _range: 1.25
+  _cost: 120

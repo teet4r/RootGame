@@ -1,12 +1,23 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "CharacterData", menuName = "ScriptableObject/CharacterData")]
 public class CharacterData : ScriptableObject
 {
-    public Image Image
+    public Sprite Sprite
     {
-        get { return _image; }
+        get { return _sprite; }
+    }
+    public Vector3 Rotation
+    {
+        get { return _rotation; }
+    }
+    public FishType FishType
+    {
+        get { return _fishType; }
+    }
+    public Color Color
+    {
+        get { return _color; }
     }
     public int MaxHp
     {
@@ -25,7 +36,10 @@ public class CharacterData : ScriptableObject
         get { return _cost; }
     }
 
-    [SerializeField] Image _image;
+    [SerializeField] Sprite _sprite;
+    [SerializeField] Vector3 _rotation;
+    [SerializeField] FishType _fishType;
+    [SerializeField] Color _color;
     [Min(1)][SerializeField] int _maxHp;
     [Min(0)][SerializeField] int _damage;
     [Min(0f)][SerializeField] float _range;
