@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -21,6 +20,8 @@ public class DefenseGameManager : MonoBehaviour
     public static DefenseGameManager instance = null;
     public float cameraHalfHeight;
     public float cameraHalfWidth;
+    public int screenHalfHeight;
+    public int screenHalfWidth;
 
     public AllyController allyController = null;
     public EnemyController enemyController = null;
@@ -183,9 +184,13 @@ public class DefenseGameManager : MonoBehaviour
         _cameraTr = _camera.transform;
         cameraHalfHeight = _camera.orthographicSize;
         cameraHalfWidth = cameraHalfHeight * _camera.aspect;
+        screenHalfHeight = Screen.height / 2;
+        screenHalfWidth = Screen.width / 2;
     }
     void Start()
     {
+
+
         _totalTime = 0f;
     }
     void Update()

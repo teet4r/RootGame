@@ -2340,6 +2340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraHalfHeight: 0
   cameraHalfWidth: 0
+  screenHalfHeight: 0
+  screenHalfWidth: 0
   allyController: {fileID: 7328217932343129922, guid: 08bb8ea6f552b5e478f08223152d301f, type: 3}
   enemyController: {fileID: 2423442719340883290, guid: e4aced09952ea704e843f3a11bd25582, type: 3}
   allyHome: {fileID: 1853902411}
