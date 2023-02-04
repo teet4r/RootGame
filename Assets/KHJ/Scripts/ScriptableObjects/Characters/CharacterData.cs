@@ -23,6 +23,10 @@ public class CharacterData : ScriptableObject
     {
         get { return _color; }
     }
+    public GameObject Bullet
+    {
+        get { return _bullet; }
+    }
     public int MaxHp
     {
         get { return _maxHp; }
@@ -49,9 +53,10 @@ public class CharacterData : ScriptableObject
     [SerializeField] Vector2 _colliderSize;
     [SerializeField] FishType _fishType;
     [SerializeField] Color _color;
+    [SerializeField] GameObject _bullet;
     [Min(1)][SerializeField] int _maxHp;
     [Min(0)][SerializeField] int _damage;
-    [Min(1)][SerializeField] float _speed;
+    [Min(0)][SerializeField] float _speed;
     [Min(0f)][SerializeField] float _range;
     [Min(0)][SerializeField] int _cost;
 }
