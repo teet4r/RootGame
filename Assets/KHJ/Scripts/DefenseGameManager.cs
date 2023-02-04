@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -21,6 +20,8 @@ public class DefenseGameManager : MonoBehaviour
     public static DefenseGameManager instance = null;
     public float cameraHalfHeight;
     public float cameraHalfWidth;
+    public int screenHalfHeight;
+    public int screenHalfWidth;
 
     public AllyController allyController = null;
     public EnemyController enemyController = null;
@@ -120,13 +121,11 @@ public class DefenseGameManager : MonoBehaviour
         new Wave(
             17, 49, new EnemyFish[] {
                 EnemyFish.AgariFish_CC,
-                EnemyFish.BurntFish_CC,
             }),
         new Wave(
             18, 52, new EnemyFish[] {
                 EnemyFish.MiniFish_CC,
                 EnemyFish.MiniFish_CC,
-                EnemyFish.BurntFish_CC,
             }),
         new Wave(
             19, 55, new EnemyFish[] {
@@ -170,7 +169,114 @@ public class DefenseGameManager : MonoBehaviour
                 EnemyFish.AgariFish_CC,
                 EnemyFish.AgariFish_CC,
                 EnemyFish.AgariFish_CC,
+            }),
+        new Wave(
+            26, 76, new EnemyFish[] {
+                // Empty
+            }),
+        new Wave(
+            27, 79, new EnemyFish[] {
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.MiniFish_CC,
+                EnemyFish.MiniFish_CC,
+            }),
+        new Wave(
+            28, 82, new EnemyFish[] {
+                EnemyFish.TaiyakiFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+            }),
+        new Wave(
+            29, 85, new EnemyFish[] {
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+            }),
+        new Wave(
+            30, 88, new EnemyFish[] {
                 EnemyFish.AgariFish_CC,
+                EnemyFish.AgariFish_CC,
+                EnemyFish.TaiyakiFish_CC,
+            }),
+        new Wave(
+            31, 91, new EnemyFish[] {
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.TaiyakiFish_CC,
+            }),
+        new Wave(
+            32, 94, new EnemyFish[] {
+                EnemyFish.TaiyakiFish_CC,
+                EnemyFish.GoldFish,
+                EnemyFish.GoldFish,
+            }),
+        new Wave(
+            33, 97, new EnemyFish[] {
+                EnemyFish.GoldFish,
+                EnemyFish.GoldFish,
+                EnemyFish.GoldFish,
+            }),
+        new Wave(
+            34, 100, new EnemyFish[] {
+                // Empty
+            }),
+        new Wave(
+            35, 103, new EnemyFish[] {
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+            }),
+        new Wave(
+            36, 106, new EnemyFish[] {
+                EnemyFish.TaiyakiFish_CC,
+                EnemyFish.TaiyakiFish_CC,
+            }),
+        new Wave(
+            37, 109, new EnemyFish[] {
+                EnemyFish.AgariFish_CC,
+                EnemyFish.AgariFish_CC,
+                EnemyFish.AgariFish_CC,
+            }),
+        new Wave(
+            38, 112, new EnemyFish[] {
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.BurntFish_CC,
+            }),
+        new Wave(
+            39, 115, new EnemyFish[] {
+                EnemyFish.GoldFish,
+                EnemyFish.GoldFish,
+                EnemyFish.GoldFish,
+            }),
+        new Wave(
+            40, 118, new EnemyFish[] {
+                // Empty
+            }),
+        new Wave(
+            41, 121, new EnemyFish[] {
+                EnemyFish.MiniFish_CC,
+                EnemyFish.BurntFish_CC,
+                EnemyFish.TaiyakiFish_CC,
+                EnemyFish.GoldFish,
                 EnemyFish.AgariFish_CC,
             }),
     };
@@ -183,9 +289,14 @@ public class DefenseGameManager : MonoBehaviour
         _cameraTr = _camera.transform;
         cameraHalfHeight = _camera.orthographicSize;
         cameraHalfWidth = cameraHalfHeight * _camera.aspect;
+        screenHalfHeight = Screen.height / 2;
+        screenHalfWidth = Screen.width / 2;
     }
     void Start()
     {
+        allyHome.tr.position = new Vector2(0f, -cameraHalfHeight + cameraHalfHeight * 2f * 0.2f + 0.15f);
+        enemyHome.tr.position = new Vector2(0f, -0.3f + (cameraHalfHeight - (144 * (cameraHalfHeight / screenHalfHeight))));
+
         _totalTime = 0f;
     }
     void Update()
@@ -319,5 +430,4 @@ public class DefenseGameManager : MonoBehaviour
             isGameOver = true;
         }
     }
-
 }

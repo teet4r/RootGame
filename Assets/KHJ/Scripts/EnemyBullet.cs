@@ -8,11 +8,15 @@ public class EnemyBullet : MonoBehaviour
     public CircleCollider2D circleCollider = null;
     public Rigidbody2D rb2D = null;
     public int damage;
-    public float speed;
+
+    [SerializeField] float speed;
+    [SerializeField] float _destroyTime = 7f;
 
     void Start()
     {
         rb2D.velocity = tr.up * speed;
+
+        Invoke("_Destroy", _destroyTime);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -35,5 +39,10 @@ public class EnemyBullet : MonoBehaviour
                 homeController.GetDamage(damage);
             Destroy(gameObject);
         }
+    }
+
+    void _Destroy()
+    {
+        Destroy(gameObject);
     }
 }

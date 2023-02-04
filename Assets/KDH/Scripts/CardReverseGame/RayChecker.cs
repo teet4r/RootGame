@@ -11,6 +11,11 @@ public class RayChecker : MonoBehaviour
     Card firstSelectedCard;
     Card secondSelectedCard;
 
+    private void Start()
+    {
+        SoundManager.Instance.BgmAudio.Play(Bgm.CardGame);
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -19,6 +24,7 @@ public class RayChecker : MonoBehaviour
             EventSystem.current.RaycastAll(pointer, raycastResults);
             if (raycastResults.Count > 0 && raycastResults[0].gameObject.GetComponent<Card>())
             {
+                StartCoroutine(PlaySound(Sfx.CardSelect, 0f));
                 if (raycastResults[0].gameObject.GetComponent<Card>().Playing)
                 {
                     raycastResults.Clear();
@@ -36,11 +42,13 @@ public class RayChecker : MonoBehaviour
                     secondSelectedCard.UnSelectCard();
                     if (firstSelectedCard.Num / 2 == secondSelectedCard.Num / 2)
                     {
+                        StartCoroutine(PlaySound(Sfx.CardSuccess, 0.6f));
                         firstSelectedCard.CheckCard(true);
                         secondSelectedCard.CheckCard(true);
                     }
                     else
                     {
+                        StartCoroutine(PlaySound(Sfx.CardFail, 0.6f));
                         firstSelectedCard.CheckCard(false);
                         secondSelectedCard.CheckCard(false);
                     }
@@ -57,5 +65,12 @@ public class RayChecker : MonoBehaviour
             }
             raycastResults.Clear();
         }
+    }
+
+    IEnumerator PlaySound(Sfx _sfx, float _time)
+    {
+        yield return new WaitForSeconds(_time);
+        SoundManager.Instance.SfxAudio.Play(_sfx);
+        yield break;
     }
 }

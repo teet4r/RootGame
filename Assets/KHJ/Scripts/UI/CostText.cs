@@ -26,7 +26,9 @@ public class CostText : MonoBehaviour
         _time += Time.deltaTime;
         if (_time > 1f)
         {
-            if (_totalTime > 60f)
+            if (_totalTime > 90f)
+                costPerSecond = 25;
+            else if (_totalTime > 60f)
                 costPerSecond = 20;
             else if (_totalTime > 30f)
                 costPerSecond = 15;

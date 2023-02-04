@@ -79,7 +79,6 @@ public class Card : MonoBehaviour
             {
                 image.color = Color.clear;
                 playing = false;
-                Vector3 pos = CardManager.instance.EffectCanvas.transform.position + transform.localPosition;
                 yield break;
             }
             image.color = new Color(1f, 1f, 1f, image.color.a - Time.deltaTime / destroyTime);

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Option : MonoBehaviour
 {
+    [SerializeField] GameObject optionButton;
     [SerializeField] GameObject optionButtonGroup;
     [SerializeField] GameObject optionWindow;
     [SerializeField] Slider sfxSlider;
@@ -15,6 +16,23 @@ public class Option : MonoBehaviour
     {
         ChangeSfxSliderValue();
         ChangeBgmSliderValue();
+        StartCoroutine(ActivateOptionButton());
+    }
+
+    IEnumerator ActivateOptionButton()
+    {
+        while (true)
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 4)
+            {
+                optionButton.SetActive(false);
+            }
+            else
+            {
+                optionButton.SetActive(true);
+            }
+            yield return new WaitForSeconds(0.04f);
+        }
     }
 
     public void CloseOptionWindow()
@@ -45,7 +63,7 @@ public class Option : MonoBehaviour
     public void MoveToMainMenu()
     {
         CloseOptionWindow();
-        SceneManager.LoadScene(0);
+        LoadingSceneManager.instance.LoadScene(0);
     }
 
     public void ChangeSfxSliderValue()

@@ -12,17 +12,39 @@ public class BlinkText : MonoBehaviour
     void Start()
     {
         text = GetComponent<Text>();
-        StartCoroutine(BlinkTest());
+        text.text = "Tap to Start";
+        color = text.color;
+        Debug.Log("HI");
+        StartCoroutine(BlinkAlphaDownText());
     }
-    IEnumerator BlinkTest()
+
+    IEnumerator BlinkAlphaDownText()
     {
         while (true)
         {
-            text.text = "";
-            yield return new WaitForSeconds(.5f);
-            text.text = "Tap to Start";
-            yield return new WaitForSeconds(.5f);
+            if (text.color.a <= 0f)
+            {
+                StartCoroutine(BlinkAlphaUpText());
+                yield break;
+            }
+            color.a -= Time.deltaTime / time;
+            text.color = color;
+            yield return null;
         }
     }
 
+    IEnumerator BlinkAlphaUpText()
+    {
+        while(true)
+        {
+            if (text.color.a >= 1f)
+            {
+                StartCoroutine(BlinkAlphaDownText());
+                yield break;
+            }
+            color.a += Time.deltaTime / time;
+            text.color = color;
+            yield return null;
+        }
+    }
 }

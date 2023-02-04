@@ -94,7 +94,6 @@ public class AllyController : MonoBehaviour
         var bullet = Instantiate(data.Bullet, _transform.position, _transform.rotation);
         var allyBullet = bullet.GetComponent<AllyBullet>();
         allyBullet.damage = data.Damage;
-        allyBullet.speed = data.Speed;
     }
     void _LookAt(Vector2 targetPosition)
     {
