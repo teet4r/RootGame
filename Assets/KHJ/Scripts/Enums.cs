@@ -25,7 +25,7 @@ public enum FishType
 
 public enum Bgm
 {
-
+    MainBGM
 }
 
 public enum Sfx

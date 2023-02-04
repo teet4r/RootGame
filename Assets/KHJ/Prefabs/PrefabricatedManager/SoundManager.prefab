@@ -237,7 +237,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -331,4 +331,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8adebde86a0af8b4d9274ea3f1c66bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clips: []
+  _clips:
+  - {fileID: 8300000, guid: 3e41d51bb580c454ab02ea00a928d594, type: 3}
