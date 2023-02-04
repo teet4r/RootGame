@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb0abbcf2c4cc846a38e29b79b24012, type: 3}
   m_Name: 02AllyGoldFish
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 1644518769, guid: e7878fcfe467e274a9268a12d8dd4d5c, type: 3}
+  _sprite: {fileID: 585633527, guid: cc25343b280f6a3449937b4acb4a0b67, type: 3}
   _rotation: {x: 0, y: 0, z: -90}
   _colliderSize: {x: 0.355, y: 0.273}
   _fishType: 2

@@ -32,23 +32,24 @@ public class EnemyController : MonoBehaviour
     Transform _semiTarget = null;
     bool _enemyDetected = false;
     int _curHp;
+    float _prevFireTime;
+    float _fireRate = 1f;
 
-    void OnEnable()
-    {
-        Invoke("_Destroy", 30f);
-    }
     void Start()
     {
         _curHp = data.MaxHp;
+        _prevFireTime = Time.time;
     }
     void Update()
     {
+        if (DefenseGameManager.instance.isGameOver) return;
+
         if (!_enemyDetected)
         {
             if (mainTarget != null)
             {
-                _transform.LookAt(new Vector3(mainTarget.position.x, mainTarget.position.y, 0f));
-                _transform.Translate(mainTarget.position);
+                _LookAt(mainTarget.position);
+                _transform.position = Vector3.MoveTowards(_transform.position, mainTarget.position, data.Speed * Time.deltaTime);
                 if (Vector3.Distance(mainTarget.position, _transform.position) <= data.Range)
                     _MakeBullet();
 
@@ -64,20 +65,21 @@ public class EnemyController : MonoBehaviour
         {
             if (_semiTarget != null)
             {
-                _transform.LookAt(_semiTarget);
+                _LookAt(_semiTarget.position);
                 if (Vector3.Distance(_semiTarget.position, _transform.position) <= data.Range) // 범위 안에 들어오면 공격
                     _MakeBullet();
                 else
-                    _transform.Translate(_semiTarget.position);
+                    _transform.position = Vector3.MoveTowards(_transform.position, _semiTarget.position, data.Speed * Time.deltaTime);
             }
             else
                 _enemyDetected = false;
         }
-
     }
 
     public void GetDamage(int damage)
     {
+        if (DefenseGameManager.instance.isGameOver) return;
+
         _curHp = Mathf.Max(_curHp - damage, 0);
         if (_curHp <= 0)
             Destroy(gameObject);
@@ -85,15 +87,22 @@ public class EnemyController : MonoBehaviour
 
     void _MakeBullet()
     {
-        var bullet = Instantiate(data.Bullet);
-        bullet.transform.position = _transform.position;
-        bullet.transform.eulerAngles = _transform.eulerAngles;
+        if (Time.time - _prevFireTime < _fireRate)
+            return;
+
+        _prevFireTime = Time.time;
+        var bullet = Instantiate(data.Bullet, _transform.position, _transform.rotation);
         var enemyBullet = bullet.GetComponent<EnemyBullet>();
         enemyBullet.damage = data.Damage;
-        enemyBullet.speed = 3f;
+        enemyBullet.speed = data.Speed;
     }
     void _Destroy()
     {
         Destroy(gameObject);
+    }
+    void _LookAt(Vector2 targetPosition)
+    {
+        var angle = Mathf.Atan2(targetPosition.y - _transform.position.y, targetPosition.x - _transform.position.x) * Mathf.Rad2Deg;
+        _transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
     }
 }
