@@ -12,7 +12,8 @@ public class CardManager : MonoBehaviour
     [SerializeField] GameObject cardGroup;
     [SerializeField] Sprite[] cardSprites;
     [SerializeField] Sprite cardBackSprite;
-    [SerializeField] float score;
+    [SerializeField] int score;
+    [SerializeField] GameObject clearWindow;
     public Sprite[] CardSprites { get { return cardSprites; } }
     public Sprite CardBackSprite { get { return cardBackSprite; } }
 
@@ -35,7 +36,8 @@ public class CardManager : MonoBehaviour
             {
                 if (stage > 3)
                 {
-                    score = TimeBar.instance.NowTime;
+                    score = (int)(TimeBar.instance.NowTime * 100);
+                    ClearGame();
                     yield break;
                 }
                 TimeBar.instance.FillTimeBar();
@@ -71,5 +73,6 @@ public class CardManager : MonoBehaviour
 
     public void ClearGame()
     {
+        clearWindow.SetActive(true);
     }
 }

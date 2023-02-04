@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -21,7 +20,6 @@ public class LoadingProgress : MonoBehaviour
     {
         sceneNum = EventSystem.current.currentSelectedGameObject.transform.GetSiblingIndex();
         loadingScreenImg.sprite = loadImgs[sceneNum]; //내가 방금 누른 버튼의 인덱스 가져오기
-        Debug.Log(sceneNum);
         StartCoroutine(LoadSceneProgress());
     }
 
