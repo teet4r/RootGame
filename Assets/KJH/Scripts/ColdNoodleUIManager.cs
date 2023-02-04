@@ -99,4 +99,9 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
         //ColdNoodleGameManager.Instance.DestrotyChicken();
         //ColdNoodleGameManager.Instance.MakeRandomNoodle();
     }
+    public void LoadChick()
+    {
+        SceneManager.LoadScene(2);
+        Time.timeScale = 1;
+    }
 }
