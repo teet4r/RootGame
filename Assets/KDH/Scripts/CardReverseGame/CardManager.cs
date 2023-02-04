@@ -12,13 +12,12 @@ public class CardManager : MonoBehaviour
     [SerializeField] GameObject cardGroup;
     [SerializeField] Sprite[] cardSprites;
     [SerializeField] Sprite cardBackSprite;
-    [SerializeField] int score;
+    [SerializeField] float score;
     [SerializeField] GameObject clearWindow;
-    [SerializeField] GameObject effectCanvas;
+    [SerializeField] GameObject gameOverWindow;
     [SerializeField] GameObject cardCanvas;
     public Sprite[] CardSprites { get { return cardSprites; } }
     public Sprite CardBackSprite { get { return cardBackSprite; } }
-    public GameObject EffectCanvas { get { return effectCanvas; } }
     public GameObject CardCanvas { get { return cardCanvas; } }
     private void Awake()
     {
@@ -30,6 +29,7 @@ public class CardManager : MonoBehaviour
         SetStage();
         StartCoroutine(StageClearCheck());
     }
+
     IEnumerator StageClearCheck()
     {
         bool goNext = false;
@@ -39,7 +39,7 @@ public class CardManager : MonoBehaviour
             {
                 if (stage > 3)
                 {
-                    score = (int)(TimeBar.instance.NowTime * 100);
+                    score = TimeBar.instance.NowTime;
                     ClearGame();
                     yield break;
                 }
@@ -76,6 +76,12 @@ public class CardManager : MonoBehaviour
 
     public void ClearGame()
     {
+        ScoreManager.instance.SetGame3Score(score);
         clearWindow.SetActive(true);
+    }
+
+    public void GameOver()
+    {
+        gameOverWindow.SetActive(true);
     }
 }

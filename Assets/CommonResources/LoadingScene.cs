@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,16 +11,21 @@ public class LoadingScene : MonoBehaviour
     [SerializeField] GameObject[] loadingGroups;
     [SerializeField] Image[] images;
     [SerializeField] float loadingTime;
-    int sceneNum = 0;
+    [SerializeField] int sceneNum = 0;
+    [SerializeField] bool check = true;
 
     private void Awake()
     {
         instance = this;
     }
 
-    private void Start()
+    private void Update()
     {
-        SetSceneNum();
+        if (check)
+        {
+            check = false;
+            SetSceneNum();
+        }
     }
 
     void SetSceneNum()
@@ -46,6 +50,7 @@ public class LoadingScene : MonoBehaviour
         {
             if (fillAmount >= 1.25f)
             {
+                check = true;
                 SceneManager.LoadScene(sceneNum);
             }
             images[sceneNum - 1].fillAmount = fillAmount;

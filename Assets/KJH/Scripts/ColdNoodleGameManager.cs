@@ -23,10 +23,13 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     public float timemultiflyvalue = 1;
     public float timeMax = 60;
     private float timePlus;
+
+    float startTime;
     
     // Start is called before the first frame update
     void Start()
     {
+        startTime = Time.time;
         timeCurrent = timeMax;
         curChicken = null;
         if (queue != null)
@@ -46,6 +49,8 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
 
     private void Update()
     {
+        if (timeCurrent <= 0f) GameOver();
+        timeCurrent -= Time.deltaTime * timemultiflyvalue * (Time.time - startTime);
     }
 
     public void MakeRandomNoodle()
@@ -95,7 +100,8 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
             ColdNoodleUIManager.Instance.ShakeCombo2();
         }else ColdNoodleUIManager.Instance.ShakeCombo();
         score += 100 * scoremultiflyvalue;
-        timePlus += 1;
+        if (timePlus < 0f) timePlus = 0f;
+        else timePlus += 1;
         if (combo % 10 == 0)
         {
             scoremultiflyvalue += 1;
@@ -111,11 +117,10 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
         timePlus -= 20;
         ColdNoodleUIManager.Instance.resetComboSize();
     }
-    
 
     public float TimeCheck()
     {
-        timeCurrent = timeMax - Time.time * timemultiflyvalue + timePlus;
+        timeCurrent += timePlus;
         if (timeCurrent >= timeMax) timeCurrent = timeMax;
         if (timeCurrent <= 0) GameOver();
         return timeCurrent;
@@ -124,7 +129,8 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     private void GameOver()
     {
         // 최종 점수 저장
-        
+
+        ScoreManager.instance.SetGame2Score(score);
         Debug.Log("GameOver");
         ColdNoodleUIManager.Instance.SetActiveGameOverUI();
         ColdNoodleUIManager.Instance.MoY();

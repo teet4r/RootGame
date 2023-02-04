@@ -29,6 +29,7 @@ public class TimeBar : MonoBehaviour
     {
         if (timeGo)
         {
+            if (nowTime <= 0f) CardManager.instance.GameOver();
             nowTime -= Time.deltaTime;
             timeBar.fillAmount = nowTime / maxTime;
         }
@@ -37,15 +38,5 @@ public class TimeBar : MonoBehaviour
     public void FillTimeBar()
     {
         nowTime = maxTime;
-    }
-
-    public void StopTimeBar()
-    {
-        timeGo = false;
-    }
-
-    public void StartTimeBar()
-    {
-        timeGo = true;
     }
 }

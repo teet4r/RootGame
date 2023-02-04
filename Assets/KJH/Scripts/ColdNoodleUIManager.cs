@@ -85,16 +85,15 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
         comboEffect.SetActive(true);
         for (int i = 0; i < ColdNoodleGameManager.Instance.moveTransform.Length; i++)
         {
-            ColdNoodleGameManager.Instance.moveTransform[i].gameObject.SetActive(true);    
+            ColdNoodleGameManager.Instance.moveTransform[i].gameObject.SetActive(true);
         }
         Time.timeScale = 1;
     }
 
     public void GoMain()
     {
-        SceneManager.LoadScene(0);
+        LoadingSceneManager.instance.LoadScene(0);
         Time.timeScale = 1;
-
     }
 
     public void LoadWaitScene()
@@ -106,7 +105,7 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
     }
     public void LoadChick()
     {
-        SceneManager.LoadScene(2);
         Time.timeScale = 1;
+        SceneManager.LoadScene(2);
     }
 }

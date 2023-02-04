@@ -24,7 +24,6 @@ public class TouchCheck : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            SoundManager.instance.SfxAudio.Play(Sfx.MouseClick);
             Instantiate(touchEffectGroup, Input.mousePosition, Quaternion.identity, transform);
         }
     }
