@@ -695,7 +695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tr: {fileID: 576324892}
-  maxHp: 2000
+  maxHp: 1500
   curHp: 0
 --- !u!50 &576324895
 Rigidbody2D:
@@ -2271,7 +2271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tr: {fileID: 1853902409}
-  maxHp: 2000
+  maxHp: 1500
   curHp: 0
 --- !u!50 &1853902412
 Rigidbody2D:

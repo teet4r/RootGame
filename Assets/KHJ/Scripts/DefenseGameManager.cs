@@ -121,13 +121,11 @@ public class DefenseGameManager : MonoBehaviour
         new Wave(
             17, 49, new EnemyFish[] {
                 EnemyFish.AgariFish_CC,
-                EnemyFish.BurntFish_CC,
             }),
         new Wave(
             18, 52, new EnemyFish[] {
                 EnemyFish.MiniFish_CC,
                 EnemyFish.MiniFish_CC,
-                EnemyFish.BurntFish_CC,
             }),
         new Wave(
             19, 55, new EnemyFish[] {
@@ -189,7 +187,8 @@ public class DefenseGameManager : MonoBehaviour
     }
     void Start()
     {
-
+        allyHome.tr.position = new Vector2(0f, -cameraHalfHeight + cameraHalfHeight * 2f * 0.2f);
+        enemyHome.tr.position = new Vector2(0f, (screenHalfHeight - 144) * (cameraHalfHeight / screenHalfHeight));
 
         _totalTime = 0f;
     }
