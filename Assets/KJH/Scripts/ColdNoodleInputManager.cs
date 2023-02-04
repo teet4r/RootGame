@@ -8,6 +8,8 @@ public class ColdNoodleInputManager : MonoBehaviour
 {
     private AudioSource _touchAudioSource;
     public AudioSource _comboAudioSource;
+
+    private bool nowisRight;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +29,18 @@ public class ColdNoodleInputManager : MonoBehaviour
         }
     }
 
-    void tryLeftRight(bool inputIsRight)
+    public void left()
     {
+        tryLeftRight(false);
+    }
+
+    public void right()
+    {
+        tryLeftRight(true);
+    }
+    public void tryLeftRight(bool inputIsRight)
+    {
+        // 왼쪽버튼이면 false 
         ColdNoodleGameManager.Instance.DequeueChicken();
         ColdNoodleGameManager.Instance.curChicken.TryGetComponent(out ColdNoodleBasic basic);
         //ColdNoodleGameManager.Instance.DequeueChicken().TryGetComponent(out ColdNoodleBasic basic);

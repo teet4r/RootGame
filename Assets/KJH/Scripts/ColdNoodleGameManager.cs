@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManager>
@@ -90,7 +91,9 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
         Debug.Log("FailCombo");
         combo = 0;
         timePlus -= 20;
+        ColdNoodleUIManager.Instance.resetComboSize();
     }
+    
 
     private float TimeCheck()
     {
@@ -104,7 +107,7 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     {
         Debug.Log("GameOver");
         ColdNoodleUIManager.Instance.SetActiveGameOverUI();
-        ColdNoodleUIManager.Instance.comboEffect.SetActive(false);
+        ColdNoodleUIManager.Instance.MoY();
         for (int i = 0; i < moveTransform.Length; i++)
         {
             moveTransform[i].gameObject.SetActive(false);    

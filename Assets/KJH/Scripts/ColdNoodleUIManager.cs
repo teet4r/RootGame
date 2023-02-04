@@ -15,11 +15,14 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
     public Image timeImage;
     public Text scoreText;
     public Text comboText;
-
+    public AudioSource comboFail;
+    public float comboScaleMultiplier=1f;
+    public RectTransform _rectTransform;
     // Start is called before the first frame update
     void Start()
     {
-
+        comboFail = GetComponent<AudioSource>();
+        _rectTransform = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -34,12 +37,25 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
     [ContextMenu("shake")]
     public void ShakeCombo()
     {
-        comboEffect.transform.DOShakeScale(0.3f, 0.5f, 10).SetEase(Ease.InOutSine);
+        comboEffect.transform.DOShakeScale(0.1f, 0.5f, 5).SetEase(Ease.InOutSine);
     }
     [ContextMenu("shake2")]
     public void ShakeCombo2()
     {
-        comboEffect.transform.DOShakeScale(0.3f, 5, 25).SetEase(Ease.InOutSine);
+        comboScaleMultiplier += 0.2f;
+        comboEffect.transform.DOScale(comboScaleMultiplier, 0.5f);
+        comboEffect.transform.DOShakeScale(0.15f, 3, 25).SetEase(Ease.InOutBounce);
+    }
+
+    public void MoY()
+    {
+        _rectTransform.DOMove(new Vector3(0,650,0),1);
+    }
+    public void resetComboSize()
+    {
+        comboScaleMultiplier = 0.5f;
+        comboEffect.transform.DOScale(comboScaleMultiplier, 0.5f);
+        comboFail.Play();
     }
     public void Pause()
     {
