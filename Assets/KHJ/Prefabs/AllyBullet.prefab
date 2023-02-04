@@ -139,5 +139,5 @@ MonoBehaviour:
   tr: {fileID: 6939951058189808213}
   circleCollider: {fileID: 6939951058189808215}
   rb2D: {fileID: 6939951058189808214}
-  damage: 10
-  speed: 10
+  damage: 0
+  speed: 5

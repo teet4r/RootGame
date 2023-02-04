@@ -8,7 +8,8 @@ public class AllyBullet : MonoBehaviour
     public CircleCollider2D circleCollider = null;
     public Rigidbody2D rb2D = null;
     public int damage;
-    public float speed;
+    
+    [SerializeField] float speed;
 
     void Start()
     {
