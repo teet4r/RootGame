@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class CardManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] GameObject cardGroup;
     [SerializeField] Sprite[] cardSprites;
     [SerializeField] Sprite cardBackSprite;
+    [SerializeField] float score;
     public Sprite[] CardSprites { get { return cardSprites; } }
     public Sprite CardBackSprite { get { return cardBackSprite; } }
 
@@ -22,18 +24,32 @@ public class CardManager : MonoBehaviour
     {
         stage = 1;
         SetStage();
+        StartCoroutine(StageClearCheck());
     }
-
-    bool CheckCardNum()
+    IEnumerator StageClearCheck()
     {
-        for (int i = 0; i < cardGroup.transform.childCount; i++)
+        bool goNext = false;
+        while (true)
         {
-            if (cardGroup.transform.GetChild(i).GetComponent<Image>().color.a > 0f)
+            if (goNext)
             {
-                return true;
+                if (stage > 3)
+                {
+                    score = TimeBar.instance.NowTime;
+                }
+                TimeBar.instance.FillTimeBar();
+                SetStage();
             }
+            goNext = true;
+            for (int i = 1; i < cardGroup.GetComponentsInChildren<RectTransform>().Length; i++)
+            {
+                if (cardGroup.GetComponentsInChildren<RectTransform>()[i].localScale.x > 0f)
+                {
+                    goNext = false;
+                }
+            }
+            yield return new WaitForSeconds(0.1f);
         }
-        return false;
     }
 
     void SetStage()

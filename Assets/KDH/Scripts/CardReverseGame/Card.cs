@@ -32,7 +32,7 @@ public class Card : MonoBehaviour
     {
         while (true)
         {
-            if (rectTransform.localRotation.y >= 0.5f)
+            if (rectTransform.localRotation.eulerAngles.y + rotateSpeed * Time.deltaTime >= 90f)
             {
                 StartCoroutine(RollingCard2(_destroy));
                 yield break;
@@ -47,7 +47,7 @@ public class Card : MonoBehaviour
         image.sprite = CardManager.instance.CardSprites[num];
         while (true)
         {
-            if (rectTransform.localRotation.y <= 0f)
+            if (rectTransform.localRotation.eulerAngles.y - rotateSpeed * Time.deltaTime <= 0f)
             {
                 yield return new WaitForSeconds(waitTime);
                 if (_destroy)
@@ -73,6 +73,7 @@ public class Card : MonoBehaviour
             float tmpScale = rectTransform.localScale.x - Time.deltaTime / destroyTime;
             if (image.color.a <= 0f)
             {
+                image.color = Color.clear;
                 yield break;
             }
             image.color = new Color(1f, 1f, 1f, image.color.a - Time.deltaTime / destroyTime);
@@ -87,7 +88,7 @@ public class Card : MonoBehaviour
         rectTransform.rotation = Quaternion.Euler(Vector3.zero);
         while (true)
         {
-            if (rectTransform.localRotation.y >= 0.5f)
+            if (rectTransform.localRotation.eulerAngles.y + rotateSpeed * Time.deltaTime >= 90f)
             {
                 StartCoroutine(RollingCard4());
                 yield break;
@@ -102,7 +103,7 @@ public class Card : MonoBehaviour
         image.sprite = CardManager.instance.CardBackSprite;
         while (true)
         {
-            if (rectTransform.localRotation.y <= 0f)
+            if (rectTransform.localRotation.eulerAngles.y - rotateSpeed * Time.deltaTime <= 0f)
             {
                 rectTransform.rotation = Quaternion.Euler(Vector3.zero);
                 yield break;

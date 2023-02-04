@@ -176,8 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
+  waitTime: 0.3
   destroyTime: 0.5
   image: {fileID: 157165633}
   rectTransform: {fileID: 157165631}
@@ -272,8 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
+  waitTime: 0.3
   destroyTime: 0.5
   image: {fileID: 262621366}
   rectTransform: {fileID: 262621364}
@@ -368,8 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
+  waitTime: 0.3
   destroyTime: 0.5
   image: {fileID: 305419388}
   rectTransform: {fileID: 305419386}
@@ -464,8 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
+  waitTime: 0.3
   destroyTime: 0.5
   image: {fileID: 500464693}
   rectTransform: {fileID: 500464691}
@@ -560,9 +556,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
-  destroyTime: 0.5
+  waitTime: 0.3
+  destroyTime: 0.3
   image: {fileID: 561000581}
   rectTransform: {fileID: 561000579}
 --- !u!114 &561000581
@@ -656,8 +651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
+  waitTime: 0.3
   destroyTime: 0.5
   image: {fileID: 596716144}
   rectTransform: {fileID: 596716142}
@@ -752,8 +746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
+  waitTime: 0.3
   destroyTime: 0.5
   image: {fileID: 600151387}
   rectTransform: {fileID: 600151385}
@@ -848,8 +841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
+  waitTime: 0.3
   destroyTime: 0.5
   image: {fileID: 796353737}
   rectTransform: {fileID: 796353735}
@@ -982,8 +974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
+  waitTime: 0.3
   destroyTime: 0.5
   image: {fileID: 877260032}
   rectTransform: {fileID: 877260031}
@@ -1045,7 +1036,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 19e5f3f2f77b66d49a13782e6e8f4fac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1193,8 +1184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
+  waitTime: 0.3
   destroyTime: 0.5
   image: {fileID: 949615301}
   rectTransform: {fileID: 949615299}
@@ -1403,8 +1393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
+  waitTime: 0.3
   destroyTime: 0.5
   image: {fileID: 1329237945}
   rectTransform: {fileID: 1329237943}
@@ -1499,8 +1488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
+  waitTime: 0.3
   destroyTime: 0.5
   image: {fileID: 1460713925}
   rectTransform: {fileID: 1460713923}
@@ -1697,8 +1685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
+  waitTime: 0.3
   destroyTime: 0.5
   image: {fileID: 1695346163}
   rectTransform: {fileID: 1695346161}
@@ -1938,8 +1925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
+  waitTime: 0.3
   destroyTime: 0.5
   image: {fileID: 1801350545}
   rectTransform: {fileID: 1801350543}
@@ -2034,8 +2020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
+  waitTime: 0.3
   destroyTime: 0.5
   image: {fileID: 1900672590}
   rectTransform: {fileID: 1900672588}
@@ -2088,6 +2073,7 @@ GameObject:
   - component: {fileID: 1924640360}
   - component: {fileID: 1924640362}
   - component: {fileID: 1924640361}
+  - component: {fileID: 1924640363}
   m_Layer: 5
   m_Name: TimeBar
   m_TagString: Untagged
@@ -2142,7 +2128,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 1
+  m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1924640362
@@ -2153,6 +2139,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924640359}
   m_CullTransparentMesh: 1
+--- !u!114 &1924640363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924640359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ef73b6bda0cac94e9d903c18f7de7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 30
+  nowTime: 30
+  timeBar: {fileID: 1924640361}
+  timeGo: 1
 --- !u!1 &2022676302
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,8 +2272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   rotateSpeed: 360
-  rotateTime: 1
-  waitTime: 1
+  waitTime: 0.3
   destroyTime: 0.5
   image: {fileID: 2054009499}
   rectTransform: {fileID: 2054009497}
