@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ColdNoodleInputManager : MonoBehaviour
 {
+    private AudioSource _touchAudioSource;
+    public AudioSource _comboAudioSource;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _touchAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,6 +37,12 @@ public class ColdNoodleInputManager : MonoBehaviour
         {
             Debug.Log("combo 증가!");
             ColdNoodleGameManager.Instance.PlusCombo();
+            _touchAudioSource.Play();
+            if (ColdNoodleGameManager.Instance.combo % 20 == 0)
+            {
+                _comboAudioSource.Play();
+                // 꼬끼오
+            }
         }
         else
         {
@@ -52,7 +61,6 @@ public class ColdNoodleInputManager : MonoBehaviour
             moveBasic.MoveNext(i+2); //i가 처음 0이고 [2]로 이동해야함
             // 다시 넣음
             ColdNoodleGameManager.Instance.queue.Enqueue(ColdNoodleGameManager.Instance.curChicken);
-
         }
         ColdNoodleGameManager.Instance.EnqueueRandomChicken();
 
