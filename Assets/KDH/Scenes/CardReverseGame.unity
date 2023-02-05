@@ -220,7 +220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1234621829226172151, guid: 359c7d60d0c488e489b913e07f38f6d7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1234621829852645663, guid: 359c7d60d0c488e489b913e07f38f6d7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -290,11 +290,10 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1234621829226172151, guid: 359c7d60d0c488e489b913e07f38f6d7, type: 3}
   m_PrefabInstance: {fileID: 5425302}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5425305
+--- !u!114 &5425305 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2767420995248751523, guid: 359c7d60d0c488e489b913e07f38f6d7, type: 3}
+  m_PrefabInstance: {fileID: 5425302}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5425304}
   m_Enabled: 1

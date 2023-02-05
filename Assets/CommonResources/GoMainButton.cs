@@ -7,6 +7,7 @@ public class GoMainButton : MonoBehaviour
 {
     public void SelectMainMenuButton()
     {
+        SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
         Time.timeScale = 1f;
         LoadingSceneManager.instance.LoadScene(0);
     }

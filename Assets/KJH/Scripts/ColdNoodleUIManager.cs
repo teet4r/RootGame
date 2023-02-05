@@ -62,6 +62,7 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
     }
     public void Pause()
     {
+        SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
         pauseUI.SetActive(true);
         comboEffect.SetActive(false);
         for (int i = 0; i < ColdNoodleGameManager.Instance.moveTransform.Length; i++)
@@ -81,6 +82,7 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
 
     public void GoBack()
     {
+        SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
         pauseUI.SetActive(false);
         comboEffect.SetActive(true);
         for (int i = 0; i < ColdNoodleGameManager.Instance.moveTransform.Length; i++)
@@ -92,6 +94,7 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
 
     public void GoMain()
     {
+        SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
         LoadingSceneManager.instance.LoadScene(0);
         Time.timeScale = 1;
     }
@@ -105,6 +108,7 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
     }
     public void LoadChick()
     {
+        SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
         Time.timeScale = 1;
         SceneManager.LoadScene(2);
     }
