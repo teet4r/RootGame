@@ -138,7 +138,6 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
         {
             moveTransform[i].gameObject.SetActive(false);    
         }
-        Time.timeScale = 0;
         // 게임 종료, UI 표시(다시하기, Main 이동) 
     }
     

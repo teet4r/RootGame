@@ -45,6 +45,7 @@ public class LoadingScene : MonoBehaviour
 
     IEnumerator FillLoadingBar()
     {
+        Debug.Log("LOADING...");
         float fillAmount = 0f;
         while (true)
         {
@@ -53,6 +54,7 @@ public class LoadingScene : MonoBehaviour
                 check = true;
                 SceneManager.LoadScene(sceneNum);
             }
+            Debug.Log("FILL AMOUNT:"+images[sceneNum - 1].fillAmount+"T:"+Time.timeScale);
             images[sceneNum - 1].fillAmount = fillAmount;
             fillAmount += Time.deltaTime / loadingTime;
             yield return null;

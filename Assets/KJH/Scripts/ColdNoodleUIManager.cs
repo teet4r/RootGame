@@ -77,7 +77,6 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
         leftBtn.interactable = false;
         rightBtn.interactable = false;
         gameOverUI.SetActive(true);
-        Time.timeScale = 0;
     }
 
     public void GoBack()
