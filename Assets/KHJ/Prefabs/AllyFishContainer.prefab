@@ -142,3 +142,4 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 3294691852322453252}
   _capsuleCollider: {fileID: -6686923394030213254}
   _rigidbody: {fileID: 7272209600297764771}
+  _hpText: {fileID: 0}
