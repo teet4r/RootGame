@@ -17,7 +17,7 @@ MonoBehaviour:
   _colliderSize: {x: 0.359, y: 0.285}
   _fishType: 0
   _color: {r: 1, g: 1, b: 1, a: 1}
-  _bullet: {fileID: 6939951058189808208, guid: 2235028f1e0935a4eab54506d2b789e2, type: 3}
+  _bullet: {fileID: 3151629852947152569, guid: 3f8894b181c9d7442ba12deb21e20a1f, type: 3}
   _maxHp: 150
   _damage: 0
   _speed: 2
