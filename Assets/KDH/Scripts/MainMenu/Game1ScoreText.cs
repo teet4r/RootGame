@@ -9,13 +9,13 @@ public class Game1ScoreText : MonoBehaviour
     private void OnEnable()
     {
         scoreText = GetComponent<Text>();
-        if (ScoreManager.instance.Game1ScoreMax == -1f)
+        if (ScoreManager.instance.Game1ScoreMax <= 0f)
         {
             scoreText.text = "기록 없음";
         }
         else
         {
-            scoreText.text = $"최고 기록 : {ScoreManager.instance.Game1ScoreMax}";
+            scoreText.text = $"최고 기록 : {ScoreManager.instance.Game1ScoreMax}초";
         }
     }
 }

@@ -8,14 +8,12 @@ public class GameOverWindowButtons : MonoBehaviour
     public void SelectMainMenuButton()
     {
         SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
-        SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
         LoadingSceneManager.instance.LoadScene(0);
     }
 
     public void SelectRetryGameButton()
     {
         SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
-        SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LoadingSceneManager.instance.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

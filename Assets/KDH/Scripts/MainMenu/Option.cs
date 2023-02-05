@@ -37,12 +37,14 @@ public class Option : MonoBehaviour
 
     public void CloseOptionWindow()
     {
+        SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
         optionWindow.SetActive(false);
         Time.timeScale = 1f;
     }
 
     public void OpenOptionWindow()
     {
+        SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
         CheckScene();
         optionWindow.SetActive(true);
         Time.timeScale = 0f;
@@ -62,6 +64,7 @@ public class Option : MonoBehaviour
 
     public void MoveToMainMenu()
     {
+        SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
         CloseOptionWindow();
         LoadingSceneManager.instance.LoadScene(0);
     }
