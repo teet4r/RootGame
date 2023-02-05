@@ -30,5 +30,6 @@ public enum Bgm
 
 public enum Sfx
 {
-   CardSelect, CardSuccess, CardFail, ButtonClick
+   CardSelect, CardSuccess, CardFail, ButtonClick,
+   BungkoSummon, BungkoAttack, BungkoDead,
 }
