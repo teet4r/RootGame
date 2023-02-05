@@ -298,7 +298,7 @@ public class DefenseGameManager : MonoBehaviour
     void Start()
     {
         allyHome.tr.position = new Vector2(0f, -cameraHalfHeight + cameraHalfHeight * 2f * 0.2f + 0.15f);
-        enemyHome.tr.position = new Vector2(0f, cameraHalfHeight - (144 * (cameraHalfHeight / screenHalfHeight)));
+        enemyHome.tr.position = new Vector2(0f, -0.2f + cameraHalfHeight - (144 * (cameraHalfHeight / screenHalfHeight)));
 
         _totalTime = 0f;
 

@@ -15,8 +15,8 @@ public class CostText : MonoBehaviour
 
     void Start()
     {
-        _time = Time.time;
-        _totalTime = Time.time;
+        _time = 0f;
+        _totalTime = 0f;
     }
     void Update()
     {
