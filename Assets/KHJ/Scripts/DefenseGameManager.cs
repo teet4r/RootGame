@@ -281,6 +281,9 @@ public class DefenseGameManager : MonoBehaviour
             }),
     };
 
+    [SerializeField] GameObject _clearGroup;
+    [SerializeField] GameObject _gameOverGroup;
+
     void Awake()
     {
         if (instance == null)
@@ -298,6 +301,8 @@ public class DefenseGameManager : MonoBehaviour
         enemyHome.tr.position = new Vector2(0f, cameraHalfHeight - (144 * (cameraHalfHeight / screenHalfHeight)));
 
         _totalTime = 0f;
+
+        SoundManager.Instance.BgmAudio.Play(Bgm.DefenseGame);
     }
     void Update()
     {
@@ -324,6 +329,7 @@ public class DefenseGameManager : MonoBehaviour
         clone.SpriteRenderer.sprite = data.Sprite;
         clone.SpriteRenderer.color = data.Color;
         clone.mainTarget = enemyHome.transform;
+        SoundManager.Instance.SfxAudio.Play(Sfx.BungkoSummon);
     }
     public void MakeEnemyFish(int index, Vector3 position)
     {
@@ -337,6 +343,7 @@ public class DefenseGameManager : MonoBehaviour
         clone.SpriteRenderer.sprite = data.Sprite;
         clone.SpriteRenderer.color = data.Color;
         clone.mainTarget = allyHome.transform;
+        SoundManager.Instance.SfxAudio.Play(Sfx.BungkoSummon);
     }
     public void MakeEnemyFish(Vector3 position)
     {
@@ -350,6 +357,7 @@ public class DefenseGameManager : MonoBehaviour
         clone.SpriteRenderer.sprite = data.Sprite;
         clone.SpriteRenderer.color = data.Color;
         clone.mainTarget = allyHome.transform;
+        SoundManager.Instance.SfxAudio.Play(Sfx.BungkoSummon);
     }
 
     void _ButtonEventListener()
@@ -376,28 +384,34 @@ public class DefenseGameManager : MonoBehaviour
                 case 6: // 0번 버튼
                     _isButtonClicked = true;
                     _clickedButtonIndex = 0;
+                    SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
                     break;
                 case 7: // 1번 버튼
                     _isButtonClicked = true;
                     _clickedButtonIndex = 1;
+                    SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
                     break;
                 case 8: // 2번 버튼
                     _isButtonClicked = true;
                     _clickedButtonIndex = 2;
+                    SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
                     break;
                 case 9: // 3번 버튼
                     _isButtonClicked = true;
                     _clickedButtonIndex = 3;
+                    SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
                     break;
                 case 10: // 4번 버튼
                     _isButtonClicked = true;
                     _clickedButtonIndex = 4;
+                    SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
                     break;
             }
         }
     }
     void _WaveRunner()
     {
+        if (isGameOver) return;
         if (_waveIndex >= _waves.Length) return;
 
         _totalTime += Time.deltaTime;
@@ -418,16 +432,22 @@ public class DefenseGameManager : MonoBehaviour
         {
             isWin = false;
             isGameOver = true;
+            _gameOverGroup.SetActive(true);
+            ScoreManager.instance.SetGame1Score(_totalTime);
         }
         else if (allyHome.curHp > 0 && enemyHome.curHp <= 0)
         {
             isWin = true;
             isGameOver = true;
+            _clearGroup.SetActive(true);
+            ScoreManager.instance.SetGame1Score(_totalTime);
         }
         else if (allyHome.curHp <= 0 && enemyHome.curHp > 0)
         {
             isWin = false;
             isGameOver = true;
+            _gameOverGroup.SetActive(true);
+            ScoreManager.instance.SetGame1Score(_totalTime);
         }
     }
 }

@@ -83,6 +83,7 @@ public class EnemyController : MonoBehaviour
         _curHp = Mathf.Max(_curHp - damage, 0);
         if (_curHp <= 0)
         {
+            SoundManager.Instance.SfxAudio.Play(Sfx.BungkoDead);
             DataManager.instance.costText.AddCost(5);
             Destroy(gameObject);
         }
@@ -97,6 +98,7 @@ public class EnemyController : MonoBehaviour
         var bullet = Instantiate(data.Bullet, _transform.position, _transform.rotation);
         var enemyBullet = bullet.GetComponent<EnemyBullet>();
         enemyBullet.damage = data.Damage;
+        SoundManager.Instance.SfxAudio.Play(Sfx.BungkoAttack);
     }
     void _LookAt(Vector2 targetPosition)
     {
