@@ -39,4 +39,9 @@ public class TimeBar : MonoBehaviour
     {
         nowTime = maxTime;
     }
+
+    public void StopTImeBar()
+    {
+        timeGo = false;
+    }
 }

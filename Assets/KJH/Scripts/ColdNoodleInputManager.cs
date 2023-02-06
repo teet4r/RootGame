@@ -10,13 +10,12 @@ public class ColdNoodleInputManager : MonoBehaviour
     public AudioSource _comboAudioSource;
 
     private bool nowisRight;
-    // Start is called before the first frame update
+
     void Start()
     {
         _touchAudioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))

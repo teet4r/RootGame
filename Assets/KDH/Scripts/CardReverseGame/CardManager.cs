@@ -76,6 +76,7 @@ public class CardManager : MonoBehaviour
 
     public void ClearGame()
     {
+        TimeBar.instance.StopTImeBar();
         ScoreManager.instance.SetGame3Score(score);
         clearWindow.SetActive(true);
     }

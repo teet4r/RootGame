@@ -26,7 +26,6 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
 
     float startTime;
     
-    // Start is called before the first frame update
     void Start()
     {
         startTime = Time.time;

@@ -18,7 +18,7 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
     public AudioSource comboFail;
     public float comboScaleMultiplier=1f;
     public RectTransform _rectTransform;
-    // Start is called before the first frame update
+
     void Start()
     {
         leftBtn.interactable = true;
@@ -28,7 +28,6 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
         _rectTransform = GetComponent<RectTransform>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Min 0s, Max 60s
@@ -98,13 +97,6 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
         Time.timeScale = 1;
     }
 
-    public void LoadWaitScene()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(5);
-        //ColdNoodleGameManager.Instance.DestrotyChicken();
-        //ColdNoodleGameManager.Instance.MakeRandomNoodle();
-    }
     public void LoadChick()
     {
         SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);

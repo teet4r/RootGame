@@ -18,12 +18,10 @@ public class ColdNoodleBasic : MonoBehaviour
     public void MoveNext(int index)
     {
         this.transform.DOMove(ColdNoodleGameManager.Instance.moveTransform[index].position,0.2f).SetEase(Ease.OutBounce);
-        Debug.Log($" isRight : {isRight}가 transform[{index}]로 이동");
     }
     
     public void MoveLeftRight(bool inputIsRight)
     {
-        Debug.Log($"isRight : {isRight}");
         if (inputIsRight)
         {
             this.transform.DOMove(ColdNoodleGameManager.Instance.moveTransform[1].position,0.2f).SetEase(Ease.OutBounce);
@@ -33,9 +31,5 @@ public class ColdNoodleBasic : MonoBehaviour
             this.transform.DOMove(ColdNoodleGameManager.Instance.moveTransform[0].position,0.2f).SetEase(Ease.OutBounce);
             spriteRenderer.DOFade(0, 0.3f);
         }
-
-        //Destroy(this);
-        // ColdNoodleGameManager.Instance.moveTransform[0] 왼쪽 버튼 트랜스폼
-        // ColdNoodleGameManager.Instance.moveTransform[1] 오른쪽 버튼 트랜스폼
     }
 }
