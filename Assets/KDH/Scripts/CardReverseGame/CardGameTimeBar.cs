@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeBar : MonoBehaviour
+public class CardGameTimeBar : MonoBehaviour
 {
-    public static TimeBar instance;
+    public static CardGameTimeBar instance;
 
     [SerializeField] float maxTime;
     [SerializeField] float nowTime;

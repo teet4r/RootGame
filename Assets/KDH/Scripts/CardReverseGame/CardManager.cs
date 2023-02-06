@@ -39,11 +39,11 @@ public class CardManager : MonoBehaviour
             {
                 if (stage > 3)
                 {
-                    score = TimeBar.instance.NowTime;
+                    score = CardGameTimeBar.instance.NowTime;
                     ClearGame();
                     yield break;
                 }
-                TimeBar.instance.FillTimeBar();
+                CardGameTimeBar.instance.FillTimeBar();
                 SetStage();
             }
             goNext = true;
@@ -76,7 +76,7 @@ public class CardManager : MonoBehaviour
 
     public void ClearGame()
     {
-        TimeBar.instance.StopTImeBar();
+        CardGameTimeBar.instance.StopTImeBar();
         ScoreManager.instance.SetGame3Score(score);
         clearWindow.SetActive(true);
     }
