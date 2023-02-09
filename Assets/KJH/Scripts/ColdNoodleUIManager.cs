@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
-public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
+public class ColdNoodleUIManager : Singleton<ColdNoodleUIManager>, ICustomUpdate
 {
     public Button leftBtn;
     public Button rightBtn;
@@ -17,6 +15,10 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
     public float comboScaleMultiplier=1f;
     public RectTransform _rectTransform;
 
+    void OnEnable()
+    {
+        RegisterCustomUpdate();
+    }
     void Start()
     {
         leftBtn.interactable = true;
@@ -24,8 +26,7 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
         timeImage.fillAmount = ColdNoodleGameManager.Instance.timeCurrent / 60f;
         _rectTransform = GetComponent<RectTransform>();
     }
-
-    void Update()
+    public void CustomUpdate()
     {
         // Min 0s, Max 60s
         //timeImage.value = ColdNoodleGameManager.Instance.timeCurrent;
@@ -33,6 +34,11 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
         scoreText.text = ColdNoodleGameManager.Instance.score.ToString();
         comboText.text = ColdNoodleGameManager.Instance.combo.ToString() + " Combo!";
     }
+    void OnDisable()
+    {
+        DeregisterCustomUpdate();
+    }
+
     [ContextMenu("shake")]
     public void ShakeCombo()
     {
@@ -99,5 +105,16 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
         SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
         Time.timeScale = 1;
         SceneManager.LoadScene(2);
+    }
+
+
+
+    public void RegisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.RegisterCustomUpdate(this);
+    }
+    public void DeregisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.DeregisterCustomUpdate(this);
     }
 }

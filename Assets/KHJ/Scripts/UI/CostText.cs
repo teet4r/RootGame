@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CostText : MonoBehaviour
+public class CostText : MonoBehaviour, ICustomUpdate
 {
     public Text costText = null;
     public int maxCost = 600;
@@ -13,12 +11,16 @@ public class CostText : MonoBehaviour
     float _time;
     float _totalTime;
 
+    void OnEnable()
+    {
+        RegisterCustomUpdate();
+    }
     void Start()
     {
         _time = 0f;
         _totalTime = 0f;
     }
-    void Update()
+    public void CustomUpdate()
     {
         if (DefenseGameManager.instance.isGameOver) return;
 
@@ -38,6 +40,10 @@ public class CostText : MonoBehaviour
             _time = 0f;
         }
     }
+    void OnDisable()
+    {
+        DeregisterCustomUpdate();
+    }
 
     public void UpdateCost(int newCost)
     {
@@ -47,5 +53,16 @@ public class CostText : MonoBehaviour
     public void AddCost(int additionalCost)
     {
         UpdateCost(curCost + additionalCost);
+    }
+
+
+
+    public void RegisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.RegisterCustomUpdate(this);
+    }
+    public void DeregisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.DeregisterCustomUpdate(this);
     }
 }

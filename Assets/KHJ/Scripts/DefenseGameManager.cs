@@ -15,7 +15,7 @@ public class Wave
     }
 }
 
-public class DefenseGameManager : MonoBehaviour
+public class DefenseGameManager : MonoBehaviour, ICustomUpdate
 {
     public static DefenseGameManager instance = null;
     public float cameraHalfHeight;
@@ -295,6 +295,10 @@ public class DefenseGameManager : MonoBehaviour
         screenHalfHeight = Screen.height / 2;
         screenHalfWidth = Screen.width / 2;
     }
+    void OnEnable()
+    {
+        RegisterCustomUpdate();
+    }
     void Start()
     {
         allyHome.tr.position = new Vector2(0f, -cameraHalfHeight + cameraHalfHeight * 2f * 0.2f + 0.15f);
@@ -304,13 +308,17 @@ public class DefenseGameManager : MonoBehaviour
 
         SoundManager.Instance.BgmAudio.Play(Bgm.DefenseGame);
     }
-    void Update()
+    public void CustomUpdate()
     {
         if (isGameOver) return;
 
         _JudgeWin();
         _ButtonEventListener();
         _WaveRunner();
+    }
+    void OnDisable()
+    {
+        DeregisterCustomUpdate();
     }
 
     public void MakeAllyFish(int buttonIndex, Vector3 position)
@@ -449,5 +457,16 @@ public class DefenseGameManager : MonoBehaviour
             _gameOverGroup.SetActive(true);
             ScoreManager.instance.SetGame1Score(_totalTime);
         }
+    }
+
+
+
+    public void RegisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.RegisterCustomUpdate(this);
+    }
+    public void DeregisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.DeregisterCustomUpdate(this);
     }
 }

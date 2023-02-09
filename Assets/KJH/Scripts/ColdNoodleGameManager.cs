@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManager>
+public class ColdNoodleGameManager : Singleton<ColdNoodleGameManager>, ICustomUpdate
 {
     public Queue<GameObject> queue;
     public Transform[] moveTransform; // 0:left, 1:right, 2,3,4,5,6,7 
@@ -25,7 +22,11 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     private float timePlus;
 
     float startTime;
-    
+
+    void OnEnable()
+    {
+        RegisterCustomUpdate();
+    }
     void Start()
     {
         startTime = Time.time;
@@ -45,11 +46,14 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
             MakeRandomNoodle();
         }
     }
-
-    private void Update()
+    public void CustomUpdate()
     {
         if (timeCurrent <= 0f) GameOver();
         timeCurrent -= Time.deltaTime * timemultiflyvalue * (Time.time - startTime);
+    }
+    void OnDisable()
+    {
+        DeregisterCustomUpdate();
     }
 
     public void MakeRandomNoodle()
@@ -137,5 +141,15 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
         }
         // 게임 종료, UI 표시(다시하기, Main 이동) 
     }
-    
+
+
+
+    public void RegisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.RegisterCustomUpdate(this);
+    }
+    public void DeregisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.DeregisterCustomUpdate(this);
+    }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class RayChecker : MonoBehaviour
+public class RayChecker : MonoBehaviour, ICustomUpdate
 {
     PointerEventData pointer = new PointerEventData(null);
     List<RaycastResult> raycastResults = new();
@@ -11,12 +11,15 @@ public class RayChecker : MonoBehaviour
     Card firstSelectedCard;
     Card secondSelectedCard;
 
+    private void OnEnable()
+    {
+        RegisterCustomUpdate();
+    }
     private void Start()
     {
         SoundManager.Instance.BgmAudio.Play(Bgm.CardGame);
     }
-
-    private void Update()
+    public void CustomUpdate()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -66,11 +69,26 @@ public class RayChecker : MonoBehaviour
             raycastResults.Clear();
         }
     }
+    private void OnDisable()
+    {
+        DeregisterCustomUpdate();
+    }
 
     IEnumerator PlaySound(Sfx _sfx, float _time)
     {
         yield return new WaitForSeconds(_time);
         SoundManager.Instance.SfxAudio.Play(_sfx);
         yield break;
+    }
+
+
+
+    public void RegisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.RegisterCustomUpdate(this);
+    }
+    public void DeregisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.DeregisterCustomUpdate(this);
     }
 }
