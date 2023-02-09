@@ -41,9 +41,9 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
     [ContextMenu("shake2")]
     public void ShakeCombo2()
     {
-        comboScaleMultiplier += 0.2f;
+        comboScaleMultiplier += 0.12f;
         comboEffect.transform.DOScale(comboScaleMultiplier, 0.5f);
-        comboEffect.transform.DOShakeScale(0.15f, 3, 25).SetEase(Ease.InOutBounce);
+        comboEffect.transform.DOShakeScale(0.15f, 1, 25).SetEase(Ease.InOutBounce);
     }
 
     public void MoY()

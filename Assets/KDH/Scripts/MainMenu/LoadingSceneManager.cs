@@ -22,7 +22,6 @@ public class LoadingSceneManager : MonoBehaviour
 
     public void LoadScene(int _num)
     {
-        Debug.Log(_num);
         sceneNum = _num;
         if (_num >= 1 && _num <= 3)
         {

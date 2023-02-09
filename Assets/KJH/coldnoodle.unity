@@ -655,7 +655,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &412064410
 GameObject:
@@ -717,7 +717,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &434745948
 GameObject:
@@ -792,7 +792,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &704453639
 GameObject:
@@ -1042,7 +1042,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1484604217}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ColdNoodleUIManager, Assembly-CSharp
         m_MethodName: GoMain
         m_Mode: 1
@@ -1231,7 +1231,7 @@ MonoBehaviour:
   timeImage: {fileID: 1565357754}
   scoreText: {fileID: 1852801022}
   comboText: {fileID: 264528937}
-  comboScaleMultiplier: 1
+  comboScaleMultiplier: 0.6
   _rectTransform: {fileID: 0}
 --- !u!114 &1012050846
 MonoBehaviour:
@@ -1835,7 +1835,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1484604217}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ColdNoodleUIManager, Assembly-CSharp
         m_MethodName: GoBack
         m_Mode: 1
@@ -1986,60 +1986,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
---- !u!1 &1484604216
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1484604218}
-  - component: {fileID: 1484604217}
-  m_Layer: 0
-  m_Name: UIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1484604217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484604216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73bbbc3924920804a8802cd376a9b0ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftBtn: {fileID: 1051996802}
-  rightBtn: {fileID: 723571875}
-  pauseUI: {fileID: 1101681307}
-  gameOverUI: {fileID: 328454303}
-  comboEffect: {fileID: 184311725}
-  timeImage: {fileID: 1565357754}
-  scoreText: {fileID: 1852801022}
-  comboText: {fileID: 264528937}
-  comboScaleMultiplier: 1
-  _rectTransform: {fileID: 0}
---- !u!4 &1484604218
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484604216}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1498656936
 GameObject:
   m_ObjectHideFlags: 0
@@ -2549,7 +2495,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2123234800
 GameObject:
