@@ -2301,7 +2301,7 @@ MonoBehaviour:
   p:
   - {fileID: 1920552366}
   - {fileID: 378529704}
-  curChicken: {fileID: 0}
+  curChicken: {fileID: 4422038030936755982, guid: d01d8702af301d2439081338c5e77847, type: 3}
   friedPrefab: {fileID: 5710830055457809990, guid: 71dc7a778a4773a4abb71a95dbacd51b, type: 3}
   saucePrefab: {fileID: 1902455577753334100, guid: 89287e6dec886f542a96571a10e90be3, type: 3}
   score: 0

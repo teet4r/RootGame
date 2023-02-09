@@ -1,12 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LoadingScene : MonoBehaviour
+public class LoadingScene : MonoBehaviour, ICustomUpdate
 {
-    public static LoadingScene instance;
+    public static LoadingScene instance = null;
 
     [SerializeField] GameObject[] loadingGroups;
     [SerializeField] Image[] images;
@@ -16,16 +15,24 @@ public class LoadingScene : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+            instance = this;
     }
-
-    private void Update()
+    private void OnEnable()
+    {
+        RegisterCustomUpdate();
+    }
+    public void CustomUpdate()
     {
         if (check)
         {
             check = false;
             SetSceneNum();
         }
+    }
+    private void OnDisable()
+    {
+        DeregisterCustomUpdate();
     }
 
     void SetSceneNum()
@@ -57,5 +64,14 @@ public class LoadingScene : MonoBehaviour
             fillAmount += Time.deltaTime / loadingTime;
             yield return null;
         }
+    }
+
+    public void RegisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.RegisterCustomUpdate(this);
+    }
+    public void DeregisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.DeregisterCustomUpdate(this);
     }
 }

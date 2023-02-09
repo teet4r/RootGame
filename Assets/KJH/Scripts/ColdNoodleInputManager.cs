@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class ColdNoodleInputManager : MonoBehaviour
+public class ColdNoodleInputManager : MonoBehaviour, ICustomUpdate
 {
-    void Update()
+    void OnEnable()
+    {
+        RegisterCustomUpdate();
+    }
+    public void CustomUpdate()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -16,6 +17,10 @@ public class ColdNoodleInputManager : MonoBehaviour
         {
             tryLeftRight(true);
         }
+    }
+    void OnDisable()
+    {
+        DeregisterCustomUpdate();
     }
 
     public void left()
@@ -32,19 +37,19 @@ public class ColdNoodleInputManager : MonoBehaviour
         if (ColdNoodleUIManager.Instance.leftBtn.interactable && ColdNoodleUIManager.Instance.rightBtn.interactable)
         {
             ColdNoodleGameManager.Instance.curChicken = ColdNoodleGameManager.Instance.DequeueChicken();
-            Debug.Log($"시도 성공 : {ColdNoodleGameManager.Instance.curChicken.TryGetComponent(out ColdNoodleBasic basic)}");
-            if (basic.isRight == inputIsRight)
+            if (ColdNoodleGameManager.Instance.curChicken.TryGetComponent(out ColdNoodleBasic basic))
             {
-                ColdNoodleGameManager.Instance.PlusCombo();
-                SoundManager.Instance.SfxAudio.Play(Sfx.ChickenButton);
-                if (ColdNoodleGameManager.Instance.combo % 20 == 0)
+                if (basic.isRight == inputIsRight)
                 {
-                    SoundManager.Instance.SfxAudio.Play(Sfx.ChickenCombo);
+                    ColdNoodleGameManager.Instance.PlusCombo();
+                    SoundManager.Instance.SfxAudio.Play(Sfx.ChickenButton);
+                    if (ColdNoodleGameManager.Instance.combo % 20 == 0)
+                    {
+                        SoundManager.Instance.SfxAudio.Play(Sfx.ChickenCombo);
+                    }
                 }
-            }
-            else
-            {
-                ColdNoodleGameManager.Instance.FailCombo(); // 여기서 GameOver 확인
+                else
+                    ColdNoodleGameManager.Instance.FailCombo(); // 여기서 GameOver 확인
             }
             ColdNoodleGameManager.Instance.TimeCheck();
             // 1. 젤 아래 왼쪽, 오른쪽 보냄
@@ -63,5 +68,16 @@ public class ColdNoodleInputManager : MonoBehaviour
             }
             ColdNoodleGameManager.Instance.EnqueueRandomChicken();
         }
+    }
+
+
+
+    public void RegisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.RegisterCustomUpdate(this);
+    }
+    public void DeregisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.DeregisterCustomUpdate(this);
     }
 }

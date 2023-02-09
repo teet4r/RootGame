@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// 하이어라키에 존재해야하는 싱글턴
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class PrefabricatedSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     public static T Instance

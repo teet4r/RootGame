@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, ICustomUpdate
 {
     public Transform Transform
     {
@@ -35,12 +35,16 @@ public class EnemyController : MonoBehaviour
     float _prevFireTime;
     float _fireRate = 1f;
 
+    void OnEnable()
+    {
+        RegisterCustomUpdate();
+    }
     void Start()
     {
         _curHp = data.MaxHp;
         _prevFireTime = Time.time;
     }
-    void Update()
+    public void CustomUpdate()
     {
         if (DefenseGameManager.instance.isGameOver) return;
 
@@ -75,6 +79,10 @@ public class EnemyController : MonoBehaviour
                 _enemyDetected = false;
         }
     }
+    void OnDisable()
+    {
+        DeregisterCustomUpdate();
+    }
 
     public void GetDamage(int damage)
     {
@@ -104,5 +112,16 @@ public class EnemyController : MonoBehaviour
     {
         var angle = Mathf.Atan2(targetPosition.y - _transform.position.y, targetPosition.x - _transform.position.x) * Mathf.Rad2Deg;
         _transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+    }
+
+
+
+    public void RegisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.RegisterCustomUpdate(this);
+    }
+    public void DeregisterCustomUpdate()
+    {
+        CustomUpdateManager.Instance.DeregisterCustomUpdate(this);
     }
 }
