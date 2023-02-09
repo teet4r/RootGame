@@ -112,7 +112,7 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     public void FailCombo()
     {
         combo = 0;
-        timePlus -= 20;
+        timePlus = -20f;
         ColdNoodleUIManager.Instance.resetComboSize();
     }
 

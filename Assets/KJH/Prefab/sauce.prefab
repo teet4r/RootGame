@@ -98,3 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRight: 1
+  isMoving: 0
+  t: 0.5
+  currentTarget: {fileID: 0}
+  easeLR: 22
+  easeMove: 1
