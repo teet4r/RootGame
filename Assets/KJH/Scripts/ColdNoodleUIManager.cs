@@ -2,11 +2,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
-public class ColdNoodleUIManager : Singleton<ColdNoodleUIManager>, ICustomUpdate
+public class ColdNoodleUIManager : MonoBehaviour, ICustomUpdate
 {
+    public static ColdNoodleUIManager Instance;
+
     public Button leftBtn;
     public Button rightBtn;
-    public GameObject pauseUI;
     public GameObject gameOverUI;
     public GameObject comboEffect;
     public Image timeImage;
@@ -15,6 +16,11 @@ public class ColdNoodleUIManager : Singleton<ColdNoodleUIManager>, ICustomUpdate
     public float comboScaleMultiplier=1f;
     public RectTransform _rectTransform;
 
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     void OnEnable()
     {
         RegisterCustomUpdate();
@@ -24,7 +30,6 @@ public class ColdNoodleUIManager : Singleton<ColdNoodleUIManager>, ICustomUpdate
         leftBtn.interactable = true;
         rightBtn.interactable = true;
         timeImage.fillAmount = ColdNoodleGameManager.Instance.timeCurrent / 60f;
-        _rectTransform = GetComponent<RectTransform>();
     }
     public void CustomUpdate()
     {
@@ -36,6 +41,7 @@ public class ColdNoodleUIManager : Singleton<ColdNoodleUIManager>, ICustomUpdate
     }
     void OnDisable()
     {
+        DOTween.KillAll();
         DeregisterCustomUpdate();
     }
 
@@ -65,7 +71,6 @@ public class ColdNoodleUIManager : Singleton<ColdNoodleUIManager>, ICustomUpdate
     public void Pause()
     {
         SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
-        pauseUI.SetActive(true);
         comboEffect.SetActive(false);
         for (int i = 0; i < ColdNoodleGameManager.Instance.moveTransform.Length; i++)
         {
@@ -84,7 +89,6 @@ public class ColdNoodleUIManager : Singleton<ColdNoodleUIManager>, ICustomUpdate
     public void GoBack()
     {
         SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
-        pauseUI.SetActive(false);
         comboEffect.SetActive(true);
         for (int i = 0; i < ColdNoodleGameManager.Instance.moveTransform.Length; i++)
         {

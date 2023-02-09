@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clips:
-  - {fileID: 8300000, guid: 3e41d51bb580c454ab02ea00a928d594, type: 3}
+  - {fileID: 8300000, guid: 4d48057fcc904d1408d147d421bbc6aa, type: 3}
   - {fileID: 8300000, guid: 5d82de4947a108f44a95e914faa22b36, type: 3}
-  - {fileID: 8300000, guid: 6211d149ba390c64bb21c2d4499f06f3, type: 3}
+  - {fileID: 8300000, guid: 5cb40b2b978846546ae2268e0f75e90f, type: 3}
   - {fileID: 8300000, guid: fab7a0b9d03b8b8428b0109601edbac2, type: 3}

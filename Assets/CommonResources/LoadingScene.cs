@@ -18,6 +18,12 @@ public class LoadingScene : MonoBehaviour, ICustomUpdate
         if (instance == null)
             instance = this;
     }
+
+    private void Start()
+    {
+        SoundManager.Instance.BgmAudio.Stop();
+    }
+
     private void OnEnable()
     {
         RegisterCustomUpdate();

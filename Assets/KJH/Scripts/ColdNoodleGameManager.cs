@@ -3,8 +3,10 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ColdNoodleGameManager : Singleton<ColdNoodleGameManager>, ICustomUpdate
+public class ColdNoodleGameManager : MonoBehaviour, ICustomUpdate
 {
+    public static ColdNoodleGameManager Instance;
+
     public Queue<GameObject> queue;
     public Transform[] moveTransform; // 0:left, 1:right, 2,3,4,5,6,7 
     public Sprite[] heart;
@@ -23,6 +25,10 @@ public class ColdNoodleGameManager : Singleton<ColdNoodleGameManager>, ICustomUp
 
     float startTime;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     void OnEnable()
     {
         RegisterCustomUpdate();

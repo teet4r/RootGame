@@ -13,4 +13,9 @@
         _audioSource.clip = _clips[(int)name];
         _audioSource.Play();
     }
+
+    public void Stop()
+    {
+        _audioSource.Stop();
+    }
 }
