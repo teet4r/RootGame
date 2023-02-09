@@ -32,4 +32,5 @@ public enum Sfx
 {
    CardSelect, CardSuccess, CardFail, ButtonClick,
    BungkoSummon, BungkoAttack, BungkoDead,
+   ChickenButton, ChickenFail, ChickenCombo
 }

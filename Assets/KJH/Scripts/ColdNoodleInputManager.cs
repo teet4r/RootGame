@@ -6,16 +6,6 @@ using UnityEngine;
 
 public class ColdNoodleInputManager : MonoBehaviour
 {
-    private AudioSource _touchAudioSource;
-    public AudioSource _comboAudioSource;
-
-    private bool nowisRight;
-
-    void Start()
-    {
-        _touchAudioSource = GetComponent<AudioSource>();
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
@@ -49,10 +39,10 @@ public class ColdNoodleInputManager : MonoBehaviour
             if (basic.isRight == inputIsRight)
             {
                 ColdNoodleGameManager.Instance.PlusCombo();
-                _touchAudioSource.Play();
+                SoundManager.Instance.SfxAudio.Play(Sfx.ChickenButton);
                 if (ColdNoodleGameManager.Instance.combo % 20 == 0)
                 {
-                    _comboAudioSource.Play();
+                    SoundManager.Instance.SfxAudio.Play(Sfx.ChickenCombo);
                 }
             }
             else

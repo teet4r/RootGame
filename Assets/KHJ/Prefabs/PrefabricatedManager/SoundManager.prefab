@@ -149,6 +149,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e2eadc1e70038b240ab77ede60a58eb8, type: 3}
   - {fileID: 8300000, guid: a1775c87482196444aaa3a6c649532f4, type: 3}
   - {fileID: 8300000, guid: bd483917e51f00b449102003ae37caba, type: 3}
+  - {fileID: 8300000, guid: cd68fae66e6ec034daf7e700d276ec1b, type: 3}
+  - {fileID: 8300000, guid: 25e6087d23b48eb4db1c2fa8c274934c, type: 3}
+  - {fileID: 8300000, guid: 831087bb93cc48c4dbc8729b215ca193, type: 3}
 --- !u!1 &3963744072540152545
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,5 +344,5 @@ MonoBehaviour:
   _clips:
   - {fileID: 8300000, guid: 3e41d51bb580c454ab02ea00a928d594, type: 3}
   - {fileID: 8300000, guid: 5d82de4947a108f44a95e914faa22b36, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 6211d149ba390c64bb21c2d4499f06f3, type: 3}
   - {fileID: 8300000, guid: fab7a0b9d03b8b8428b0109601edbac2, type: 3}

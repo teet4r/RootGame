@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using DG.Tweening;
 public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
 {
-    public Button stopBtn;
     public Button leftBtn;
     public Button rightBtn;
     public GameObject pauseUI;
@@ -15,7 +14,6 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
     public Image timeImage;
     public Text scoreText;
     public Text comboText;
-    public AudioSource comboFail;
     public float comboScaleMultiplier=1f;
     public RectTransform _rectTransform;
 
@@ -24,7 +22,6 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
         leftBtn.interactable = true;
         rightBtn.interactable = true;
         timeImage.fillAmount = ColdNoodleGameManager.Instance.timeCurrent / 60f;
-        comboFail = GetComponent<AudioSource>();
         _rectTransform = GetComponent<RectTransform>();
     }
 
@@ -57,7 +54,7 @@ public class ColdNoodleUIManager : SingletonMonoBehaviour<ColdNoodleUIManager>
     {
         comboScaleMultiplier = 0.5f;
         comboEffect.transform.DOScale(comboScaleMultiplier, 0.5f);
-        comboFail.Play();
+        SoundManager.Instance.SfxAudio.Play(Sfx.ChickenFail);
     }
     public void Pause()
     {

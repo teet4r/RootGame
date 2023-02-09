@@ -111,7 +111,6 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
     }
     public void FailCombo()
     {
-        Debug.Log("FailCombo");
         combo = 0;
         timePlus -= 20;
         ColdNoodleUIManager.Instance.resetComboSize();
@@ -130,7 +129,6 @@ public class ColdNoodleGameManager : SingletonMonoBehaviour<ColdNoodleGameManage
         // 최종 점수 저장
 
         ScoreManager.instance.SetGame2Score(score);
-        Debug.Log("GameOver");
         ColdNoodleUIManager.Instance.SetActiveGameOverUI();
         ColdNoodleUIManager.Instance.MoY();
         for (int i = 0; i < moveTransform.Length; i++)

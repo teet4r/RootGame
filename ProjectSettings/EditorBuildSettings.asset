@@ -20,7 +20,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/CommonResources/LodingScene.unity
     guid: ec0fae85a3f1d19438ee8da5057a0416
-  - enabled: 1
-    path: Assets/KJH/Wait.unity
-    guid: 6c89dbae0a576c64eaf08e01fbadaae4
   m_configObjects: {}
