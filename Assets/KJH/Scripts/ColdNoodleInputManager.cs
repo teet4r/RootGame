@@ -56,13 +56,13 @@ public class ColdNoodleInputManager : MonoBehaviour, ICustomUpdate
             // 2. 두 번째칸부터 있는, queue에 있는 치킨 한 칸씩 아래로 옮김
             // 3. 아래로 옯기고 6번째 치킨추가
             basic.MoveLeftRight(inputIsRight);
-            for (int i =0 ; i < ColdNoodleGameManager.Instance.queue.Count(); i++) // Count == 5
+            for (int i = 0; i < ColdNoodleGameManager.Instance.queue.Count(); i++) // Count == 5
             { //3->2 4->3 5->4
                 //Basic의 Move()를 사용하기 위해서 꺼냄... 
                 // queue에 있는 치킨에 접근해서 Move 다음 현재 존재하는 인덱스 필요
                 ColdNoodleGameManager.Instance.curChicken = ColdNoodleGameManager.Instance.DequeueChicken();
                 ColdNoodleGameManager.Instance.curChicken.TryGetComponent(out ColdNoodleBasic moveBasic);
-                moveBasic.MoveNext(i+2); //i가 처음 8이고 [7]로 이동해야함
+                moveBasic.MoveNext(i + 2); //i가 처음 8이고 [7]로 이동해야함
                 // 다시 넣음
                 ColdNoodleGameManager.Instance.queue.Enqueue(ColdNoodleGameManager.Instance.curChicken);
             }

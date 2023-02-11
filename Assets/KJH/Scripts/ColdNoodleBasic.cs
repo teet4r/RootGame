@@ -19,18 +19,19 @@ public class ColdNoodleBasic : MonoBehaviour
     }
     public void MoveNext(int index)
     {
-        this.transform.DOMove(ColdNoodleGameManager.Instance.moveTransform[index].position,0.2f).SetEase(easeMove);
+        this.transform.DOMove(ColdNoodleGameManager.Instance.moveTransform[index].position, 0.2f).SetEase(easeMove);
     }
-    
+
     public void MoveLeftRight(bool inputIsRight)
     {
         if (inputIsRight)
         {
-            this.transform.DOMove(ColdNoodleGameManager.Instance.moveTransform[1].position,0.2f).SetEase(easeLR);
+            this.transform.DOMove(ColdNoodleGameManager.Instance.moveTransform[1].position, 0.2f).SetEase(easeLR);
             spriteRenderer.DOFade(0, 0.3f);
-        }else 
+        }
+        else
         {
-            this.transform.DOMove(ColdNoodleGameManager.Instance.moveTransform[0].position,0.2f).SetEase(easeLR);
+            this.transform.DOMove(ColdNoodleGameManager.Instance.moveTransform[0].position, 0.2f).SetEase(easeLR);
             spriteRenderer.DOFade(0, 0.3f);
         }
     }

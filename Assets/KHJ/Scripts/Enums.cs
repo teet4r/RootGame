@@ -10,6 +10,8 @@ public enum AllyFish
 
 public enum EnemyFish
 {
+    // RB: Red Bean(ÆÏ)
+    // CC: Custard Cream(½´Å©¸²)
     MiniFish_RB, MiniFish_CC,
     GoldFish,
     BurntFish_RB, BurntFish_CC,

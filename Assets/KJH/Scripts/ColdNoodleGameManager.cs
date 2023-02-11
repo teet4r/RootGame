@@ -9,8 +9,6 @@ public class ColdNoodleGameManager : MonoBehaviour, ICustomUpdate
 
     public Queue<GameObject> queue;
     public Transform[] moveTransform; // 0:left, 1:right, 2,3,4,5,6,7 
-    public Sprite[] heart;
-    public Transform[] p;
     public GameObject curChicken;
     public GameObject friedPrefab;
     public GameObject saucePrefab;
@@ -89,7 +87,7 @@ public class ColdNoodleGameManager : MonoBehaviour, ICustomUpdate
             queue.Enqueue(Instantiate(saucePrefab,moveTransform[7].position,Quaternion.identity));
         }
     }
-    public void DestrotyChicken()
+    public void DestroyChicken()
     {
         for (int i = 0; i < queue.Count(); i++)
         {
@@ -104,10 +102,8 @@ public class ColdNoodleGameManager : MonoBehaviour, ICustomUpdate
     {
         combo += 1;
         if (combo % 20 == 0)
-        {
-            Instantiate(heart[Random.Range(0, 5)], p[Random.Range(0, 2)]);
             ColdNoodleUIManager.Instance.ShakeCombo2();
-        }else ColdNoodleUIManager.Instance.ShakeCombo();
+        else ColdNoodleUIManager.Instance.ShakeCombo();
         score += 100 * scoremultiflyvalue;
         if (timePlus < 0f) timePlus = 0f;
         else timePlus += 1;
