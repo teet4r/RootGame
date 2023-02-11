@@ -37,7 +37,7 @@ public class ColdNoodleUIManager : MonoBehaviour, ICustomUpdate
         //timeImage.value = ColdNoodleGameManager.Instance.timeCurrent;
         timeImage.fillAmount = ColdNoodleGameManager.Instance.timeCurrent / 60f;
         scoreText.text = ColdNoodleGameManager.Instance.score.ToString();
-        comboText.text = $"{ColdNoodleGameManager.Instance.combo} Combo!";
+        comboText.text = ColdNoodleGameManager.Instance.combo.ToString() + " Combo!";
     }
     void OnDisable()
     {
