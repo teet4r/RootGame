@@ -11,6 +11,10 @@ public class CostText : MonoBehaviour, ICustomUpdate
     float _time;
     float _totalTime;
 
+    void Awake()
+    {
+        UpdateCost(curCost);
+    }
     void OnEnable()
     {
         RegisterCustomUpdate();
@@ -36,6 +40,7 @@ public class CostText : MonoBehaviour, ICustomUpdate
                 costPerSecond = 15;
             else
                 costPerSecond = 10;
+
             UpdateCost(curCost + costPerSecond);
             _time = 0f;
         }

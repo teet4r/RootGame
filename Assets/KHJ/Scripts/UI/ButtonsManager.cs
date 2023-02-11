@@ -9,13 +9,13 @@ public class ButtonsManager : MonoBehaviour
     [SerializeField] Image[] _fishImages = null;
 
     // 팥 순서, 슈크림 순서가 정해져 있음
-    public readonly AllyFish[] redBeans =
+    public readonly Prefab[] allyRedBeans =
     {
-        AllyFish.BurntFish_RB,
-        AllyFish.MiniFish_RB,
-        AllyFish.GoldFish,
-        AllyFish.TaiyakiFish_RB,
-        AllyFish.AgariFish_RB
+        Prefab.AllyMiniFish_RB,
+        Prefab.AllyBurntFish_RB,
+        Prefab.AllyGoldFish,
+        Prefab.AllyTaiyakiFish_RB,
+        Prefab.AllyAgariFish_RB
     };
     
     void Awake()
@@ -25,16 +25,16 @@ public class ButtonsManager : MonoBehaviour
     }
     void Start()
     {
-        SetButtons(redBeans);
+        SetButtons(allyRedBeans);
     }
 
-    public void SetButtons(params AllyFish[] fishes)
+    public void SetButtons(params Prefab[] allyFishes)
     {
-        for (int i= 0; i < fishes.Length; i++)
+        for (int i = 0; i < allyFishes.Length; i++)
         {
-            var data = DataManager.instance.allyDatas[(int)fishes[i]];
-            _fishImages[i].sprite = data.Sprite;
-            _fishCostTexts[i].text = $"{data.Cost}";
+            var fishData = DataManager.instance.datas[(int)allyFishes[i]];
+            _fishImages[i].sprite = fishData.Sprite;
+            _fishCostTexts[i].text = $"{fishData.Cost}";
         }
     }
 }

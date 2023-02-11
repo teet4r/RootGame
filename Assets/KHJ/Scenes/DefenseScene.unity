@@ -921,7 +921,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tr: {fileID: 576324892}
   maxHp: 1500
-  curHp: 0
   _hpText: {fileID: 2053447074}
 --- !u!50 &576324895
 Rigidbody2D:
@@ -1534,26 +1533,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bbfbc5beb57a4448823f3b702e1f165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allyDatas:
-  - {fileID: 11400000, guid: 91d435abc79b6a14996df75c9eba1f60, type: 2}
-  - {fileID: 11400000, guid: 7730202adc12a5247ab17ec2bc610831, type: 2}
-  - {fileID: 11400000, guid: 3bdd91e4c0058134db31f025fb1bcab1, type: 2}
-  - {fileID: 11400000, guid: 51e7800b7cec6f040b2faa8ae796f75c, type: 2}
-  - {fileID: 11400000, guid: 9a9ff2332c835504d9f18b01fdf9d249, type: 2}
-  - {fileID: 11400000, guid: 153185516c0f5f64c8ee80580c8108d1, type: 2}
-  - {fileID: 11400000, guid: 34780adf92d987a459f421101057ad96, type: 2}
-  - {fileID: 11400000, guid: 6c761c0128367f747920850566db6b2b, type: 2}
+  datas:
   - {fileID: 11400000, guid: 5f7afb138472c4743a134c8f02552600, type: 2}
-  enemyDatas:
-  - {fileID: 11400000, guid: 1b62fd80cf7682343967af164ee0d352, type: 2}
-  - {fileID: 11400000, guid: 55ddb879277184749a14ebdc3323ffa6, type: 2}
-  - {fileID: 11400000, guid: 788456453cf0a974f8937513e8b80241, type: 2}
-  - {fileID: 11400000, guid: 63788db41f4e4eb458cdc2e1ff48466f, type: 2}
-  - {fileID: 11400000, guid: 83503387ecdca744fbf118487a30fa1d, type: 2}
-  - {fileID: 11400000, guid: 91e99823ada4c17479996cb1e8766572, type: 2}
-  - {fileID: 11400000, guid: 42b05dcf193b2ac4daff9d766296be7b, type: 2}
-  - {fileID: 11400000, guid: a921aa6875703e447930f91c6a175219, type: 2}
+  - {fileID: 11400000, guid: 6c761c0128367f747920850566db6b2b, type: 2}
+  - {fileID: 11400000, guid: 9a9ff2332c835504d9f18b01fdf9d249, type: 2}
+  - {fileID: 11400000, guid: 51e7800b7cec6f040b2faa8ae796f75c, type: 2}
+  - {fileID: 11400000, guid: 3bdd91e4c0058134db31f025fb1bcab1, type: 2}
+  - {fileID: 11400000, guid: 7730202adc12a5247ab17ec2bc610831, type: 2}
+  - {fileID: 11400000, guid: 91d435abc79b6a14996df75c9eba1f60, type: 2}
+  - {fileID: 11400000, guid: 34780adf92d987a459f421101057ad96, type: 2}
+  - {fileID: 11400000, guid: 153185516c0f5f64c8ee80580c8108d1, type: 2}
   - {fileID: 11400000, guid: 23051b22cec57dc4a9a93071309bdd29, type: 2}
+  - {fileID: 11400000, guid: a921aa6875703e447930f91c6a175219, type: 2}
+  - {fileID: 11400000, guid: 83503387ecdca744fbf118487a30fa1d, type: 2}
+  - {fileID: 11400000, guid: 63788db41f4e4eb458cdc2e1ff48466f, type: 2}
+  - {fileID: 11400000, guid: 788456453cf0a974f8937513e8b80241, type: 2}
+  - {fileID: 11400000, guid: 55ddb879277184749a14ebdc3323ffa6, type: 2}
+  - {fileID: 11400000, guid: 1b62fd80cf7682343967af164ee0d352, type: 2}
+  - {fileID: 11400000, guid: 42b05dcf193b2ac4daff9d766296be7b, type: 2}
+  - {fileID: 11400000, guid: 91e99823ada4c17479996cb1e8766572, type: 2}
   costText: {fileID: 648889166}
 --- !u!4 &742150724
 Transform:
@@ -2770,7 +2768,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tr: {fileID: 1853902409}
   maxHp: 1500
-  curHp: 0
   _hpText: {fileID: 1943049614}
 --- !u!50 &1853902412
 Rigidbody2D:
@@ -2841,8 +2838,6 @@ MonoBehaviour:
   cameraHalfWidth: 0
   screenHalfHeight: 0
   screenHalfWidth: 0
-  allyController: {fileID: 7328217932343129922, guid: 08bb8ea6f552b5e478f08223152d301f, type: 3}
-  enemyController: {fileID: 2423442719340883290, guid: e4aced09952ea704e843f3a11bd25582, type: 3}
   allyHome: {fileID: 1853902411}
   enemyHome: {fileID: 576324894}
   isGameOver: 0
@@ -3413,3 +3408,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111397681}
   m_CullTransparentMesh: 1
+--- !u!1001 &4013235723438043430
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4013235723158044064, guid: ef42bfbe707fd6f42b774248dfea93e9, type: 3}
+      propertyPath: m_Name
+      value: PoolManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013235723158044078, guid: ef42bfbe707fd6f42b774248dfea93e9, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013235723158044078, guid: ef42bfbe707fd6f42b774248dfea93e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013235723158044078, guid: ef42bfbe707fd6f42b774248dfea93e9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013235723158044078, guid: ef42bfbe707fd6f42b774248dfea93e9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013235723158044078, guid: ef42bfbe707fd6f42b774248dfea93e9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013235723158044078, guid: ef42bfbe707fd6f42b774248dfea93e9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013235723158044078, guid: ef42bfbe707fd6f42b774248dfea93e9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013235723158044078, guid: ef42bfbe707fd6f42b774248dfea93e9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013235723158044078, guid: ef42bfbe707fd6f42b774248dfea93e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013235723158044078, guid: ef42bfbe707fd6f42b774248dfea93e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013235723158044078, guid: ef42bfbe707fd6f42b774248dfea93e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ef42bfbe707fd6f42b774248dfea93e9, type: 3}

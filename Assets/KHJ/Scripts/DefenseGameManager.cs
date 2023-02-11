@@ -5,9 +5,9 @@ public class Wave
 {
     public int wave;
     public int waitTime;
-    public EnemyFish[] enemies;
+    public Prefab[] enemies;
 
-    public Wave(int wave, int waitTime, EnemyFish[] enemies)
+    public Wave(int wave, int waitTime, Prefab[] enemies)
     {
         this.wave = wave;
         this.waitTime = waitTime;
@@ -23,8 +23,6 @@ public class DefenseGameManager : MonoBehaviour, ICustomUpdate
     public int screenHalfHeight;
     public int screenHalfWidth;
 
-    public AllyController allyController = null;
-    public EnemyController enemyController = null;
     public HomeController allyHome = null;
     public HomeController enemyHome = null;
     public bool isGameOver = false;
@@ -37,249 +35,251 @@ public class DefenseGameManager : MonoBehaviour, ICustomUpdate
 
     float _totalTime;
     int _waveIndex = 0;
+    #region 웨이브 배열
     Wave[] _waves =
     {
         new Wave(
-            1, 1, new EnemyFish[] {
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
+            1, 1, new Prefab[] {
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            2, 4, new EnemyFish[] {
-                EnemyFish.MiniFish_CC,
+            2, 4, new Prefab[] {
+                Prefab.EnemyMiniFish_CC,
             }),
         new Wave(
-            3, 7, new EnemyFish[] {
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
+            3, 7, new Prefab[] {
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            4, 10, new EnemyFish[] {
-                EnemyFish.TaiyakiFish_CC,
+            4, 10, new Prefab[] {
+                Prefab.EnemyTaiyakiFish_CC,
             }),
         new Wave(
-            5, 13, new EnemyFish[] {
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
+            5, 13, new Prefab[] {
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            6, 16, new EnemyFish[] {
-                EnemyFish.MiniFish_CC,
-                EnemyFish.BurntFish_CC,
+            6, 16, new Prefab[] {
+                Prefab.EnemyMiniFish_CC,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            7, 19, new EnemyFish[] {
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
+            7, 19, new Prefab[] {
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            8, 22, new EnemyFish[] {
-                EnemyFish.TaiyakiFish_CC,
+            8, 22, new Prefab[] {
+                Prefab.EnemyTaiyakiFish_CC,
             }),
         new Wave(
-            9, 25, new EnemyFish[] {
-                EnemyFish.TaiyakiFish_CC,
+            9, 25, new Prefab[] {
+                Prefab.EnemyTaiyakiFish_CC,
             }),
         new Wave(
-            10, 28, new EnemyFish[] {
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
+            10, 28, new Prefab[] {
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            11, 31, new EnemyFish[] {
-                EnemyFish.BurntFish_CC,
-                EnemyFish.TaiyakiFish_CC,
+            11, 31, new Prefab[] {
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyTaiyakiFish_CC,
             }),
         new Wave(
-            12, 34, new EnemyFish[] {
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
+            12, 34, new Prefab[] {
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            13, 37, new EnemyFish[] {
-                EnemyFish.TaiyakiFish_CC,
-                EnemyFish.TaiyakiFish_CC,
+            13, 37, new Prefab[] {
+                Prefab.EnemyTaiyakiFish_CC,
+                Prefab.EnemyTaiyakiFish_CC,
             }),
         new Wave(
-            14, 40, new EnemyFish[] {
-                EnemyFish.GoldFish,
-                EnemyFish.BurntFish_CC,
+            14, 40, new Prefab[] {
+                Prefab.EnemyGoldFish,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            15, 43, new EnemyFish[] {
-                EnemyFish.TaiyakiFish_CC,
+            15, 43, new Prefab[] {
+                Prefab.EnemyTaiyakiFish_CC,
             }),
         new Wave(
-            16, 46, new EnemyFish[] {
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
+            16, 46, new Prefab[] {
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            17, 49, new EnemyFish[] {
-                EnemyFish.AgariFish_CC,
+            17, 49, new Prefab[] {
+                Prefab.EnemyAgariFish_CC,
             }),
         new Wave(
-            18, 52, new EnemyFish[] {
-                EnemyFish.MiniFish_CC,
-                EnemyFish.MiniFish_CC,
+            18, 52, new Prefab[] {
+                Prefab.EnemyMiniFish_CC,
+                Prefab.EnemyMiniFish_CC,
             }),
         new Wave(
-            19, 55, new EnemyFish[] {
-                EnemyFish.TaiyakiFish_CC,
-                EnemyFish.TaiyakiFish_CC,
+            19, 55, new Prefab[] {
+                Prefab.EnemyTaiyakiFish_CC,
+                Prefab.EnemyTaiyakiFish_CC,
             }),
         new Wave(
-            20, 58, new EnemyFish[] {
-                EnemyFish.TaiyakiFish_CC,
-                EnemyFish.BurntFish_CC,
+            20, 58, new Prefab[] {
+                Prefab.EnemyTaiyakiFish_CC,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            21, 61, new EnemyFish[] {
-                EnemyFish.TaiyakiFish_CC,
-                EnemyFish.GoldFish,
+            21, 61, new Prefab[] {
+                Prefab.EnemyTaiyakiFish_CC,
+                Prefab.EnemyGoldFish,
             }),
         new Wave(
-            22, 64, new EnemyFish[] {
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
+            22, 64, new Prefab[] {
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            23, 67, new EnemyFish[] {
-                EnemyFish.AgariFish_CC,
-                EnemyFish.AgariFish_CC,
+            23, 67, new Prefab[] {
+                Prefab.EnemyAgariFish_CC,
+                Prefab.EnemyAgariFish_CC,
             }),
         new Wave(
-            24, 70, new EnemyFish[] {
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
+            24, 70, new Prefab[] {
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            25, 73, new EnemyFish[] {
-                EnemyFish.AgariFish_CC,
-                EnemyFish.AgariFish_CC,
-                EnemyFish.AgariFish_CC,
+            25, 73, new Prefab[] {
+                Prefab.EnemyAgariFish_CC,
+                Prefab.EnemyAgariFish_CC,
+                Prefab.EnemyAgariFish_CC,
             }),
         new Wave(
-            26, 76, new EnemyFish[] {
+            26, 76, new Prefab[] {
                 // Empty
             }),
         new Wave(
-            27, 79, new EnemyFish[] {
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.MiniFish_CC,
-                EnemyFish.MiniFish_CC,
+            27, 79, new Prefab[] {
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyMiniFish_CC,
+                Prefab.EnemyMiniFish_CC,
             }),
         new Wave(
-            28, 82, new EnemyFish[] {
-                EnemyFish.TaiyakiFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
+            28, 82, new Prefab[] {
+                Prefab.EnemyTaiyakiFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            29, 85, new EnemyFish[] {
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
+            29, 85, new Prefab[] {
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            30, 88, new EnemyFish[] {
-                EnemyFish.AgariFish_CC,
-                EnemyFish.AgariFish_CC,
-                EnemyFish.TaiyakiFish_CC,
+            30, 88, new Prefab[] {
+                Prefab.EnemyAgariFish_CC,
+                Prefab.EnemyAgariFish_CC,
+                Prefab.EnemyTaiyakiFish_CC,
             }),
         new Wave(
-            31, 91, new EnemyFish[] {
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.TaiyakiFish_CC,
+            31, 91, new Prefab[] {
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyTaiyakiFish_CC,
             }),
         new Wave(
-            32, 94, new EnemyFish[] {
-                EnemyFish.TaiyakiFish_CC,
-                EnemyFish.GoldFish,
-                EnemyFish.GoldFish,
+            32, 94, new Prefab[] {
+                Prefab.EnemyTaiyakiFish_CC,
+                Prefab.EnemyGoldFish,
+                Prefab.EnemyGoldFish,
             }),
         new Wave(
-            33, 97, new EnemyFish[] {
-                EnemyFish.GoldFish,
-                EnemyFish.GoldFish,
-                EnemyFish.GoldFish,
+            33, 97, new Prefab[] {
+                Prefab.EnemyGoldFish,
+                Prefab.EnemyGoldFish,
+                Prefab.EnemyGoldFish,
             }),
         new Wave(
-            34, 100, new EnemyFish[] {
+            34, 100, new Prefab[] {
                 // Empty
             }),
         new Wave(
-            35, 103, new EnemyFish[] {
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
+            35, 103, new Prefab[] {
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            36, 106, new EnemyFish[] {
-                EnemyFish.TaiyakiFish_CC,
-                EnemyFish.TaiyakiFish_CC,
+            36, 106, new Prefab[] {
+                Prefab.EnemyTaiyakiFish_CC,
+                Prefab.EnemyTaiyakiFish_CC,
             }),
         new Wave(
-            37, 109, new EnemyFish[] {
-                EnemyFish.AgariFish_CC,
-                EnemyFish.AgariFish_CC,
-                EnemyFish.AgariFish_CC,
+            37, 109, new Prefab[] {
+                Prefab.EnemyAgariFish_CC,
+                Prefab.EnemyAgariFish_CC,
+                Prefab.EnemyAgariFish_CC,
             }),
         new Wave(
-            38, 112, new EnemyFish[] {
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.BurntFish_CC,
+            38, 112, new Prefab[] {
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyBurntFish_CC,
             }),
         new Wave(
-            39, 115, new EnemyFish[] {
-                EnemyFish.GoldFish,
-                EnemyFish.GoldFish,
-                EnemyFish.GoldFish,
+            39, 115, new Prefab[] {
+                Prefab.EnemyGoldFish,
+                Prefab.EnemyGoldFish,
+                Prefab.EnemyGoldFish,
             }),
         new Wave(
-            40, 118, new EnemyFish[] {
+            40, 118, new Prefab[] {
                 // Empty
             }),
         new Wave(
-            41, 121, new EnemyFish[] {
-                EnemyFish.MiniFish_CC,
-                EnemyFish.BurntFish_CC,
-                EnemyFish.TaiyakiFish_CC,
-                EnemyFish.GoldFish,
-                EnemyFish.AgariFish_CC,
+            41, 121, new Prefab[] {
+                Prefab.EnemyMiniFish_CC,
+                Prefab.EnemyBurntFish_CC,
+                Prefab.EnemyTaiyakiFish_CC,
+                Prefab.EnemyGoldFish,
+                Prefab.EnemyAgariFish_CC,
             }),
     };
+    #endregion
 
     [SerializeField] GameObject _clearGroup;
     [SerializeField] GameObject _gameOverGroup;
@@ -323,48 +323,32 @@ public class DefenseGameManager : MonoBehaviour, ICustomUpdate
 
     public void MakeAllyFish(int buttonIndex, Vector3 position)
     {
-        var dataManager = DataManager.instance;
-        var data = dataManager.allyDatas[(int)ButtonsManager.instance.redBeans[buttonIndex]];
-        var remainCost = dataManager.costText.curCost - data.Cost;
-        if (remainCost < 0)
-            return;
-        dataManager.costText.UpdateCost(remainCost);
+        var fishPrefab = ButtonsManager.instance.allyRedBeans[buttonIndex];
+        var fishData = DataManager.instance.datas[(int)fishPrefab];
+        var remainCost = DataManager.instance.costText.curCost - fishData.Cost;
+        if (remainCost < 0) return;
 
         if (enemyHome == null) return;
-        var clone = Instantiate(allyController, position, Quaternion.Euler(data.Rotation));
-        clone.data = data;
-        clone.CapsuleCollider.size = data.ColliderSize;
-        clone.SpriteRenderer.sprite = data.Sprite;
-        clone.SpriteRenderer.color = data.Color;
-        clone.mainTarget = enemyHome.transform;
+        var fish = PoolManager.Instance.Get(fishPrefab) as AllyController;
+        fish.SpriteRenderer.sprite = fishData.Sprite;
+        fish.Transform.position = position;
+        fish.MainTarget = enemyHome.transform;
+        fish.data = fishData;
+        fish.gameObject.SetActive(true);
         SoundManager.Instance.SfxAudio.Play(Sfx.BungkoSummon);
+        DataManager.instance.costText.UpdateCost(remainCost);
     }
-    public void MakeEnemyFish(int index, Vector3 position)
+    public void MakeEnemyFish(Prefab enemyPrefab, Vector3 position)
     {
-        var dataManager = DataManager.instance;
-        var data = dataManager.enemyDatas[index];
+        var fish = PoolManager.Instance.Get(enemyPrefab) as EnemyController;
+        var fishData = DataManager.instance.datas[(int)enemyPrefab];
 
         if (allyHome == null) return;
-        var clone = Instantiate(enemyController, position, Quaternion.Euler(data.Rotation));
-        clone.data = data;
-        clone.CapsuleCollider.size = data.ColliderSize;
-        clone.SpriteRenderer.sprite = data.Sprite;
-        clone.SpriteRenderer.color = data.Color;
-        clone.mainTarget = allyHome.transform;
-        SoundManager.Instance.SfxAudio.Play(Sfx.BungkoSummon);
-    }
-    public void MakeEnemyFish(Vector3 position)
-    {
-        var dataManager = DataManager.instance;
-        var data = dataManager.enemyDatas[Random.Range(0, dataManager.enemyDatas.Length)];
-
-        if (allyHome == null) return;
-        var clone = Instantiate(enemyController, position, Quaternion.Euler(data.Rotation));
-        clone.data = data;
-        clone.CapsuleCollider.size = data.ColliderSize;
-        clone.SpriteRenderer.sprite = data.Sprite;
-        clone.SpriteRenderer.color = data.Color;
-        clone.mainTarget = allyHome.transform;
+        fish.SpriteRenderer.sprite = fishData.Sprite;
+        fish.Transform.position = position;
+        fish.MainTarget = allyHome.transform;
+        fish.data = fishData;
+        fish.gameObject.SetActive(true);
         SoundManager.Instance.SfxAudio.Play(Sfx.BungkoSummon);
     }
 
@@ -429,7 +413,7 @@ public class DefenseGameManager : MonoBehaviour, ICustomUpdate
             {
                 float randomX = Random.Range(-cameraHalfWidth, cameraHalfWidth);
                 float randomY = Random.Range(cameraHalfHeight * 0.8f, cameraHalfHeight);
-                MakeEnemyFish((int)_waves[_waveIndex].enemies[i], new Vector3(randomX, randomY, 0f));
+                MakeEnemyFish(_waves[_waveIndex].enemies[i], new Vector3(randomX, randomY, 0f));
             }
             _waveIndex++;
         }

@@ -5,7 +5,7 @@ public class HomeController : MonoBehaviour
 {
     public Transform tr = null;
     public int maxHp = 1000;
-    public int curHp;
+    public int curHp { get; set; } = 0;
 
     [SerializeField] Text _hpText = null;
 

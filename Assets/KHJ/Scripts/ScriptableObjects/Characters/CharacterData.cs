@@ -1,3 +1,4 @@
+using UnityEditor.UIElements;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CharacterData", menuName = "ScriptableObject/CharacterData")]
@@ -7,21 +8,9 @@ public class CharacterData : ScriptableObject
     {
         get { return _sprite; }
     }
-    public Vector3 Rotation
-    {
-        get { return _rotation; }
-    }
-    public Vector2 ColliderSize
-    {
-        get { return _colliderSize; }
-    }
     public FishType FishType
     {
         get { return _fishType; }
-    }
-    public Color Color
-    {
-        get { return _color; }
     }
     public GameObject Bullet
     {
@@ -49,10 +38,7 @@ public class CharacterData : ScriptableObject
     }
 
     [SerializeField] Sprite _sprite;
-    [SerializeField] Vector3 _rotation;
-    [SerializeField] Vector2 _colliderSize;
     [SerializeField] FishType _fishType;
-    [SerializeField] Color _color;
     [SerializeField] GameObject _bullet;
     [Min(1)][SerializeField] int _maxHp;
     [Min(0)][SerializeField] int _damage;
