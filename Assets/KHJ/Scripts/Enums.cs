@@ -1,37 +1,22 @@
 // ÇÁ¸®ÆÕ ÀÌ¸§
 public enum AllyFish
 {
-    // RB: Red Bean(ÆÏ)
-    // CC: Custard Cream(½´Å©¸²)
-    AgariFish_CC, AgariFish_RB,
-    BurntFish_CC, BurntFish_RB,
+    MiniFish_RB, MiniFish_CC,
     GoldFish,
-    MiniFish_CC, MiniFish_RB,
-    TaiyakiFish_CC, TaiyakiFish_RB,
+    BurntFish_RB, BurntFish_CC,
+    TaiyakiFish_RB, TaiyakiFish_CC,
+    AgariFish_RB, AgariFish_CC,
 }
 
 public enum EnemyFish
 {
-    AgariFish_CC, AgariFish_RB,
-    BurntFish_CC, BurntFish_RB,
+    // RB: Red Bean(ÆÏ)
+    // CC: Custard Cream(½´Å©¸²)
+    MiniFish_RB, MiniFish_CC,
     GoldFish,
-    MiniFish_CC, MiniFish_RB,
-    TaiyakiFish_CC, TaiyakiFish_RB,
-}
-
-public enum Prefab
-{
-    AllyAgariFish_CC, AllyAgariFish_RB,
-    AllyBurntFish_CC, AllyBurntFish_RB,
-    AllyGoldFish,
-    AllyMiniFish_CC, AllyMiniFish_RB,
-    AllyTaiyakiFish_CC, AllyTaiyakiFish_RB,
-
-    EnemyAgariFish_CC, EnemyAgariFish_RB,
-    EnemyBurntFish_CC, EnemyBurntFish_RB,
-    EnemyGoldFish,
-    EnemyMiniFish_CC, EnemyMiniFish_RB,
-    EnemyTaiyakiFish_CC, EnemyTaiyakiFish_RB,
+    BurntFish_RB, BurntFish_CC,
+    TaiyakiFish_RB, TaiyakiFish_CC,
+    AgariFish_RB, AgariFish_CC,
 }
 
 // ºØ¾î»§ Å¸ÀÔ

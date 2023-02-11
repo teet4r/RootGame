@@ -1,9 +1,9 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(CapsuleCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class AllyController : PoolBehaviour, ICustomUpdate
+public class AllyController : MonoBehaviour, ICustomUpdate
 {
     public Transform Transform
     {
@@ -13,11 +13,21 @@ public class AllyController : PoolBehaviour, ICustomUpdate
     {
         get { return _spriteRenderer; }
     }
-    public CharacterData data { get; set; } = null;
-    public Transform MainTarget { get; set; } = null;
+    public CapsuleCollider2D CapsuleCollider
+    {
+        get { return _capsuleCollider; }
+    }
+    public Rigidbody2D Rigidbody2D
+    {
+        get { return _rigidbody; }
+    }
+    public CharacterData data = null;
+    public Transform mainTarget = null;
     
     [SerializeField] Transform _transform = null;
     [SerializeField] SpriteRenderer _spriteRenderer = null;
+    [SerializeField] CapsuleCollider2D _capsuleCollider = null;
+    [SerializeField] Rigidbody2D _rigidbody = null;
 
     float _fireRate = 1f;
     Transform _semiTarget = null;
@@ -25,10 +35,8 @@ public class AllyController : PoolBehaviour, ICustomUpdate
     int _curHp;
     float _prevFireTime;
 
-    protected override void OnEnable()
+    void OnEnable()
     {
-        base.OnEnable();
-
         RegisterCustomUpdate();
     }
     void Start()
@@ -42,15 +50,15 @@ public class AllyController : PoolBehaviour, ICustomUpdate
 
         if (!_enemyDetected)
         {
-            if (MainTarget != null && MainTarget.gameObject.activeSelf)
+            if (mainTarget != null)
             {
-                _LookAt(MainTarget.position);
-                _transform.position = Vector3.MoveTowards(_transform.position, MainTarget.position, data.Speed * Time.deltaTime);
-                if (Vector3.Distance(MainTarget.position, _transform.position) <= data.Range)
+                _LookAt(mainTarget.position);
+                _transform.position = Vector3.MoveTowards(_transform.position, mainTarget.position, data.Speed * Time.deltaTime);
+                if (Vector3.Distance(mainTarget.position, _transform.position) <= data.Range)
                     _MakeBullet();
 
                 var detectedEnemy = Physics2D.OverlapCircle(_transform.position, data.Range, 1 << 13);
-                if (detectedEnemy != null && detectedEnemy.gameObject.activeSelf)
+                if (detectedEnemy != null)
                 {
                     _enemyDetected = true;
                     _semiTarget = detectedEnemy.transform;
@@ -59,7 +67,7 @@ public class AllyController : PoolBehaviour, ICustomUpdate
         }
         else
         {
-            if (_semiTarget != null && _semiTarget.gameObject.activeSelf)
+            if (_semiTarget != null)
             {
                 _LookAt(_semiTarget.position);
                 if (Vector3.Distance(_semiTarget.position, _transform.position) <= data.Range) // 범위 안에 들어오면 공격
@@ -71,10 +79,8 @@ public class AllyController : PoolBehaviour, ICustomUpdate
                 _enemyDetected = false;
         }
     }
-    protected override void OnDisable()
+    void OnDisable()
     {
-        base.OnDisable();
-
         DeregisterCustomUpdate();
     }
 
@@ -86,7 +92,7 @@ public class AllyController : PoolBehaviour, ICustomUpdate
         if (_curHp <= 0)
         {
             SoundManager.Instance.SfxAudio.Play(Sfx.BungkoDead);
-            PoolManager.Instance.Put(this);
+            Destroy(gameObject);
         }
     }
 
