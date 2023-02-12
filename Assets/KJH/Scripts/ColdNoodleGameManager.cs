@@ -9,8 +9,6 @@ public class ColdNoodleGameManager : MonoBehaviour, ICustomUpdate
 
     public Queue<GameObject> queue;
     public Transform[] moveTransform; // 0:left, 1:right, 2,3,4,5,6,7 
-    public Sprite[] heart;
-    public Transform[] p;
     public GameObject curChicken;
     public GameObject friedPrefab;
     public GameObject saucePrefab;
@@ -18,7 +16,7 @@ public class ColdNoodleGameManager : MonoBehaviour, ICustomUpdate
     public int scoremultiflyvalue = 1;
     public int combo;
 
-    public float timeCurrent=60f;
+    public float timeCurrent = 60f;
     public float timemultiflyvalue = 1;
     public float timeMax = 60;
     private float timePlus;
@@ -66,27 +64,27 @@ public class ColdNoodleGameManager : MonoBehaviour, ICustomUpdate
     {
         for (int i = 0; i < 6; i++)
         {
-            if (Random.Range(0,2) == 0)
+            if (Random.Range(0, 2) == 0)
             {
-                queue.Enqueue(Instantiate(friedPrefab, moveTransform[i + 2].position,Quaternion.identity));
+                queue.Enqueue(Instantiate(friedPrefab, moveTransform[i + 2].position, Quaternion.identity));
             }
             else
             {
-                queue.Enqueue(Instantiate(saucePrefab,moveTransform[i + 2].position,Quaternion.identity));
+                queue.Enqueue(Instantiate(saucePrefab, moveTransform[i + 2].position, Quaternion.identity));
             }
         }
-        
+
     }
     public void EnqueueRandomChicken()
     {
         // 6번째자리에 치킨추가
-        if (Random.Range(0,2) == 0)
+        if (Random.Range(0, 2) == 0)
         {
-            queue.Enqueue(Instantiate(friedPrefab,moveTransform[7].position,Quaternion.identity));
+            queue.Enqueue(Instantiate(friedPrefab, moveTransform[7].position, Quaternion.identity));
         }
         else
         {
-            queue.Enqueue(Instantiate(saucePrefab,moveTransform[7].position,Quaternion.identity));
+            queue.Enqueue(Instantiate(saucePrefab, moveTransform[7].position, Quaternion.identity));
         }
     }
     public void DestrotyChicken()
@@ -104,10 +102,9 @@ public class ColdNoodleGameManager : MonoBehaviour, ICustomUpdate
     {
         combo += 1;
         if (combo % 20 == 0)
-        {
-            Instantiate(heart[Random.Range(0, 5)], p[Random.Range(0, 2)]);
             ColdNoodleUIManager.Instance.ShakeCombo2();
-        }else ColdNoodleUIManager.Instance.ShakeCombo();
+        else
+            ColdNoodleUIManager.Instance.ShakeCombo();
         score += 100 * scoremultiflyvalue;
         if (timePlus < 0f) timePlus = 0f;
         else timePlus += 1;

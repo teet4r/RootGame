@@ -40,7 +40,6 @@ public class CustomUpdateManager : Singleton<CustomUpdateManager>
                 _customObjIndexes.Add(obj, index);
                 customObjs[index] = obj;
             }
-            UnityEngine.Debug.Log($"등록 개수: {_customObjIndexes.Count}");
         }
         public void Deregister(T obj)
         {
