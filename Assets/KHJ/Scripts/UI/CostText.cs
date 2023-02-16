@@ -14,6 +14,7 @@ public class CostText : MonoBehaviour, ICustomUpdate
     void OnEnable()
     {
         RegisterCustomUpdate();
+        UpdateCost(0);
     }
     void Start()
     {
