@@ -6,33 +6,42 @@ using UnityEngine.UI;
 
 public class Option : MonoBehaviour
 {
+    public static Option instance;
+
     [SerializeField] GameObject optionButton;
     [SerializeField] GameObject optionButtonGroup;
     [SerializeField] GameObject optionWindow;
+    [SerializeField] GameObject screenTopBar;
     [SerializeField] Slider sfxSlider;
     [SerializeField] Slider bgmSlider;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     private void Start()
     {
         ChangeSfxSliderValue();
         ChangeBgmSliderValue();
-        StartCoroutine(ActivateOptionButton());
     }
 
-    IEnumerator ActivateOptionButton()
+    public void ActivateOptionButton(bool _tf)
     {
-        while (true)
-        {
-            if (SceneManager.GetActiveScene().buildIndex == 4)
-            {
-                optionButton.SetActive(false);
-            }
-            else
-            {
-                optionButton.SetActive(true);
-            }
-            yield return new WaitForSeconds(0.04f);
-        }
+        optionButton.SetActive(_tf);
+    }
+
+    public void ActivateTopBar(bool _tf)
+    {
+        screenTopBar.SetActive(_tf);
     }
 
     public void CloseOptionWindow()

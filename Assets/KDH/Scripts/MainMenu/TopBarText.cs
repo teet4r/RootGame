@@ -17,9 +17,15 @@ public class TopBarText : MonoBehaviour, ICustomUpdate
     private void Start()
     {
         topBarText = GetComponent<Text>();
+        SetText();
     }
 
     public void CustomUpdate()
+    {
+        SetText();
+    }
+
+    void SetText()
     {
         topBarText.text = topBarTexts[SceneManager.GetActiveScene().buildIndex];
     }

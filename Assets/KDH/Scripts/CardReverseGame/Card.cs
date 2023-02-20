@@ -40,13 +40,13 @@ public class Card : MonoBehaviour
         playing = true;
         while (true)
         {
-            if (rectTransform.localRotation.eulerAngles.y + rotateSpeed * Time.deltaTime >= 90f)
+            if (rectTransform.localRotation.eulerAngles.y + rotateSpeed * Time.unscaledDeltaTime >= 90f)
             {
                 StartCoroutine(RollingCard2(_destroy));
                 yield break;
             }
-            rectTransform.Rotate(new Vector3(0f, rectTransform.rotation.y + rotateSpeed * Time.deltaTime, 0f));
-            yield return null;
+            rectTransform.Rotate(new Vector3(0f, rectTransform.rotation.y + rotateSpeed * Time.unscaledDeltaTime, 0f));
+            yield return Time.unscaledDeltaTime;
         }
     }
 
@@ -55,7 +55,7 @@ public class Card : MonoBehaviour
         image.sprite = CardManager.instance.CardSprites[num];
         while (true)
         {
-            if (rectTransform.localRotation.eulerAngles.y - rotateSpeed * Time.deltaTime <= 0f)
+            if (rectTransform.localRotation.eulerAngles.y - rotateSpeed * Time.unscaledDeltaTime <= 0f)
             {
                 yield return new WaitForSeconds(waitTime);
                 if (_destroy)
@@ -68,8 +68,8 @@ public class Card : MonoBehaviour
                 }
                 yield break;
             }
-            rectTransform.Rotate(new Vector3(0f, rectTransform.rotation.y - rotateSpeed * Time.deltaTime, 0f));
-            yield return null;
+            rectTransform.Rotate(new Vector3(0f, rectTransform.rotation.y - rotateSpeed * Time.unscaledDeltaTime, 0f));
+            yield return Time.unscaledDeltaTime;
         }
     }
 
@@ -78,17 +78,17 @@ public class Card : MonoBehaviour
         rectTransform.rotation = Quaternion.Euler(Vector3.zero);
         while (true)
         {
-            float tmpScale = rectTransform.localScale.x - Time.deltaTime / destroyTime;
+            float tmpScale = rectTransform.localScale.x - Time.unscaledDeltaTime / destroyTime;
             if (image.color.a <= 0f)
             {
                 image.color = Color.clear;
                 playing = false;
                 yield break;
             }
-            image.color = new Color(1f, 1f, 1f, image.color.a - Time.deltaTime / destroyTime);
-            rectTransform.Rotate(new Vector3(0f, 0f, Time.deltaTime * destroyRotateSpeed));
+            image.color = new Color(1f, 1f, 1f, image.color.a - Time.unscaledDeltaTime / destroyTime);
+            rectTransform.Rotate(new Vector3(0f, 0f, Time.unscaledDeltaTime * destroyRotateSpeed));
             rectTransform.localScale = new Vector3(tmpScale, tmpScale, tmpScale);
-            yield return null;
+            yield return Time.unscaledDeltaTime;
         }
     }
 
@@ -97,13 +97,13 @@ public class Card : MonoBehaviour
         rectTransform.rotation = Quaternion.Euler(Vector3.zero);
         while (true)
         {
-            if (rectTransform.localRotation.eulerAngles.y + rotateSpeed * Time.deltaTime >= 90f)
+            if (rectTransform.localRotation.eulerAngles.y + rotateSpeed * Time.unscaledDeltaTime >= 90f)
             {
                 StartCoroutine(RollingCard4());
                 yield break;
             }
-            rectTransform.Rotate(new Vector3(0f, rectTransform.rotation.y + rotateSpeed * Time.deltaTime, 0f));
-            yield return null;
+            rectTransform.Rotate(new Vector3(0f, rectTransform.rotation.y + rotateSpeed * Time.unscaledDeltaTime, 0f));
+            yield return Time.unscaledDeltaTime;
         }
     }
 
@@ -112,14 +112,14 @@ public class Card : MonoBehaviour
         image.sprite = CardManager.instance.CardBackSprite;
         while (true)
         {
-            if (rectTransform.localRotation.eulerAngles.y - rotateSpeed * Time.deltaTime <= 0f)
+            if (rectTransform.localRotation.eulerAngles.y - rotateSpeed * Time.unscaledDeltaTime <= 0f)
             {
                 rectTransform.rotation = Quaternion.Euler(Vector3.zero);
                 playing = false;
                 yield break;
             }
-            rectTransform.Rotate(new Vector3(0f, rectTransform.rotation.y - rotateSpeed * Time.deltaTime, 0f));
-            yield return null;
+            rectTransform.Rotate(new Vector3(0f, rectTransform.rotation.y - rotateSpeed * Time.unscaledDeltaTime, 0f));
+            yield return Time.unscaledDeltaTime;
         }
     }
 

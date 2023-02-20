@@ -22,6 +22,8 @@ public class LoadingScene : MonoBehaviour, ICustomUpdate
     private void Start()
     {
         SoundManager.Instance.BgmAudio.Stop();
+        Option.instance.ActivateTopBar(false);
+        Option.instance.ActivateOptionButton(false);
     }
 
     private void OnEnable()
@@ -64,6 +66,8 @@ public class LoadingScene : MonoBehaviour, ICustomUpdate
             if (fillAmount >= 1.25f)
             {
                 check = true;
+                Option.instance.ActivateTopBar(true);
+                Option.instance.ActivateOptionButton(true);
                 SceneManager.LoadScene(sceneNum);
             }
             images[sceneNum - 1].fillAmount = fillAmount;

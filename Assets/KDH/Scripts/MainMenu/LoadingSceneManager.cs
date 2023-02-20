@@ -29,6 +29,8 @@ public class LoadingSceneManager : MonoBehaviour
         }
         else
         {
+            Option.instance.ActivateTopBar(false);
+            Option.instance.ActivateOptionButton(true);
             SceneManager.LoadScene(_num);
         }
     }
