@@ -64,6 +64,7 @@ public class Option : MonoBehaviour
 
     public void MoveToMainMenu()
     {
+        TitleImageChecker.instance.isPlayed = true;
         SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
         CloseOptionWindow();
         LoadingSceneManager.instance.LoadScene(0);

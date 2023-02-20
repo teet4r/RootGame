@@ -90,11 +90,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: 0
-  rotateSpeed: 360
+  rotateSpeed: 720
+  destroyRotateSpeed: 1800
   waitTime: 0.3
   destroyTime: 0.3
   playing: 0
-  circleEffect: {fileID: 131287515618317206, guid: fa7db28e5cf501f4bb47fb717f81a5dc, type: 3}
   effectNum: 30
   image: {fileID: 1127980527638445538}
   rectTransform: {fileID: 1127980527638445085}

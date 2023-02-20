@@ -13,6 +13,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] GameObject clearWindow;
     [SerializeField] GameObject gameOverWindow;
     [SerializeField] GameObject cardCanvas;
+    [SerializeField] int cardNum;
     public Sprite[] CardSprites { get { return cardSprites; } }
     public Sprite CardBackSprite { get { return cardBackSprite; } }
     public GameObject CardCanvas { get { return cardCanvas; } }
@@ -37,19 +38,17 @@ public class CardManager : MonoBehaviour
                 if (stage > 3)
                 {
                     score = CardGameTimeBar.instance.NowTime;
-                    ClearGame();
+                    StartCoroutine(GameClear());
                     yield break;
                 }
+                yield return new WaitForSeconds(1f);
                 CardGameTimeBar.instance.FillTimeBar();
                 SetStage();
             }
             goNext = true;
-            for (int i = 1; i < cardGroup.GetComponentsInChildren<RectTransform>().Length; i++)
+            for (int i = 1; i < cardNum; i++)
             {
-                if (cardGroup.GetComponentsInChildren<RectTransform>()[i].localScale.x > 0f)
-                {
-                    goNext = false;
-                }
+                if (!cardGroup.transform.GetChild(i).GetComponent<Card>().IsReversed) goNext = false;
             }
             yield return new WaitForSeconds(0.1f);
         }
@@ -58,22 +57,24 @@ public class CardManager : MonoBehaviour
     void SetStage()
     {
         GameObject tmpObject;
-        for (int i = 0; i < (stage + 1) * 4; i++)
+        cardNum = (stage + 1) * 4;
+        for (int i = 0; i < cardNum; i++)
         {
             tmpObject = cardGroup.transform.GetChild(i).gameObject;
             tmpObject.SetActive(true);
             tmpObject.GetComponent<Card>().InitCard(i);
         }
-        for (int i = 0; i < (stage + 1) * 4; i++)
+        for (int i = 0; i < cardNum; i++)
         {
-            cardGroup.transform.GetChild(i).transform.SetSiblingIndex(Random.Range(0, (stage + 1) * 4));
+            cardGroup.transform.GetChild(i).SetSiblingIndex(Random.Range(0, cardNum));
         }
         stage++;
     }
 
-    public void ClearGame()
+    IEnumerator GameClear()
     {
         CardGameTimeBar.instance.StopTImeBar();
+        yield return new WaitForSeconds(1f);
         ScoreManager.instance.SetGame3Score(score);
         clearWindow.SetActive(true);
     }

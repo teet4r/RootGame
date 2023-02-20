@@ -7,14 +7,17 @@ public class Card : MonoBehaviour
 {
     [SerializeField] int num;
     [SerializeField] float rotateSpeed;
+    [SerializeField] float destroyRotateSpeed;
     [SerializeField] float waitTime;
     [SerializeField] float destroyTime;
     [SerializeField] bool playing;
     [SerializeField] int effectNum;
-    public int Num { get { return num; } }
-    public bool Playing { get { return playing; } }
+    [SerializeField] bool isReversed = false;
     [SerializeField] Image image;
     [SerializeField] RectTransform rectTransform;
+    public int Num { get { return num; } }
+    public bool Playing { get { return playing; } }
+    public bool IsReversed { get { return isReversed; } }
 
     public void SelectCard()
     {
@@ -33,6 +36,7 @@ public class Card : MonoBehaviour
 
     IEnumerator RollingCard1(bool _destroy)
     {
+        if (_destroy) isReversed = true;
         playing = true;
         while (true)
         {
@@ -82,7 +86,7 @@ public class Card : MonoBehaviour
                 yield break;
             }
             image.color = new Color(1f, 1f, 1f, image.color.a - Time.deltaTime / destroyTime);
-            rectTransform.Rotate(new Vector3(0f, 0f, Time.deltaTime * rotateSpeed * 5f));
+            rectTransform.Rotate(new Vector3(0f, 0f, Time.deltaTime * destroyRotateSpeed));
             rectTransform.localScale = new Vector3(tmpScale, tmpScale, tmpScale);
             yield return null;
         }
@@ -126,5 +130,6 @@ public class Card : MonoBehaviour
         image.sprite = CardManager.instance.CardBackSprite;
         rectTransform.rotation = Quaternion.Euler(Vector3.zero);
         rectTransform.localScale = Vector3.one;
+        isReversed = false;
     }
 }

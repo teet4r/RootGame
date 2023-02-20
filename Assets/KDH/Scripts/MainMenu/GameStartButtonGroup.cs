@@ -11,7 +11,8 @@ public class GameStartButtonGroup : MonoBehaviour
     private void Start()
     {
         gridLayoutGroup = GetComponent<GridLayoutGroup>();
-        StartCoroutine(MoveDownButtons());
+        if (!TitleImageChecker.instance.isPlayed) StartCoroutine(MoveDownButtons());
+        else gridLayoutGroup.spacing = new Vector2(0f, spacingY);
     }
 
     IEnumerator MoveDownButtons()

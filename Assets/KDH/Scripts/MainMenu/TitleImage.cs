@@ -11,8 +11,16 @@ public class TitleImage : MonoBehaviour
 
     private void Start()
     {
-        transform.localScale = Vector3.zero;
-        StartCoroutine(SetScaleBigger());
+        if (!TitleImageChecker.instance.isPlayed)
+        {
+            transform.localScale = Vector3.zero;
+            StartCoroutine(SetScaleBigger());
+        }
+        else
+        {
+            transform.localScale = Vector3.one;
+            GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, 400f, 0f);
+        }
     }
 
     IEnumerator SetScaleBigger()

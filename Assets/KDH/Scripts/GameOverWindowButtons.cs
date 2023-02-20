@@ -7,6 +7,7 @@ public class GameOverWindowButtons : MonoBehaviour
 {
     public void SelectMainMenuButton()
     {
+        TitleImageChecker.instance.isPlayed = true;
         SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
         LoadingSceneManager.instance.LoadScene(0);
     }
@@ -16,6 +17,5 @@ public class GameOverWindowButtons : MonoBehaviour
         SoundManager.Instance.SfxAudio.Play(Sfx.ButtonClick);
         Time.timeScale = 1;
         LoadingSceneManager.instance.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1;
     }
 }
