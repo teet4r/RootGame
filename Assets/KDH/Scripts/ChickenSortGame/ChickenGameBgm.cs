@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChickenGameBgm : MonoBehaviour
 {
-    private void Start()
+    void Start()
     {
         SoundManager.Instance.BgmAudio.Play(Bgm.ChickenGame);
     }
