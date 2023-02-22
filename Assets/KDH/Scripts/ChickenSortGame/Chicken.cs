@@ -29,7 +29,10 @@ public class Chicken : MonoBehaviour
 
     public void MoveChicken(int _sortingOrder)
     {
-        if (_sortingOrder > 6) Destroy(this.gameObject);
+        if (_sortingOrder > 6)
+        {
+            Destroy(this.gameObject);
+        }
         float scaleNum = 1f + scaleAddNum * (_sortingOrder + 1);
         tr.localScale = new Vector3(scaleNum, scaleNum, scaleNum);
         tr.Translate(new Vector3(0f, -1 * yPositionGap, 0f));

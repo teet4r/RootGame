@@ -15,6 +15,12 @@ public class ChickenManager : MonoBehaviour
     [SerializeField] GameObject gameOverWindow;
     [SerializeField] int chickenLength;
     [SerializeField] int combo = 0;
+    [SerializeField] GameObject comboImage;
+    [SerializeField] float comboScale;
+    [SerializeField] Text comboText;
+    [SerializeField] int baseScore;
+    [SerializeField] float comboTime;
+    [SerializeField] float comboFailTime;
 
     public Sprite[] ChickenSprites { get { return chickenSprites; } }
     public int Score { get { return score; } }
@@ -43,18 +49,43 @@ public class ChickenManager : MonoBehaviour
     public void SelectCorrectChicken()
     {
         combo++;
-        AddScore(combo);
+        ChickenGameTimeBar.instance.AddTime(comboTime);
+        CheckCombo();
+        RefreshComboText();
+        AddScore();
         RefreshScoreText();
+    }
+
+    void CheckCombo()
+    {
+        if (combo % 20 == 0)
+        {
+            SoundManager.Instance.SfxAudio.Play(Sfx.ChickenCombo);
+            comboImage.transform.localScale += new Vector3(comboScale, comboScale, comboScale);
+        }
+        else
+        {
+            SoundManager.Instance.SfxAudio.Play(Sfx.ChickenButton);
+        }
+    }
+
+    void RefreshComboText()
+    {
+        comboText.text = $"{combo} Combo!";
     }
 
     public void SelectIncorrectChicken()
     {
         combo = 0;
+        SoundManager.Instance.SfxAudio.Play(Sfx.ChickenFail);
+        ChickenGameTimeBar.instance.SubTime(comboFailTime);
+        comboImage.transform.localScale = Vector3.one;
+        comboImage.SetActive(false);
     }
 
-    void AddScore(int _score)
+    void AddScore()
     {
-        score += _score;
+        score += baseScore + ((combo - 1) / 10) * 50;
     }
 
     public void MoveChicken()
