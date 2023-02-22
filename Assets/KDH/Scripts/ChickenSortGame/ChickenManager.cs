@@ -72,4 +72,9 @@ public class ChickenManager : MonoBehaviour
         ScoreManager.instance.SetGame2Score(score);
         gameOverWindow.SetActive(true);
     }
+
+    public void GameStart()
+    {
+        ChickenGameTimeBar.instance.StartTimeBar();
+    }
 }

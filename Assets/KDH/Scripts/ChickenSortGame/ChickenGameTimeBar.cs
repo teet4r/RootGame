@@ -22,12 +22,26 @@ public class ChickenGameTimeBar : MonoBehaviour
     {
         _maxTime = 1f / maxTime;
         nowTime = maxTime;
-        RefreshTimeBar();
     }
 
-    private void Update()
+    public void StartTimeBar()
     {
-        RefreshTimeBar();
+        StartCoroutine(PlayTimeBar());
+    }
+
+    IEnumerator PlayTimeBar()
+    {
+        while(true)
+        {
+            RefreshTimeBar();
+            if (nowTime <= 0f)
+            {
+                nowTime = 0f;
+                ChickenManager.instance.GameOver();
+                yield break;
+            }
+            yield return null;
+        }
     }
 
     void RefreshTimeBar()
