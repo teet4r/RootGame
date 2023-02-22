@@ -19,24 +19,24 @@ public class Card : MonoBehaviour
     public bool Playing { get { return playing; } }
     public bool IsReversed { get { return isReversed; } }
 
-    public void SelectCard()
+    public void OpenCard(bool _destroy)
     {
-        image.color = Color.gray;
-    }
-
-    public void UnSelectCard()
-    {
-        image.color = Color.white;
-    }
-
-    public void CheckCard(bool _destroy)
-    {
+        image.raycastTarget = false;
         StartCoroutine(RollingCard1(_destroy));
+    }
+
+    public void CloseCard()
+    {
+        StartCoroutine(RollingCard3());
+    }
+
+    public void DestroyCard(float _time)
+    {
+        StartCoroutine(PlayDestroy(_time));
     }
 
     IEnumerator RollingCard1(bool _destroy)
     {
-        if (_destroy) isReversed = true;
         playing = true;
         while (true)
         {
@@ -57,15 +57,7 @@ public class Card : MonoBehaviour
         {
             if (rectTransform.localRotation.eulerAngles.y - rotateSpeed * Time.unscaledDeltaTime <= 0f)
             {
-                yield return new WaitForSeconds(waitTime);
-                if (_destroy)
-                {
-                    StartCoroutine(PlayDestroy());
-                }
-                else
-                {
-                    StartCoroutine(RollingCard3());
-                }
+                if (_destroy) StartCoroutine(PlayDestroy(0f));
                 yield break;
             }
             rectTransform.Rotate(new Vector3(0f, rectTransform.rotation.y - rotateSpeed * Time.unscaledDeltaTime, 0f));
@@ -73,15 +65,17 @@ public class Card : MonoBehaviour
         }
     }
 
-    IEnumerator PlayDestroy()
+    IEnumerator PlayDestroy(float _time)
     {
         rectTransform.rotation = Quaternion.Euler(Vector3.zero);
+        yield return new WaitForSeconds(_time);
         while (true)
         {
             float tmpScale = rectTransform.localScale.x - Time.unscaledDeltaTime / destroyTime;
             if (image.color.a <= 0f)
             {
                 image.color = Color.clear;
+                image.raycastTarget = true;
                 playing = false;
                 yield break;
             }
@@ -115,6 +109,7 @@ public class Card : MonoBehaviour
             if (rectTransform.localRotation.eulerAngles.y - rotateSpeed * Time.unscaledDeltaTime <= 0f)
             {
                 rectTransform.rotation = Quaternion.Euler(Vector3.zero);
+                image.raycastTarget = true;
                 playing = false;
                 yield break;
             }

@@ -5,11 +5,11 @@ using UnityEngine.EventSystems;
 
 public class RayChecker : MonoBehaviour, ICustomUpdate
 {
-    PointerEventData pointer = new PointerEventData(null);
+    PointerEventData pointer = new(null);
     List<RaycastResult> raycastResults = new();
-    bool isCardSelected = false;
-    Card firstSelectedCard;
-    Card secondSelectedCard;
+    [SerializeField] bool isCardSelected = false;
+    [SerializeField] Card firstSelectedCard;
+    [SerializeField] Card secondSelectedCard;
 
     private void OnEnable()
     {
@@ -27,42 +27,41 @@ public class RayChecker : MonoBehaviour, ICustomUpdate
             EventSystem.current.RaycastAll(pointer, raycastResults);
             if (raycastResults.Count > 0 && raycastResults[0].gameObject.GetComponent<Card>())
             {
-                StartCoroutine(PlaySound(Sfx.CardSelect, 0f));
-                if (raycastResults[0].gameObject.GetComponent<Card>().Playing)
+                SoundManager.Instance.SfxAudio.Play(Sfx.CardSelect);
+                Card tmpCard = raycastResults[0].gameObject.GetComponent<Card>();
+                if (tmpCard.Playing)
                 {
                     raycastResults.Clear();
                     return;
                 }
                 if (isCardSelected)
                 {
-                    if (firstSelectedCard == raycastResults[0].gameObject.GetComponent<Card>())
+                    if (firstSelectedCard == tmpCard)
                     {
                         raycastResults.Clear();
                         return;
                     }
-                    secondSelectedCard = raycastResults[0].gameObject.GetComponent<Card>();
-                    firstSelectedCard.UnSelectCard();
-                    secondSelectedCard.UnSelectCard();
+                    secondSelectedCard = tmpCard;
                     if (firstSelectedCard.Num / 2 == secondSelectedCard.Num / 2)
                     {
-                        StartCoroutine(PlaySound(Sfx.CardSuccess, 0.6f));
-                        firstSelectedCard.CheckCard(true);
-                        secondSelectedCard.CheckCard(true);
+                        SoundManager.Instance.SfxAudio.Play(Sfx.CardSuccess);
+                        firstSelectedCard.DestroyCard(0f);
+                        secondSelectedCard.OpenCard(true);
                     }
                     else
                     {
-                        StartCoroutine(PlaySound(Sfx.CardFail, 0.6f));
-                        firstSelectedCard.CheckCard(false);
-                        secondSelectedCard.CheckCard(false);
+                        SoundManager.Instance.SfxAudio.Play(Sfx.CardFail);
+                        firstSelectedCard.CloseCard();
+                        secondSelectedCard.CloseCard();
                     }
-                    firstSelectedCard = null;
-                    secondSelectedCard = null;
+                    Debug.Log(firstSelectedCard.name);
+                    Debug.Log(secondSelectedCard.name);
                     isCardSelected = false;
                 }
                 else
                 {
-                    firstSelectedCard = raycastResults[0].gameObject.GetComponent<Card>();
-                    firstSelectedCard.SelectCard();
+                    firstSelectedCard = tmpCard;
+                    firstSelectedCard.OpenCard(false);
                     isCardSelected = true;
                 }
             }
@@ -73,15 +72,6 @@ public class RayChecker : MonoBehaviour, ICustomUpdate
     {
         DeregisterCustomUpdate();
     }
-
-    IEnumerator PlaySound(Sfx _sfx, float _time)
-    {
-        yield return new WaitForSeconds(_time);
-        SoundManager.Instance.SfxAudio.Play(_sfx);
-        yield break;
-    }
-
-
 
     public void RegisterCustomUpdate()
     {
