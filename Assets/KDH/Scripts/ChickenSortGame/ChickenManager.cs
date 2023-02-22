@@ -21,9 +21,10 @@ public class ChickenManager : MonoBehaviour
     [SerializeField] int baseScore;
     [SerializeField] float comboTime;
     [SerializeField] float comboFailTime;
+    [SerializeField] Button chickenButtonLeft;
+    [SerializeField] Button chickenButtonRight;
 
     public Sprite[] ChickenSprites { get { return chickenSprites; } }
-    public int Score { get { return score; } }
 
     private void Awake()
     {
@@ -61,11 +62,15 @@ public class ChickenManager : MonoBehaviour
         if (combo % 20 == 0)
         {
             SoundManager.Instance.SfxAudio.Play(Sfx.ChickenCombo);
-            comboImage.transform.localScale += new Vector3(comboScale, comboScale, comboScale);
+            if (combo <= 100)
+            {
+                comboImage.transform.localScale += new Vector3(comboScale, comboScale, comboScale);
+            }
         }
         else
         {
             SoundManager.Instance.SfxAudio.Play(Sfx.ChickenButton);
+            comboImage.SetActive(true);
         }
     }
 
@@ -106,6 +111,21 @@ public class ChickenManager : MonoBehaviour
 
     public void GameStart()
     {
+        ActivateChickenButton();
         ChickenGameTimeBar.instance.StartTimeBar();
+    }
+
+    public void ActivateChickenButton()
+    {
+        chickenButtonLeft.interactable = true;
+        chickenButtonRight.interactable = true;
+    }
+
+    IEnumerator PlayComboImageBigger()
+    {
+        while (true)
+        {
+            yield return null;
+        }
     }
 }

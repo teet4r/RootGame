@@ -19,11 +19,11 @@ public class ChickenButton : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             SelectChickenButton(false);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.D))
         {
             SelectChickenButton(true);
         }

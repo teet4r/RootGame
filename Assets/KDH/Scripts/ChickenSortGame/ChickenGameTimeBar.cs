@@ -46,8 +46,9 @@ public class ChickenGameTimeBar : MonoBehaviour
 
     void RefreshTimeBar()
     {
+        int _nowTime = (int)(nowTime * 10f);
         timeBar.fillAmount = nowTime * _maxTime;
-        timeText.text = $"{nowTime}s";
+        timeText.text = $"{_nowTime / 10}.{_nowTime % 10}s";
         nowTime -= Time.deltaTime;
     }
 
