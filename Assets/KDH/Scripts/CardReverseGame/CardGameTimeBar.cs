@@ -48,7 +48,7 @@ public class CardGameTimeBar : MonoBehaviour, ICustomUpdate
         nowTime = maxTime;
     }
 
-    public void StopTImeBar()
+    public void StopTimeBar()
     {
         timeGo = false;
     }

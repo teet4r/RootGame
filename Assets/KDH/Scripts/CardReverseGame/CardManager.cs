@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CardManager : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class CardManager : MonoBehaviour
     [SerializeField] GameObject gameOverWindow;
     [SerializeField] GameObject cardCanvas;
     [SerializeField] int cardNum;
+    [SerializeField] bool cardSelected = false;
+    [SerializeField] Card firstCard = null;
+    [SerializeField] Card secondCard = null;
+
     public Sprite[] CardSprites { get { return cardSprites; } }
     public Sprite CardBackSprite { get { return cardBackSprite; } }
     public GameObject CardCanvas { get { return cardCanvas; } }
@@ -73,7 +78,7 @@ public class CardManager : MonoBehaviour
 
     IEnumerator GameClear()
     {
-        CardGameTimeBar.instance.StopTImeBar();
+        CardGameTimeBar.instance.StopTimeBar();
         yield return new WaitForSeconds(1f);
         ScoreManager.instance.SetGame3Score(score);
         clearWindow.SetActive(true);
@@ -82,5 +87,22 @@ public class CardManager : MonoBehaviour
     public void GameOver()
     {
         gameOverWindow.SetActive(true);
+    }
+
+    public void SelectCard()
+    {
+        Card tmpCard = EventSystem.current.currentSelectedGameObject.GetComponent<Card>();
+        if (firstCard == tmpCard) return;
+        SoundManager.Instance.SfxAudio.Play(Sfx.CardSelect);
+        if (firstCard == null)
+        {
+            firstCard = tmpCard;
+            firstCard.OpenCard(false);
+        }
+        else if (secondCard == null)
+        {
+            secondCard = tmpCard;
+            secondCard.OpenCard(false);
+        }
     }
 }
