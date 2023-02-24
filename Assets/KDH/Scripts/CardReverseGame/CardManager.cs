@@ -103,6 +103,15 @@ public class CardManager : MonoBehaviour
         {
             secondCard = tmpCard;
             secondCard.OpenCard(false);
+            if (firstCard.Num / 2 == secondCard.Num / 2)
+            {
+                secondCard.OpenCard(true);
+            }
+            else
+            {
+                firstCard.CloseCard();
+                secondCard.OpenCard(false);
+            }
         }
     }
 }
