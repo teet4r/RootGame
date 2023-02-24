@@ -19,10 +19,10 @@ public class Card : MonoBehaviour
     public bool Playing { get { return playing; } }
     public bool IsReversed { get { return isReversed; } }
 
-    public void OpenCard(bool _destroy)
+    public void OpenCard()
     {
         image.raycastTarget = false;
-        StartCoroutine(RollingCard1(_destroy));
+        StartCoroutine(RollingCard1());
     }
 
     public void CloseCard()
@@ -35,14 +35,14 @@ public class Card : MonoBehaviour
         StartCoroutine(PlayDestroy(_time));
     }
 
-    IEnumerator RollingCard1(bool _destroy)
+    IEnumerator RollingCard1()
     {
         playing = true;
         while (true)
         {
             if (rectTransform.localRotation.eulerAngles.y + rotateSpeed * Time.unscaledDeltaTime >= 90f)
             {
-                StartCoroutine(RollingCard2(_destroy));
+                StartCoroutine();
                 yield break;
             }
             rectTransform.Rotate(new Vector3(0f, rectTransform.rotation.y + rotateSpeed * Time.unscaledDeltaTime, 0f));
@@ -50,14 +50,13 @@ public class Card : MonoBehaviour
         }
     }
 
-    IEnumerator RollingCard2(bool _destroy)
+    IEnumerator RollingCard2()
     {
         image.sprite = CardManager.instance.CardSprites[num];
         while (true)
         {
             if (rectTransform.localRotation.eulerAngles.y - rotateSpeed * Time.unscaledDeltaTime <= 0f)
             {
-                if (_destroy) StartCoroutine(PlayDestroy(0f));
                 yield break;
             }
             rectTransform.Rotate(new Vector3(0f, rectTransform.rotation.y - rotateSpeed * Time.unscaledDeltaTime, 0f));

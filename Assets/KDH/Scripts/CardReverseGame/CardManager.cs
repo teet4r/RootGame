@@ -18,6 +18,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] bool cardSelected = false;
     [SerializeField] Card firstCard = null;
     [SerializeField] Card secondCard = null;
+    [SerializeField] int maxStage;
 
     public Sprite[] CardSprites { get { return cardSprites; } }
     public Sprite CardBackSprite { get { return cardBackSprite; } }
@@ -40,7 +41,7 @@ public class CardManager : MonoBehaviour
         {
             if (goNext)
             {
-                if (stage > 3)
+                if (stage > maxStage)
                 {
                     score = CardGameTimeBar.instance.NowTime;
                     StartCoroutine(GameClear());
@@ -55,7 +56,7 @@ public class CardManager : MonoBehaviour
             {
                 if (!cardGroup.transform.GetChild(i).GetComponent<Card>().IsReversed) goNext = false;
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
         }
     }
 
@@ -93,25 +94,25 @@ public class CardManager : MonoBehaviour
     {
         Card tmpCard = EventSystem.current.currentSelectedGameObject.GetComponent<Card>();
         if (firstCard == tmpCard) return;
+        tmpCard.OpenCard();
         SoundManager.Instance.SfxAudio.Play(Sfx.CardSelect);
         if (firstCard == null)
         {
             firstCard = tmpCard;
-            firstCard.OpenCard(false);
+            cardSelected = true;
         }
         else if (secondCard == null)
         {
             secondCard = tmpCard;
-            secondCard.OpenCard(false);
             if (firstCard.Num / 2 == secondCard.Num / 2)
             {
-                secondCard.OpenCard(true);
             }
             else
             {
                 firstCard.CloseCard();
-                secondCard.OpenCard(false);
+                secondCard.CloseCard();
             }
+            cardSelected = false;
         }
     }
 }
