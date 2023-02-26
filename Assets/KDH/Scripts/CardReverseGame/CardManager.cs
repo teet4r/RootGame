@@ -15,7 +15,6 @@ public class CardManager : MonoBehaviour
     [SerializeField] GameObject gameOverWindow;
     [SerializeField] GameObject cardCanvas;
     [SerializeField] int cardNum;
-    [SerializeField] bool cardSelected = false;
     [SerializeField] Card firstCard = null;
     [SerializeField] Card secondCard = null;
     [SerializeField] int maxStage;
@@ -99,20 +98,24 @@ public class CardManager : MonoBehaviour
         if (firstCard == null)
         {
             firstCard = tmpCard;
-            cardSelected = true;
         }
         else if (secondCard == null)
         {
             secondCard = tmpCard;
             if (firstCard.Num / 2 == secondCard.Num / 2)
             {
+                firstCard.CheckReverse();
+                secondCard.CheckReverse();
             }
             else
             {
                 firstCard.CloseCard();
                 secondCard.CloseCard();
             }
-            cardSelected = false;
+            firstCard = null;
+            secondCard = null;
         }
     }
+
+    IEnumerator 
 }

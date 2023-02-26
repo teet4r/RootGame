@@ -35,6 +35,11 @@ public class Card : MonoBehaviour
         StartCoroutine(PlayDestroy(_time));
     }
 
+    public void CheckReverse()
+    {
+        isReversed = true;
+    }
+
     IEnumerator RollingCard1()
     {
         playing = true;
@@ -42,7 +47,7 @@ public class Card : MonoBehaviour
         {
             if (rectTransform.localRotation.eulerAngles.y + rotateSpeed * Time.unscaledDeltaTime >= 90f)
             {
-                StartCoroutine();
+                StartCoroutine(RollingCard2());
                 yield break;
             }
             rectTransform.Rotate(new Vector3(0f, rectTransform.rotation.y + rotateSpeed * Time.unscaledDeltaTime, 0f));
