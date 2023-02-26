@@ -99,23 +99,28 @@ public class CardManager : MonoBehaviour
         {
             firstCard = tmpCard;
         }
-        else if (secondCard == null)
+        else
         {
             secondCard = tmpCard;
             if (firstCard.Num / 2 == secondCard.Num / 2)
             {
                 firstCard.CheckReverse();
                 secondCard.CheckReverse();
+                DestroyCard();
             }
             else
             {
-                firstCard.CloseCard();
-                secondCard.CloseCard();
+                firstCard.CloseCard(0.5f);
+                secondCard.CloseCard(0.5f);
             }
             firstCard = null;
             secondCard = null;
         }
     }
 
-    IEnumerator 
+    void DestroyCard()
+    {
+        firstCard.DestroyCard(0.5f);
+        secondCard.DestroyCard(0.5f);
+    }
 }

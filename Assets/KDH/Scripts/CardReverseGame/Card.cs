@@ -15,6 +15,7 @@ public class Card : MonoBehaviour
     [SerializeField] bool isReversed = false;
     [SerializeField] Image image;
     [SerializeField] RectTransform rectTransform;
+
     public int Num { get { return num; } }
     public bool Playing { get { return playing; } }
     public bool IsReversed { get { return isReversed; } }
@@ -25,9 +26,9 @@ public class Card : MonoBehaviour
         StartCoroutine(RollingCard1());
     }
 
-    public void CloseCard()
+    public void CloseCard(float _time)
     {
-        StartCoroutine(RollingCard3());
+        StartCoroutine(RollingCard3(_time));
     }
 
     public void DestroyCard(float _time)
@@ -71,8 +72,8 @@ public class Card : MonoBehaviour
 
     IEnumerator PlayDestroy(float _time)
     {
-        rectTransform.rotation = Quaternion.Euler(Vector3.zero);
         yield return new WaitForSeconds(_time);
+        rectTransform.rotation = Quaternion.Euler(Vector3.zero);
         while (true)
         {
             float tmpScale = rectTransform.localScale.x - Time.unscaledDeltaTime / destroyTime;
@@ -90,8 +91,9 @@ public class Card : MonoBehaviour
         }
     }
 
-    IEnumerator RollingCard3()
+    IEnumerator RollingCard3(float _time)
     {
+        yield return new WaitForSeconds(_time);
         rectTransform.rotation = Quaternion.Euler(Vector3.zero);
         while (true)
         {
