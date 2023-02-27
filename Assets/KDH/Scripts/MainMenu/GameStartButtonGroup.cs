@@ -7,12 +7,17 @@ public class GameStartButtonGroup : MonoBehaviour
 {
     [SerializeField] float movingTime;
     [SerializeField] float spacingY;
+    [SerializeField] GameObject gameExitButton;
     GridLayoutGroup gridLayoutGroup;
     private void Start()
     {
         gridLayoutGroup = GetComponent<GridLayoutGroup>();
         if (!TitleImageChecker.instance.isPlayed) StartCoroutine(MoveDownButtons());
-        else gridLayoutGroup.spacing = new Vector2(0f, spacingY);
+        else
+        {
+            gridLayoutGroup.spacing = new Vector2(0f, spacingY);
+            gameExitButton.SetActive(true);
+        }
     }
 
     IEnumerator MoveDownButtons()
@@ -23,6 +28,7 @@ public class GameStartButtonGroup : MonoBehaviour
             if (gridLayoutGroup.spacing.y - num * Time.deltaTime / movingTime >= spacingY)
             {
                 gridLayoutGroup.spacing = new Vector2(0f, spacingY);
+                gameExitButton.SetActive(true);
                 yield break;
             }
             gridLayoutGroup.spacing -= new Vector2(0f, num * Time.deltaTime / movingTime);

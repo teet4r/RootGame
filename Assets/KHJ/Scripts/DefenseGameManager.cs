@@ -441,7 +441,6 @@ public class DefenseGameManager : MonoBehaviour, ICustomUpdate
             isWin = false;
             isGameOver = true;
             _gameOverGroup.SetActive(true);
-            ScoreManager.instance.SetGame1Score(_totalTime);
         }
         else if (allyHome.curHp > 0 && enemyHome.curHp <= 0)
         {
@@ -455,7 +454,6 @@ public class DefenseGameManager : MonoBehaviour, ICustomUpdate
             isWin = false;
             isGameOver = true;
             _gameOverGroup.SetActive(true);
-            ScoreManager.instance.SetGame1Score(_totalTime);
         }
     }
 

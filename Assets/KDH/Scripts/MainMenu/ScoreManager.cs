@@ -32,7 +32,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void SetGame2Score(float _score)
+    public void SetGame2Score(int _score)
     {
         if (_score > game2ScoreMax)
         {

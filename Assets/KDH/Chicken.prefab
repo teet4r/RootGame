@@ -101,3 +101,5 @@ MonoBehaviour:
   isRight: 0
   scaleAddNum: 0.08
   yPositionGap: 140
+  moveTime: 0.2
+  scaleTime: 0.2

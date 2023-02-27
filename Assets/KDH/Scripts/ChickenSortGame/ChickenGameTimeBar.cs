@@ -10,7 +10,10 @@ public class ChickenGameTimeBar : MonoBehaviour
     [SerializeField] Image timeBar;
     [SerializeField] float maxTime;
     [SerializeField] float nowTime;
-    [SerializeField] Text timeText;
+    [SerializeField] Color barColor1;
+    [SerializeField] Color barColor2;
+    [SerializeField] Color barColor3;
+
     float _maxTime;
 
     private void Awake()
@@ -46,34 +49,18 @@ public class ChickenGameTimeBar : MonoBehaviour
 
     void RefreshTimeBar()
     {
-        int _nowTime = (int)(nowTime * 10f);
         timeBar.fillAmount = nowTime * _maxTime;
-        timeText.text = $"{_nowTime / 10}.{_nowTime % 10}s";
         nowTime -= Time.deltaTime;
-    }
-
-    public void AddTime(float _time)
-    {
-        if (nowTime + _time >= maxTime)
+        if (nowTime >= 25f)
         {
-            nowTime = maxTime;
+            timeBar.color = barColor1;
         }
-        else
+        else if (nowTime >= 10f)
         {
-            nowTime += _time;
-        }
-    }
-
-    public void SubTime(float _time)
-    {
-        if (nowTime - _time <= 0f)
+            timeBar.color = barColor2;
+        }else
         {
-            nowTime = 0f;
-            ChickenManager.instance.GameOver();
-        }
-        else
-        {
-            nowTime -= _time;
+            timeBar.color = barColor3;
         }
     }
 }

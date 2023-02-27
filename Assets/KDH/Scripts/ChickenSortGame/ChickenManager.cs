@@ -34,12 +34,11 @@ public class ChickenManager : MonoBehaviour
     private void Start()
     {
         chickenLength = chickenGroup.childCount;
-        RefreshScoreText();
     }
 
     void RefreshScoreText()
     {
-        scoreText.text = $"{score}";
+        scoreText.text = $"{score:#,###}";
     }
 
     public bool GetChickenType()
@@ -50,7 +49,6 @@ public class ChickenManager : MonoBehaviour
     public void SelectCorrectChicken()
     {
         combo++;
-        ChickenGameTimeBar.instance.AddTime(comboTime);
         CheckCombo();
         RefreshComboText();
         AddScore();
@@ -76,14 +74,13 @@ public class ChickenManager : MonoBehaviour
 
     void RefreshComboText()
     {
-        comboText.text = $"{combo} Combo!";
+        comboText.text = $"{combo} Combo";
     }
 
     public void SelectIncorrectChicken()
     {
         combo = 0;
         SoundManager.Instance.SfxAudio.Play(Sfx.ChickenFail);
-        ChickenGameTimeBar.instance.SubTime(comboFailTime);
         comboImage.transform.localScale = Vector3.one;
         comboImage.SetActive(false);
     }
@@ -119,13 +116,5 @@ public class ChickenManager : MonoBehaviour
     {
         chickenButtonLeft.interactable = true;
         chickenButtonRight.interactable = true;
-    }
-
-    IEnumerator PlayComboImageBigger()
-    {
-        while (true)
-        {
-            yield return null;
-        }
     }
 }
