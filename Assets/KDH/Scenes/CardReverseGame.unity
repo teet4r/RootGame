@@ -461,6 +461,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4253130516423258668, guid: cf613567bca41754c81cc368a6f9f1ae, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -34178520, guid: fb986210c55286342be607f55a5e3432, type: 3}
     - target: {fileID: 4253130517031191706, guid: cf613567bca41754c81cc368a6f9f1ae, type: 3}
       propertyPath: m_Text
       value: "\uB2F9\uC2E0\uC758 \uAE30\uC5B5\uB825 \uC9F1\uC9F1\uC9F1!"
@@ -1890,7 +1894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1234621829226172151, guid: 359c7d60d0c488e489b913e07f38f6d7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1234621829852645663, guid: 359c7d60d0c488e489b913e07f38f6d7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

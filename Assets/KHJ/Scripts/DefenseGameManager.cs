@@ -35,6 +35,8 @@ public class DefenseGameManager : MonoBehaviour, ICustomUpdate
     bool _isButtonClicked = false;
     int _clickedButtonIndex = -1;
 
+    public bool isRedBean = true; // KDH
+
     float _totalTime;
     int _waveIndex = 0;
     Wave[] _waves =
@@ -447,7 +449,7 @@ public class DefenseGameManager : MonoBehaviour, ICustomUpdate
             isWin = true;
             isGameOver = true;
             _clearGroup.SetActive(true);
-            ScoreManager.instance.SetGame1Score(_totalTime);
+            ScoreManager.instance.SetGame1Score(_totalTime, isRedBean);
         }
         else if (allyHome.curHp <= 0 && enemyHome.curHp > 0)
         {

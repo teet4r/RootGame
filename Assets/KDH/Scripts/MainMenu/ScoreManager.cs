@@ -5,11 +5,13 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
 
     float game1ScoreMax = -1;
-    float game2ScoreMax = -1;
+    int game2ScoreMax = -1;
     float game3ScoreMax = -1;
+    bool isRedBean;
     public float Game1ScoreMax { get { return game1ScoreMax; } }
-    public float Game2ScoreMax { get { return game2ScoreMax; } }
+    public int Game2ScoreMax { get { return game2ScoreMax; } }
     public float Game3ScoreMax { get { return game3ScoreMax; } }
+    public bool IsRedBean { get { return isRedBean; } }
 
     private void Awake()
     {
@@ -24,11 +26,12 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void SetGame1Score(float _score)
+    public void SetGame1Score(float _score, bool _isRedBean)
     {
         if (_score > game1ScoreMax)
         {
             game1ScoreMax = _score;
+            isRedBean = _isRedBean;
         }
     }
 

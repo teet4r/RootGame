@@ -12,7 +12,7 @@ public class ChickenManager : MonoBehaviour
     [SerializeField] Text scoreText;
     [SerializeField] int score = 0;
     [SerializeField] Transform chickenGroup;
-    [SerializeField] GameObject gameOverWindow;
+    [SerializeField] GameObject gameClearWindow;
     [SerializeField] int chickenLength;
     [SerializeField] int combo = 0;
     [SerializeField] GameObject comboImage;
@@ -103,7 +103,7 @@ public class ChickenManager : MonoBehaviour
     public void GameOver()
     {
         ScoreManager.instance.SetGame2Score(score);
-        gameOverWindow.SetActive(true);
+        gameClearWindow.SetActive(true);
     }
 
     public void GameStart()
