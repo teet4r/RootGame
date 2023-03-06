@@ -1541,6 +1541,35 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1189218158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8944457768432302853, guid: 359c7d60d0c488e489b913e07f38f6d7, type: 3}
+  m_PrefabInstance: {fileID: 1540754528}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1189218160 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1059973238600220748, guid: 359c7d60d0c488e489b913e07f38f6d7, type: 3}
+  m_PrefabInstance: {fileID: 1540754528}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189218158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1189218162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189218158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e16d36046862924196ebe2945580f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1189218160}
 --- !u!224 &1251795102 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1127980527638445085, guid: ba29f2b445dd5a24aabe1c757a1ffd62, type: 3}
@@ -1794,7 +1823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1234621829197464868, guid: 359c7d60d0c488e489b913e07f38f6d7, type: 3}
       propertyPath: m_Text
-      value: AAAAAAAAAA
+      value: "\uC9C0\uB2A5\uC774 \uBD80\uC871\uD558\uC2DC\uAD70\uC694!"
       objectReference: {fileID: 0}
     - target: {fileID: 1234621829197464868, guid: 359c7d60d0c488e489b913e07f38f6d7, type: 3}
       propertyPath: m_FontData.m_Font

@@ -303,7 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfab12fee3573f4baa1b3cd091fe5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infoText: {fileID: 4253130517031191706}
   scoreText: {fileID: 7282342330052257530}
 --- !u!1 &4253130516423258834
 GameObject:
@@ -924,9 +923,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2352118042389947780}
-        m_TargetAssemblyTypeName: GoMainButton, Assembly-CSharp
-        m_MethodName: SelectMainMenuButton
+      - m_Target: {fileID: 6134131571738075177}
+        m_TargetAssemblyTypeName: ClearWindow, Assembly-CSharp
+        m_MethodName: SelectRetryGameButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

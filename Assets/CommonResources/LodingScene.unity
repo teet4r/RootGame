@@ -1231,8 +1231,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tipTexts:
-  - 'Tip. '
-  - 'Tip. '
+  - "Tip. \uBD95\uC5B4\uB97C \uC120\uD0DD\uD558\uACE0 \uBC30\uCE58\uC601\uC5ED\uC744
+    \uB204\uB974\uBA74 \uD574\uB2F9 \uC704\uCE58\uC5D0 \uC18C\uD658\uB429\uB2C8\uB2E4"
+  - "Tip. \uC2DC\uAC04\uC774 \uC9C0\uB0A0\uC218\uB85D \uAC15\uB825\uD55C \uC801\uC774
+    \uC18C\uD658\uB429\uB2C8\uB2E4!"
 --- !u!1 &1186681793
 GameObject:
   m_ObjectHideFlags: 0

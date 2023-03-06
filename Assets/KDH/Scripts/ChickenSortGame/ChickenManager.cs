@@ -15,7 +15,6 @@ public class ChickenManager : MonoBehaviour
     [SerializeField] GameObject gameClearWindow;
     [SerializeField] int chickenLength;
     [SerializeField] int combo = 0;
-    [SerializeField] GameObject comboImage;
     [SerializeField] float comboScale;
     [SerializeField] Text comboText;
     [SerializeField] int baseScore;
@@ -60,15 +59,11 @@ public class ChickenManager : MonoBehaviour
         if (combo % 20 == 0)
         {
             SoundManager.Instance.SfxAudio.Play(Sfx.ChickenCombo);
-            if (combo <= 100)
-            {
-                comboImage.transform.localScale += new Vector3(comboScale, comboScale, comboScale);
-            }
         }
         else
         {
             SoundManager.Instance.SfxAudio.Play(Sfx.ChickenButton);
-            comboImage.SetActive(true);
+            comboText.gameObject.SetActive(true);
         }
     }
 
@@ -79,10 +74,9 @@ public class ChickenManager : MonoBehaviour
 
     public void SelectIncorrectChicken()
     {
+        comboText.gameObject.SetActive(false);
         combo = 0;
         SoundManager.Instance.SfxAudio.Play(Sfx.ChickenFail);
-        comboImage.transform.localScale = Vector3.one;
-        comboImage.SetActive(false);
     }
 
     void AddScore()
